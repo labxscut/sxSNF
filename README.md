@@ -3,29 +3,29 @@
 ````markdown
 # sxSNF-GNN: Single-cell Multi-omics Network Fusion with Graph Neural Networks
 
-基于 **相似性网络融合 (Similarity Network Fusion, SNF)** 与 **图神经网络 (GNN)** 的单细胞多组学数据集成与聚类分析框架。  
-该工具支持多组学数据的相似性图构建、SNF融合、深度图表示学习以及下游聚类和可视化分析。
+A framework for **single-cell multi-omics integration** based on **Similarity Network Fusion (SNF)** and **Graph Neural Networks (GNNs)**.  
+This tool supports similarity graph construction, SNF fusion, deep graph representation learning, clustering, and visualization.
 
 ---
 
-## ✨ 特性
+## ✨ Features
 
-- 支持 **多组学数据 (multi-omics)** 输入与融合  
-- 提供 **SNF** 算法实现，用于跨模态相似性网络融合  
-- 内置 **多种图神经网络模型**：
+- Support for both **real data** and **simulated data**  
+- Implementation of **SNF** for cross-modal similarity network fusion  
+- Built-in **graph neural networks**:
   - GCN
   - GraphSAGE
   - GAT
   - VGAE
-- 提供聚类 (K-means) 与指标评估 (NMI, ARI)  
-- 可视化结果（t-SNE 降维、聚类散点图、嵌入特征热图）  
-- 支持 `.mat` 数据文件和标签文件加载  
+- Downstream clustering (K-means) and evaluation metrics (NMI, ARI)  
+- Visualization of embeddings (t-SNE scatter plots, heatmaps, training loss curves)  
+- Support for `.mat` and `.npy` data files with optional label files  
 
 ---
 
-## 📦 安装与依赖
+## 📦 Installation & Dependencies
 
-运行环境：
+Environment requirements:
 
 - Python 3.8+
 - PyTorch
@@ -35,22 +35,17 @@
 - Matplotlib
 - Seaborn
 
-安装依赖：
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ````
+
 ---
 
-## 🚀 使用方法
+## 🚀 Usage
 
-### 1. 数据准备
-
-* 将输入的多组学数据存放在 `./data` 目录下，支持 `.mat` 格式。
-* 数据矩阵变量名需为 `X`，或包含二维矩阵的 key。
-* 可选：在 `./data/labels.txt` 提供真实标签（整数型）。
-
-### 2. 运行示例
+### 1. Real Data Mode
 
 ```bash
 python main.py \
@@ -67,27 +62,88 @@ python main.py \
   --verbose
 ```
 
-### 3. 输出结果
-
-运行完成后结果会保存在 `./results`：
-
-* `embeddings.npy` : GNN学习到的嵌入
-* `cluster_labels.npy` : 聚类标签
-* `results.mat` : MATLAB格式结果
-* `metrics.txt` : 聚类评估指标（NMI, ARI）
-* `clustering_visualization.png` : 聚类可视化
-* `embedding_heatmap.png` : 嵌入热图
+Results will be saved in the `./results` directory.
 
 ---
 
-## 📂 目录结构
+### 2. Simulated Data Experiment
+
+To validate the pipeline, we provide a **simulated dataset experiment** that automatically generates two modalities (e.g., gene expression + epigenomics) with ground-truth labels.
+
+#### Run Script
+
+```bash
+bash run_simulation.sh
+```
+
+This script calls `simulate_sxSNF.py` and saves results into `./results`.
+
+#### Key Parameters
+
+* `--n_samples` : Number of samples (default 500)
+* `--n_features1` : Feature size of modality 1 (default 1000)
+* `--n_features2` : Feature size of modality 2 (default 800)
+* `--n_clusters` : Number of clusters (default 3)
+* `--epochs` : Training epochs (default 100)
+* `--gnn_type` : GNN type: `gcn` / `graphsage` / `gat` / `vgae`
+
+Example:
+
+```bash
+python simulate_sxSNF.py \
+  --n_samples 300 \
+  --n_features1 500 \
+  --n_features2 400 \
+  --n_clusters 4 \
+  --gnn_type gat \
+  --epochs 150
+```
+
+#### Output
+
+* **Simulated Data**
+
+  * `simulated_data/modality1_data.npy`
+  * `simulated_data/modality2_data.npy`
+  * `simulated_data/labels.npy`
+
+* **Experiment Results**
+
+  * `results/embeddings.npy` : Learned embeddings
+  * `results/cluster_labels.npy` : Predicted cluster labels
+  * `results/metrics.txt` : Evaluation metrics (NMI, ARI)
+  * `sxSNF_clustering_results.png` : Clustering visualization
+  * `training_loss_curve.png` : Training loss curve
+
+* **Training Snapshots**
+
+  * `training_process/embeddings_epoch_X.npy` : Embeddings saved every 10 epochs
+  * `training_process/loss_history.npy` : Loss history
+
+---
+
+## 📂 Project Structure
 
 ```
 .
-├── main.py                # 主程序
-├── utils.py               # 工具函数：归一化、图构建、SNF、降维
-├── graph_module.py        # 图神经网络定义与训练
-├── data/                  # 输入数据目录 (.mat, labels.txt)
-├── results/               # 输出结果目录
-└── README.md              # 项目说明文档
+├── main.py                  # Main pipeline (real data)
+├── simulate_sxSNF.py        # Simulated data experiment
+├── run_simulation.sh        # Simulation script
+├── utils.py                 # Utility functions (normalization, SNF, dimensionality reduction)
+├── graph_module.py          # GNN models and training
+├── data/                    # Real dataset directory
+├── simulated_data/          # Simulated datasets
+├── results/                 # Experiment outputs
+├── training_process/        # Training logs and snapshots
+├── requirements.txt         # Dependencies
+└── README.md                # Project documentation
 ```
+
+---
+
+## 📖 Reference
+
+If you use this code in your research, please cite:
+
+* Duan H., Xia L.C., *sxSNF: Single-cell Multi-modal Data Integration with Similarity Network Fusion and Graph Learning*, **APBC 2025**.
+---
