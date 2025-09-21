@@ -6,7 +6,7 @@
 A framework for **single-cell multi-omics integration** based on **Similarity Network Fusion (SNF)** and **Graph Neural Networks (GNNs)**.  
 This tool supports similarity graph construction, SNF fusion, deep graph representation learning, clustering, and visualization.
 
----
+
 
 ## ✨ Features
 
