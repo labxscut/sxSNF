@@ -1,7 +1,4 @@
 # sxSNF
-下面我帮你写了一份 **README.md** 风格的介绍文档，你可以直接放到 GitHub 仓库里作为首页说明。内容包括项目简介、特性、依赖、使用方法、目录结构、结果展示和引用说明。
-
----
 
 ````markdown
 # sxSNF-GNN: Single-cell Multi-omics Network Fusion with Graph Neural Networks
