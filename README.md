@@ -1,4 +1,4 @@
-# sxSNF
+---
 
 ````markdown
 # sxSNF-GNN: Single-cell Multi-omics Network Fusion with Graph Neural Networks
@@ -6,7 +6,7 @@
 A framework for **single-cell multi-omics integration** based on **Similarity Network Fusion (SNF)** and **Graph Neural Networks (GNNs)**.  
 This tool supports similarity graph construction, SNF fusion, deep graph representation learning, clustering, and visualization.
 
-
+---
 
 ## ✨ Features
 
@@ -138,7 +138,6 @@ python simulate_sxSNF.py \
 ├── requirements.txt         # Dependencies
 └── README.md                # Project documentation
 ```
-
 ---
 
 ## 📖 Reference
@@ -146,4 +145,6 @@ python simulate_sxSNF.py \
 If you use this code in your research, please cite:
 
 * Duan H., Xia L.C., *sxSNF: Single-cell Multi-modal Data Integration with Similarity Network Fusion and Graph Learning*, **APBC 2025**.
+
 ---
+```
