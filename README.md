@@ -152,9 +152,4 @@ If you use this code in your research, please cite:
 
 ---
 
-```
 
----
-
-要不要我也帮你把 **参数说明**做成一个 Markdown 表格（更直观），放在 README 的 *Simulated Data Experiment* 部分？
-```
