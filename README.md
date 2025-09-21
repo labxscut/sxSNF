@@ -1,3 +1,5 @@
+好的 ✅ 我已经把 README.md 翻译成英文，并把引用部分修改为 **APBC 2025**。
+
 ---
 
 ````markdown
@@ -138,6 +140,9 @@ python simulate_sxSNF.py \
 ├── requirements.txt         # Dependencies
 └── README.md                # Project documentation
 ```
+
+---
+
 ---
 
 ## 📖 Reference
@@ -147,4 +152,10 @@ If you use this code in your research, please cite:
 * Duan H., Xia L.C., *sxSNF: Single-cell Multi-modal Data Integration with Similarity Network Fusion and Graph Learning*, **APBC 2025**.
 
 ---
+
+```
+
+---
+
+要不要我也帮你把 **参数说明**做成一个 Markdown 表格（更直观），放在 README 的 *Simulated Data Experiment* 部分？
 ```
