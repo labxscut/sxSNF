@@ -40,9 +40,6 @@
 ```bash
 pip install -r requirements.txt
 ````
-
-（请根据你的环境补充 `requirements.txt`）
-
 ---
 
 ## 🚀 使用方法
