@@ -32,15 +32,75 @@
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<td class="singlecolumn"><dl><dt><a name="-load_data"><strong>load_data</strong></a>(args)</dt><dd><span class="code">Load&nbsp;input&nbsp;data&nbsp;and&nbsp;labels&nbsp;from&nbsp;disk.</span></dd></dl>
- <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><span class="code">Run&nbsp;the&nbsp;end-to-end&nbsp;pipeline.</span></dd></dl>
- <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>()</dt><dd><span class="code">Parse&nbsp;command-line&nbsp;arguments.</span></dd></dl>
- <dl><dt><a name="-preprocess_data"><strong>preprocess_data</strong></a>(data_dict, args)</dt><dd><span class="code">Preprocess&nbsp;data.</span></dd></dl>
- <dl><dt><a name="-set_seed"><strong>set_seed</strong></a>(seed)</dt><dd><span class="code">Set&nbsp;seed.</span></dd></dl>
- <dl><dt><a name="-split_data"><strong>split_data</strong></a>(processed_data, args)</dt><dd><span class="code">Split&nbsp;data.</span></dd></dl>
- <dl><dt><a name="-test"><strong>test</strong></a>(model, data_loader, device, is_multi_view=False, n_clusters=5)</dt><dd><span class="code">Test.</span></dd></dl>
- <dl><dt><a name="-train_multi_view"><strong>train_multi_view</strong></a>(model, optimizer, criterion, data_loader, device)</dt><dd><span class="code">Train&nbsp;multi&nbsp;view.</span></dd></dl>
- <dl><dt><a name="-train_single_view"><strong>train_single_view</strong></a>(model, optimizer, criterion, data_loader, device)</dt><dd><span class="code">Train&nbsp;single&nbsp;view.</span></dd></dl>
- <dl><dt><a name="-validate"><strong>validate</strong></a>(model, criterion, data_loader, device, is_multi_view=False)</dt><dd><span class="code">Validate.</span></dd></dl>
+<td class="singlecolumn"><dl><dt><a name="-load_data"><strong>load_data</strong></a>(args)</dt><dd><span class="code">加载数据<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;命令行参数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_dict:&nbsp;包含数据和标签的字典</span></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><span class="code">主函数</span></dd></dl>
+ <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>()</dt><dd><span class="code">解析命令行参数</span></dd></dl>
+ <dl><dt><a name="-preprocess_data"><strong>preprocess_data</strong></a>(data_dict, args)</dt><dd><span class="code">数据预处理<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_dict:&nbsp;包含数据和标签的字典<br>
+&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;命令行参数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;processed_data:&nbsp;预处理后的数据</span></dd></dl>
+ <dl><dt><a name="-set_seed"><strong>set_seed</strong></a>(seed)</dt><dd><span class="code">设置随机种子</span></dd></dl>
+ <dl><dt><a name="-split_data"><strong>split_data</strong></a>(processed_data, args)</dt><dd><span class="code">数据集划分<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;processed_data:&nbsp;预处理后的数据<br>
+&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;命令行参数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_loaders:&nbsp;包含训练、验证和测试数据加载器的字典</span></dd></dl>
+ <dl><dt><a name="-test"><strong>test</strong></a>(model, data_loader, device, is_multi_view=False, n_clusters=5)</dt><dd><span class="code">模型测试<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;模型<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_loader:&nbsp;数据加载器<br>
+&nbsp;&nbsp;&nbsp;&nbsp;device:&nbsp;设备(CPU/GPU)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is_multi_view:&nbsp;是否为多视图模型<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_clusters:&nbsp;聚类数量<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;results:&nbsp;评估结果字典</span></dd></dl>
+ <dl><dt><a name="-train_multi_view"><strong>train_multi_view</strong></a>(model, optimizer, criterion, data_loader, device)</dt><dd><span class="code">多视图模型训练<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;模型<br>
+&nbsp;&nbsp;&nbsp;&nbsp;optimizer:&nbsp;优化器<br>
+&nbsp;&nbsp;&nbsp;&nbsp;criterion:&nbsp;损失函数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_loader:&nbsp;数据加载器<br>
+&nbsp;&nbsp;&nbsp;&nbsp;device:&nbsp;设备(CPU/GPU)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;avg_loss:&nbsp;平均损失</span></dd></dl>
+ <dl><dt><a name="-train_single_view"><strong>train_single_view</strong></a>(model, optimizer, criterion, data_loader, device)</dt><dd><span class="code">单视图模型训练<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;模型<br>
+&nbsp;&nbsp;&nbsp;&nbsp;optimizer:&nbsp;优化器<br>
+&nbsp;&nbsp;&nbsp;&nbsp;criterion:&nbsp;损失函数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_loader:&nbsp;数据加载器<br>
+&nbsp;&nbsp;&nbsp;&nbsp;device:&nbsp;设备(CPU/GPU)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;avg_loss:&nbsp;平均损失</span></dd></dl>
+ <dl><dt><a name="-validate"><strong>validate</strong></a>(model, criterion, data_loader, device, is_multi_view=False)</dt><dd><span class="code">模型验证<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;模型<br>
+&nbsp;&nbsp;&nbsp;&nbsp;criterion:&nbsp;损失函数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_loader:&nbsp;数据加载器<br>
+&nbsp;&nbsp;&nbsp;&nbsp;device:&nbsp;设备(CPU/GPU)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is_multi_view:&nbsp;是否为多视图模型<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;avg_loss:&nbsp;平均损失</span></dd></dl>
 </td></tr></table>
 </body></html>

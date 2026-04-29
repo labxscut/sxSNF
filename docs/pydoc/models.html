@@ -53,7 +53,9 @@
 <tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="AutoEncoder">class <strong>AutoEncoder</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
-<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">用于无监督特征学习的自编码器<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#AutoEncoder">AutoEncoder</a></dd>
 <dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
@@ -61,24 +63,30 @@
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="AutoEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, latent_dim, dropout=0.1)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;input_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;latent_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;Dropout</span></dd></dl>
+<dl><dt><a name="AutoEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, latent_dim, dropout=0.1)</dt><dd><span class="code">初始化自编码器<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;input_dim:&nbsp;输入特征维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;隐藏层维度列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;latent_dim:&nbsp;潜在空间维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;Dropout比率</span></dd></dl>
 
-<dl><dt><a name="AutoEncoder-encode"><strong>encode</strong></a>(self, x)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;<br>
+<dl><dt><a name="AutoEncoder-encode"><strong>encode</strong></a>(self, x)</dt><dd><span class="code">编码函数<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;输入特征<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;z:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z:&nbsp;潜在表示</span></dd></dl>
 
-<dl><dt><a name="AutoEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;<br>
+<dl><dt><a name="AutoEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">前向传播<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;输入特征<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x_hat:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;z:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x_hat:&nbsp;重构特征<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z:&nbsp;潜在表示</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -101,7 +109,9 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="ContrastiveLoss">class <strong>ContrastiveLoss</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
-<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">对比损失函数<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#ContrastiveLoss">ContrastiveLoss</a></dd>
 <dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
@@ -109,14 +119,18 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="ContrastiveLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;temperature:&nbsp;，</span></dd></dl>
+<dl><dt><a name="ContrastiveLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5)</dt><dd><span class="code">初始化对比损失<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;temperature:&nbsp;温度参数，控制相似度分布的平滑程度</span></dd></dl>
 
-<dl><dt><a name="ContrastiveLoss-forward"><strong>forward</strong></a>(self, features)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;features:&nbsp;&nbsp;[batch_size,&nbsp;feature_dim]<br>
+<dl><dt><a name="ContrastiveLoss-forward"><strong>forward</strong></a>(self, features)</dt><dd><span class="code">计算对比损失<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;features:&nbsp;特征向量&nbsp;[batch_size,&nbsp;feature_dim]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;loss:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;loss:&nbsp;对比损失值</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -140,7 +154,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="MultiViewSNFEmbedding">class <strong>MultiViewSNFEmbedding</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">多视图SNF嵌入模型<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#MultiViewSNFEmbedding">MultiViewSNFEmbedding</a></dd>
@@ -149,33 +163,39 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="MultiViewSNFEmbedding-__init__"><strong>__init__</strong></a>(self, input_dims, hidden_dims, embedding_dim, dropout=0.5, activation='relu', fusion_type='concat')</dt><dd><span class="code">SNF<br>
+<dl><dt><a name="MultiViewSNFEmbedding-__init__"><strong>__init__</strong></a>(self, input_dims, hidden_dims, embedding_dim, dropout=0.5, activation='relu', fusion_type='concat')</dt><dd><span class="code">初始化多视图SNF嵌入模型<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;input_dims:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;，&nbsp;[128,&nbsp;64]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embedding_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;Dropout<br>
-&nbsp;&nbsp;&nbsp;&nbsp;activation:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fusion_type:&nbsp;，&nbsp;'concat',&nbsp;'attention',&nbsp;'mean'</span></dd></dl>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;input_dims:&nbsp;各视图输入特征维度列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;隐藏层维度列表，例如&nbsp;[128,&nbsp;64]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;embedding_dim:&nbsp;最终嵌入空间维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;Dropout比率<br>
+&nbsp;&nbsp;&nbsp;&nbsp;activation:&nbsp;激活函数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fusion_type:&nbsp;融合类型，可选&nbsp;'concat',&nbsp;'attention',&nbsp;'mean'</span></dd></dl>
 
-<dl><dt><a name="MultiViewSNFEmbedding-forward"><strong>forward</strong></a>(self, inputs)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;inputs:&nbsp;，&nbsp;(batch_size,&nbsp;input_dim_i)<br>
+<dl><dt><a name="MultiViewSNFEmbedding-forward"><strong>forward</strong></a>(self, inputs)</dt><dd><span class="code">前向传播<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inputs:&nbsp;各视图输入数据列表，每个元素形状为&nbsp;(batch_size,&nbsp;input_dim_i)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fused_embedding:&nbsp;，&nbsp;(batch_size,&nbsp;embedding_dim)</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fused_embedding:&nbsp;融合后的嵌入向量，形状为&nbsp;(batch_size,&nbsp;embedding_dim)</span></dd></dl>
 
-<dl><dt><a name="MultiViewSNFEmbedding-get_fused_embedding"><strong>get_fused_embedding</strong></a>(self, inputs)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;inputs:&nbsp;<br>
+<dl><dt><a name="MultiViewSNFEmbedding-get_fused_embedding"><strong>get_fused_embedding</strong></a>(self, inputs)</dt><dd><span class="code">获取融合嵌入向量<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inputs:&nbsp;各视图输入数据列表<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fused_embedding:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fused_embedding:&nbsp;融合后的嵌入向量</span></dd></dl>
 
-<dl><dt><a name="MultiViewSNFEmbedding-get_view_embeddings"><strong>get_view_embeddings</strong></a>(self, inputs)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;inputs:&nbsp;<br>
+<dl><dt><a name="MultiViewSNFEmbedding-get_view_embeddings"><strong>get_view_embeddings</strong></a>(self, inputs)</dt><dd><span class="code">获取各视图的嵌入向量<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inputs:&nbsp;各视图输入数据列表<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;view_embeddings:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view_embeddings:&nbsp;各视图嵌入向量列表</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -199,7 +219,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="MultiViewSNFLoss">class <strong>MultiViewSNFLoss</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">多视图SNF损失函数<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#MultiViewSNFLoss">MultiViewSNFLoss</a></dd>
@@ -208,23 +228,23 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="MultiViewSNFLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5, lambda_reg=0.1, lambda_consistency=0.5)</dt><dd><span class="code">SNF<br>
+<dl><dt><a name="MultiViewSNFLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5, lambda_reg=0.1, lambda_consistency=0.5)</dt><dd><span class="code">初始化多视图SNF损失函数<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;temperature:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;lambda_reg:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;lambda_consistency:</span></dd></dl>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;temperature:&nbsp;温度参数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lambda_reg:&nbsp;正则化系数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lambda_consistency:&nbsp;一致性损失权重</span></dd></dl>
 
-<dl><dt><a name="MultiViewSNFLoss-forward"><strong>forward</strong></a>(self, view_embeddings, fused_embedding, adj_matrices, fused_adj_matrix)</dt><dd><span class="code">SNF<br>
+<dl><dt><a name="MultiViewSNFLoss-forward"><strong>forward</strong></a>(self, view_embeddings, fused_embedding, adj_matrices, fused_adj_matrix)</dt><dd><span class="code">计算多视图SNF损失<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;view_embeddings:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fused_embedding:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;adj_matrices:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fused_adj_matrix:&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view_embeddings:&nbsp;各视图嵌入向量列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fused_embedding:&nbsp;融合后的嵌入向量<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj_matrices:&nbsp;各视图邻接矩阵列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fused_adj_matrix:&nbsp;融合后的邻接矩阵<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;loss:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;loss:&nbsp;总损失值</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -248,7 +268,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="MultiViewSNFModel">class <strong>MultiViewSNFModel</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF:&nbsp;，<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">多视图SNF模型:&nbsp;处理多个视图的数据，并融合它们<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#MultiViewSNFModel">MultiViewSNFModel</a></dd>
@@ -257,18 +277,18 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="MultiViewSNFModel-__init__"><strong>__init__</strong></a>(self, view_dims, hidden_dims, output_dim, fusion='concat', dropout=0.1)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;view_dims:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;output_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fusion:&nbsp;&nbsp;('concat',&nbsp;'sum',&nbsp;'mean')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;dropout</span></dd></dl>
+<dl><dt><a name="MultiViewSNFModel-__init__"><strong>__init__</strong></a>(self, view_dims, hidden_dims, output_dim, fusion='concat', dropout=0.1)</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;view_dims:&nbsp;每个视图的输入维度的列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;每个编码器的隐藏层维度的列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;output_dim:&nbsp;输出嵌入的维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fusion:&nbsp;融合方法&nbsp;('concat',&nbsp;'sum',&nbsp;'mean')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;dropout概率</span></dd></dl>
 
-<dl><dt><a name="MultiViewSNFModel-forward"><strong>forward</strong></a>(self, views)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;views:&nbsp;，(batch_size,&nbsp;view_dim)<br>
+<dl><dt><a name="MultiViewSNFModel-forward"><strong>forward</strong></a>(self, views)</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;views:&nbsp;视图列表，每个视图是形状为(batch_size,&nbsp;view_dim)的张量<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(batch_size,&nbsp;output_dim)</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;融合后的嵌入&nbsp;(batch_size,&nbsp;output_dim)</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -292,7 +312,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="ReconstructionLoss">class <strong>ReconstructionLoss</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">:<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">重构损失函数:&nbsp;用于自编码器的训练<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#ReconstructionLoss">ReconstructionLoss</a></dd>
@@ -301,14 +321,15 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="ReconstructionLoss-__init__"><strong>__init__</strong></a>(self, loss_type='mse')</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;loss_type:&nbsp;&nbsp;('mse',&nbsp;'mae')</span></dd></dl>
+<dl><dt><a name="ReconstructionLoss-__init__"><strong>__init__</strong></a>(self, loss_type='mse')</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;loss_type:&nbsp;损失类型&nbsp;('mse',&nbsp;'mae')</span></dd></dl>
 
-<dl><dt><a name="ReconstructionLoss-forward"><strong>forward</strong></a>(self, reconstructed, original)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;reconstructed:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;original:&nbsp;<br>
+<dl><dt><a name="ReconstructionLoss-forward"><strong>forward</strong></a>(self, reconstructed, original)</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;reconstructed:&nbsp;重构的数据<br>
+&nbsp;&nbsp;&nbsp;&nbsp;original:&nbsp;原始数据<br>
 &nbsp;<br>
-:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;损失值</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -332,7 +353,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="SNFAutoEncoder">class <strong>SNFAutoEncoder</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF:&nbsp;SNF<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">SNF自编码器:&nbsp;编码和解码SNF相似度矩阵<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#SNFAutoEncoder">SNFAutoEncoder</a></dd>
@@ -341,18 +362,18 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="SNFAutoEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, latent_dim, dropout=0.1)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;input_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;latent_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;dropout</span></dd></dl>
+<dl><dt><a name="SNFAutoEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, latent_dim, dropout=0.1)</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;input_dim:&nbsp;输入特征的维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;编码器和解码器的隐藏层维度列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;latent_dim:&nbsp;潜在空间的维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;dropout概率</span></dd></dl>
 
-<dl><dt><a name="SNFAutoEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;&nbsp;(batch_size,&nbsp;input_dim)<br>
+<dl><dt><a name="SNFAutoEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;输入特征&nbsp;(batch_size,&nbsp;input_dim)<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(batch_size,&nbsp;input_dim)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(batch_size,&nbsp;latent_dim)</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;重构的特征&nbsp;(batch_size,&nbsp;input_dim)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;潜在表示&nbsp;(batch_size,&nbsp;latent_dim)</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -376,7 +397,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="SNFEmbedding">class <strong>SNFEmbedding</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">单视图SNF嵌入模型<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#SNFEmbedding">SNFEmbedding</a></dd>
@@ -385,28 +406,32 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="SNFEmbedding-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, embedding_dim, dropout=0.5, activation='relu')</dt><dd><span class="code">SNF<br>
+<dl><dt><a name="SNFEmbedding-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, embedding_dim, dropout=0.5, activation='relu')</dt><dd><span class="code">初始化单视图SNF嵌入模型<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;input_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;，&nbsp;[128,&nbsp;64]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embedding_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;Dropout<br>
-&nbsp;&nbsp;&nbsp;&nbsp;activation:&nbsp;，&nbsp;'relu',&nbsp;'elu',&nbsp;'leaky_relu'</span></dd></dl>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;input_dim:&nbsp;输入特征维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;隐藏层维度列表，例如&nbsp;[128,&nbsp;64]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;embedding_dim:&nbsp;嵌入空间维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;Dropout比率<br>
+&nbsp;&nbsp;&nbsp;&nbsp;activation:&nbsp;激活函数，可选&nbsp;'relu',&nbsp;'elu',&nbsp;'leaky_relu'</span></dd></dl>
 
-<dl><dt><a name="SNFEmbedding-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;，&nbsp;(batch_size,&nbsp;input_dim)<br>
+<dl><dt><a name="SNFEmbedding-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">前向传播<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;输入数据，形状为&nbsp;(batch_size,&nbsp;input_dim)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;，&nbsp;(batch_size,&nbsp;embedding_dim)</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;嵌入向量，形状为&nbsp;(batch_size,&nbsp;embedding_dim)</span></dd></dl>
 
-<dl><dt><a name="SNFEmbedding-get_embeddings"><strong>get_embeddings</strong></a>(self, x)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;，&nbsp;(batch_size,&nbsp;input_dim)<br>
+<dl><dt><a name="SNFEmbedding-get_embeddings"><strong>get_embeddings</strong></a>(self, x)</dt><dd><span class="code">获取嵌入向量<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;输入数据，形状为&nbsp;(batch_size,&nbsp;input_dim)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;，&nbsp;(batch_size,&nbsp;embedding_dim)</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;嵌入向量，形状为&nbsp;(batch_size,&nbsp;embedding_dim)</span></dd></dl>
 
-<dl><dt><a name="SNFEmbedding-reset_parameters"><strong>reset_parameters</strong></a>(self)</dt></dl>
+<dl><dt><a name="SNFEmbedding-reset_parameters"><strong>reset_parameters</strong></a>(self)</dt><dd><span class="code">重置模型参数</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -430,7 +455,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="SNFEncoder">class <strong>SNFEncoder</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF：，<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">SNF编码器：接受相似度矩阵作为输入，输出嵌入<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#SNFEncoder">SNFEncoder</a></dd>
@@ -441,11 +466,11 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 Methods defined here:<br>
 <dl><dt><a name="SNFEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, output_dim, dropout=0.1)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
-<dl><dt><a name="SNFEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;&nbsp;(batch_size,&nbsp;input_dim)<br>
+<dl><dt><a name="SNFEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;输入特征矩阵&nbsp;(batch_size,&nbsp;input_dim)<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(batch_size,&nbsp;output_dim)</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;嵌入向量&nbsp;(batch_size,&nbsp;output_dim)</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -469,7 +494,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="SNFLoss">class <strong>SNFLoss</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">SNF损失函数<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#SNFLoss">SNFLoss</a></dd>
@@ -478,20 +503,20 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="SNFLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5, lambda_reg=0.1)</dt><dd><span class="code">SNF<br>
+<dl><dt><a name="SNFLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5, lambda_reg=0.1)</dt><dd><span class="code">初始化SNF损失函数<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;temperature:&nbsp;，<br>
-&nbsp;&nbsp;&nbsp;&nbsp;lambda_reg:</span></dd></dl>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;temperature:&nbsp;温度参数，控制相似度分布的平滑程度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lambda_reg:&nbsp;正则化系数</span></dd></dl>
 
-<dl><dt><a name="SNFLoss-forward"><strong>forward</strong></a>(self, embeddings, adj_matrix)</dt><dd><span class="code">SNF<br>
+<dl><dt><a name="SNFLoss-forward"><strong>forward</strong></a>(self, embeddings, adj_matrix)</dt><dd><span class="code">计算SNF损失<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;，&nbsp;(batch_size,&nbsp;embedding_dim)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;adj_matrix:&nbsp;，&nbsp;(batch_size,&nbsp;batch_size)<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;嵌入向量，形状为&nbsp;(batch_size,&nbsp;embedding_dim)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj_matrix:&nbsp;邻接矩阵，形状为&nbsp;(batch_size,&nbsp;batch_size)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;loss:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;loss:&nbsp;损失值</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -515,7 +540,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="SingleViewSNFModel">class <strong>SingleViewSNFModel</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF:<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">单视图SNF模型:&nbsp;处理单一视图的数据<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="models.html#SingleViewSNFModel">SingleViewSNFModel</a></dd>
@@ -524,17 +549,17 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="SingleViewSNFModel-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, output_dim, dropout=0.1)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;input_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;output_dim:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;dropout</span></dd></dl>
+<dl><dt><a name="SingleViewSNFModel-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, output_dim, dropout=0.1)</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;input_dim:&nbsp;输入特征的维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hidden_dims:&nbsp;隐藏层维度的列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;output_dim:&nbsp;输出嵌入的维度<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dropout:&nbsp;dropout概率</span></dd></dl>
 
-<dl><dt><a name="SingleViewSNFModel-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;&nbsp;(batch_size,&nbsp;input_dim)<br>
+<dl><dt><a name="SingleViewSNFModel-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;输入特征&nbsp;(batch_size,&nbsp;input_dim)<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(batch_size,&nbsp;output_dim)</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;嵌入向量&nbsp;(batch_size,&nbsp;output_dim)</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
