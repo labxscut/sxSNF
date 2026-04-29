@@ -87,3 +87,8 @@ p, li, dt, dd {
     background: var(--panel);
     color: var(--text);
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+}

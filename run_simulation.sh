@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# 运行模拟实验的脚本
+# 
 
-# 创建结果目录
+# 
 mkdir -p results
 
-# 运行模拟实验
-echo "开始sxSNF模拟实验..."
+# 
+echo "sxSNF..."
 
 python simulate_sxSNF.py \
     --n_samples 500 \
@@ -25,4 +25,4 @@ python simulate_sxSNF.py \
     --seed 42 \
     --gpu -1
 
-echo "实验完成! 结果保存在results目录和当前目录下" 
+echo "! results" 

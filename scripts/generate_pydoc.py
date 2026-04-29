@@ -246,19 +246,7 @@ def render_workflow_svg() -> tuple[bool, str]:
     try:
         proc = subprocess.run(render_cmd, cwd=REPO_ROOT, capture_output=True, text=True)
     except FileNotFoundError:
-        # Fallback for local environments without a preinstalled mmdc binary.
-        fallback_cmd = [
-            "npx",
-            "-y",
-            "@mermaid-js/mermaid-cli",
-            "-i",
-            str(WORKFLOW_MMD_PATH),
-            "-o",
-            str(WORKFLOW_SVG_PATH),
-            "-b",
-            "transparent",
-        ]
-        proc = subprocess.run(fallback_cmd, cwd=REPO_ROOT, capture_output=True, text=True)
+        return False, "Mermaid CLI not found (mmdc). SVG rendering is skipped in local runs."
 
     if proc.returncode != 0:
         err = (proc.stderr or proc.stdout or "unknown error").strip()
@@ -356,9 +344,11 @@ def main() -> int:
             generated_html = REPO_ROOT / f"{module_name}.html"
             target_html = PYDOC_DIR / f"{module_name}.html"
 
+            # Prevent stale old HTML from surviving failed generations.
+            if target_html.exists():
+                target_html.unlink()
+
             if generated_html.exists():
-                if target_html.exists():
-                    target_html.unlink()
                 generated_html.replace(target_html)
 
             if not target_html.exists():

@@ -11,7 +11,7 @@
 <table class="heading">
 <tr class="heading-text decor">
 <td class="title">&nbsp;<br><strong class="title">model</strong></td>
-<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/sxSNF/sxSNF/model.py">/home/runner/work/sxSNF/sxSNF/model.py</a></td></tr></table>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/d/work/labxscut/sxSNF/model.py">/mnt/d/work/labxscut/sxSNF/model.py</a></td></tr></table>
     <p><span class="code">#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</span></p>
 <p>
 <table class="section">
@@ -45,9 +45,7 @@
 <tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="GraphConvolution">class <strong>GraphConvolution</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
-<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">图卷积层实现<br>&nbsp;</span></td></tr>
-<tr><td>&nbsp;</td>
+<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="model.html#GraphConvolution">GraphConvolution</a></dd>
 <dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
@@ -85,9 +83,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="MultiviewSNF">class <strong>MultiviewSNF</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">多视图SNF模型<br>
-&nbsp;<br>
-处理多个数据视图并进行融合<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="model.html#MultiviewSNF">MultiviewSNF</a></dd>
@@ -98,11 +94,11 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 Methods defined here:<br>
 <dl><dt><a name="MultiviewSNF-__init__"><strong>__init__</strong></a>(self, input_dims, hidden_dim, embedding_dim, n_clusters=None, dropout=0.5)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
-<dl><dt><a name="MultiviewSNF-encode_views"><strong>encode_views</strong></a>(self, x_list, adj_list)</dt><dd><span class="code">编码每个视图</span></dd></dl>
+<dl><dt><a name="MultiviewSNF-encode_views"><strong>encode_views</strong></a>(self, x_list, adj_list)</dt></dl>
 
-<dl><dt><a name="MultiviewSNF-forward"><strong>forward</strong></a>(self, x_list, adj_list)</dt><dd><span class="code">前向传播</span></dd></dl>
+<dl><dt><a name="MultiviewSNF-forward"><strong>forward</strong></a>(self, x_list, adj_list)</dt></dl>
 
-<dl><dt><a name="MultiviewSNF-fuse_embeddings"><strong>fuse_embeddings</strong></a>(self, z_list)</dt><dd><span class="code">融合多视图嵌入</span></dd></dl>
+<dl><dt><a name="MultiviewSNF-fuse_embeddings"><strong>fuse_embeddings</strong></a>(self, z_list)</dt></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -126,9 +122,9 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="SNFCluster">class <strong>SNFCluster</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF聚类模型<br>
+<td class="decor title-decor" colspan=2><span class="code">SNF<br>
 &nbsp;<br>
-在SNF嵌入的基础上添加聚类层<br>&nbsp;</span></td></tr>
+SNF<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="model.html#SNFCluster">SNFCluster</a></dd>
@@ -139,11 +135,11 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 Methods defined here:<br>
 <dl><dt><a name="SNFCluster-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dim, embedding_dim, n_clusters, dropout=0.5)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
-<dl><dt><a name="SNFCluster-_soft_assign"><strong>_soft_assign</strong></a>(self, z)</dt><dd><span class="code">计算软分配（聚类概率）</span></dd></dl>
+<dl><dt><a name="SNFCluster-_soft_assign"><strong>_soft_assign</strong></a>(self, z)</dt><dd><span class="code">（）</span></dd></dl>
 
-<dl><dt><a name="SNFCluster-encode"><strong>encode</strong></a>(self, x, adj)</dt><dd><span class="code">获取嵌入</span></dd></dl>
+<dl><dt><a name="SNFCluster-encode"><strong>encode</strong></a>(self, x, adj)</dt></dl>
 
-<dl><dt><a name="SNFCluster-forward"><strong>forward</strong></a>(self, x, adj)</dt><dd><span class="code">前向传播</span></dd></dl>
+<dl><dt><a name="SNFCluster-forward"><strong>forward</strong></a>(self, x, adj)</dt></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -167,9 +163,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="SNFEmbedding">class <strong>SNFEmbedding</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF嵌入模型<br>
-&nbsp;<br>
-使用融合后的相似度网络学习低维嵌入表示<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="model.html#SNFEmbedding">SNFEmbedding</a></dd>
@@ -180,11 +174,11 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 Methods defined here:<br>
 <dl><dt><a name="SNFEmbedding-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dim, embedding_dim, dropout=0.5)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
-<dl><dt><a name="SNFEmbedding-decode"><strong>decode</strong></a>(self, z)</dt><dd><span class="code">解码过程：从嵌入重建原始特征</span></dd></dl>
+<dl><dt><a name="SNFEmbedding-decode"><strong>decode</strong></a>(self, z)</dt><dd><span class="code">：</span></dd></dl>
 
-<dl><dt><a name="SNFEmbedding-encode"><strong>encode</strong></a>(self, x, adj)</dt><dd><span class="code">编码过程：输入数据通过GCN层得到嵌入</span></dd></dl>
+<dl><dt><a name="SNFEmbedding-encode"><strong>encode</strong></a>(self, x, adj)</dt><dd><span class="code">：GCN</span></dd></dl>
 
-<dl><dt><a name="SNFEmbedding-forward"><strong>forward</strong></a>(self, x, adj)</dt><dd><span class="code">前向传播</span></dd></dl>
+<dl><dt><a name="SNFEmbedding-forward"><strong>forward</strong></a>(self, x, adj)</dt></dl>
 
 <hr>
 Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
@@ -208,24 +202,18 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<td class="singlecolumn"><dl><dt><a name="-loss_function"><strong>loss_function</strong></a>(x, x_recon, z, q=None, p=None, adj=None, pos_weight=None)</dt><dd><span class="code">损失函数<br>
-&nbsp;<br>
-包括重建损失和可选的聚类损失<br>
-&nbsp;<br>
-参数:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;原始特征<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x_recon:&nbsp;重建特征<br>
-&nbsp;&nbsp;&nbsp;&nbsp;z:&nbsp;嵌入向量<br>
-&nbsp;&nbsp;&nbsp;&nbsp;q:&nbsp;聚类软分配<br>
-&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;目标分布<br>
-&nbsp;&nbsp;&nbsp;&nbsp;adj:&nbsp;邻接矩阵<br>
-&nbsp;&nbsp;&nbsp;&nbsp;pos_weight:&nbsp;正样本权重</span></dd></dl>
- <dl><dt><a name="-target_distribution"><strong>target_distribution</strong></a>(q)</dt><dd><span class="code">计算目标分布以进行聚类<br>
-&nbsp;<br>
-参数:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;q:&nbsp;初始软分配<br>
+<td class="singlecolumn"><dl><dt><a name="-loss_function"><strong>loss_function</strong></a>(x, x_recon, z, q=None, p=None, adj=None, pos_weight=None)</dt><dd><span class="code">:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x_recon:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;q:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos_weight:</span></dd></dl>
+ <dl><dt><a name="-target_distribution"><strong>target_distribution</strong></a>(q)</dt><dd><span class="code">:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;q:&nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-返回:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;目标分布</span></dd></dl>
+:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p:</span></dd></dl>
 </td></tr></table>
 </body></html>
