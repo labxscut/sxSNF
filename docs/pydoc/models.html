@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module models</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">models</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:d%3A%5Cwork%5Clabxscut%5Csxsnf%5Cmodels.py">d:\work\labxscut\sxsnf\models.py</a></td></tr></table>
+    <p><span class="code">#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="torch.nn.functional.html">torch.nn.functional</a><br>
+<a href="torch.nn.html">torch.nn</a><br>
+</td><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+<a href="scipy.sparse.html">scipy.sparse</a><br>
+</td><td class="multicolumn"><a href="torch.html">torch</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="torch.nn.html#_StubType">torch.nn._StubType</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="models.html#AutoEncoder">AutoEncoder</a>
+</dt><dt class="heading-text"><a href="models.html#ContrastiveLoss">ContrastiveLoss</a>
+</dt><dt class="heading-text"><a href="models.html#MultiViewSNFEmbedding">MultiViewSNFEmbedding</a>
+</dt><dt class="heading-text"><a href="models.html#MultiViewSNFLoss">MultiViewSNFLoss</a>
+</dt><dt class="heading-text"><a href="models.html#MultiViewSNFModel">MultiViewSNFModel</a>
+</dt><dt class="heading-text"><a href="models.html#ReconstructionLoss">ReconstructionLoss</a>
+</dt><dt class="heading-text"><a href="models.html#SNFAutoEncoder">SNFAutoEncoder</a>
+</dt><dt class="heading-text"><a href="models.html#SNFEmbedding">SNFEmbedding</a>
+</dt><dt class="heading-text"><a href="models.html#SNFEncoder">SNFEncoder</a>
+</dt><dt class="heading-text"><a href="models.html#SNFLoss">SNFLoss</a>
+</dt><dt class="heading-text"><a href="models.html#SingleViewSNFModel">SingleViewSNFModel</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="AutoEncoder">class <strong>AutoEncoder</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#AutoEncoder">AutoEncoder</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="AutoEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, latent_dim, dropout=0.1)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="AutoEncoder-encode"><strong>encode</strong></a>(self, x)</dt><dd><span class="code">Encode&nbsp;inputs&nbsp;to&nbsp;latent&nbsp;representations.</span></dd></dl>
+
+<dl><dt><a name="AutoEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="AutoEncoder-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="AutoEncoder-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="AutoEncoder-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ContrastiveLoss">class <strong>ContrastiveLoss</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#ContrastiveLoss">ContrastiveLoss</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ContrastiveLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="ContrastiveLoss-forward"><strong>forward</strong></a>(self, features)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="ContrastiveLoss-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="ContrastiveLoss-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="ContrastiveLoss-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="MultiViewSNFEmbedding">class <strong>MultiViewSNFEmbedding</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#MultiViewSNFEmbedding">MultiViewSNFEmbedding</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MultiViewSNFEmbedding-__init__"><strong>__init__</strong></a>(
+    self,
+    input_dims,
+    hidden_dims,
+    embedding_dim,
+    dropout=0.5,
+    activation='relu',
+    fusion_type='concat'
+)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="MultiViewSNFEmbedding-forward"><strong>forward</strong></a>(self, inputs)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<dl><dt><a name="MultiViewSNFEmbedding-get_fused_embedding"><strong>get_fused_embedding</strong></a>(self, inputs)</dt><dd><span class="code">Get&nbsp;fused&nbsp;embedding.</span></dd></dl>
+
+<dl><dt><a name="MultiViewSNFEmbedding-get_view_embeddings"><strong>get_view_embeddings</strong></a>(self, inputs)</dt><dd><span class="code">Get&nbsp;view&nbsp;embeddings.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="MultiViewSNFEmbedding-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="MultiViewSNFEmbedding-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="MultiViewSNFEmbedding-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="MultiViewSNFLoss">class <strong>MultiViewSNFLoss</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#MultiViewSNFLoss">MultiViewSNFLoss</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MultiViewSNFLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5, lambda_reg=0.1, lambda_consistency=0.5)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="MultiViewSNFLoss-forward"><strong>forward</strong></a>(self, view_embeddings, fused_embedding, adj_matrices, fused_adj_matrix)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="MultiViewSNFLoss-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="MultiViewSNFLoss-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="MultiViewSNFLoss-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="MultiViewSNFModel">class <strong>MultiViewSNFModel</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">SNF:&nbsp;，<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#MultiViewSNFModel">MultiViewSNFModel</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MultiViewSNFModel-__init__"><strong>__init__</strong></a>(self, view_dims, hidden_dims, output_dim, fusion='concat', dropout=0.1)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="MultiViewSNFModel-forward"><strong>forward</strong></a>(self, views)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="MultiViewSNFModel-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="MultiViewSNFModel-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="MultiViewSNFModel-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ReconstructionLoss">class <strong>ReconstructionLoss</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">:<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#ReconstructionLoss">ReconstructionLoss</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ReconstructionLoss-__init__"><strong>__init__</strong></a>(self, loss_type='mse')</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="ReconstructionLoss-forward"><strong>forward</strong></a>(self, reconstructed, original)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="ReconstructionLoss-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="ReconstructionLoss-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="ReconstructionLoss-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SNFAutoEncoder">class <strong>SNFAutoEncoder</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">SNF:&nbsp;SNF<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#SNFAutoEncoder">SNFAutoEncoder</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SNFAutoEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, latent_dim, dropout=0.1)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="SNFAutoEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="SNFAutoEncoder-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="SNFAutoEncoder-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="SNFAutoEncoder-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SNFEmbedding">class <strong>SNFEmbedding</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#SNFEmbedding">SNFEmbedding</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SNFEmbedding-__init__"><strong>__init__</strong></a>(
+    self,
+    input_dim,
+    hidden_dims,
+    embedding_dim,
+    dropout=0.5,
+    activation='relu'
+)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="SNFEmbedding-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<dl><dt><a name="SNFEmbedding-get_embeddings"><strong>get_embeddings</strong></a>(self, x)</dt><dd><span class="code">Get&nbsp;embeddings.</span></dd></dl>
+
+<dl><dt><a name="SNFEmbedding-reset_parameters"><strong>reset_parameters</strong></a>(self)</dt><dd><span class="code">Reset&nbsp;parameters.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="SNFEmbedding-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="SNFEmbedding-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="SNFEmbedding-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SNFEncoder">class <strong>SNFEncoder</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">SNF：，<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#SNFEncoder">SNFEncoder</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SNFEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, output_dim, dropout=0.1)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="SNFEncoder-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="SNFEncoder-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="SNFEncoder-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="SNFEncoder-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SNFLoss">class <strong>SNFLoss</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#SNFLoss">SNFLoss</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SNFLoss-__init__"><strong>__init__</strong></a>(self, temperature=0.5, lambda_reg=0.1)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="SNFLoss-forward"><strong>forward</strong></a>(self, embeddings, adj_matrix)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="SNFLoss-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="SNFLoss-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="SNFLoss-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SingleViewSNFModel">class <strong>SingleViewSNFModel</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">SNF:<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#SingleViewSNFModel">SingleViewSNFModel</a></dd>
+<dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SingleViewSNFModel-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dims, output_dim, dropout=0.1)</dt><dd><span class="code">init&nbsp;&nbsp;.</span></dd></dl>
+
+<dl><dt><a name="SingleViewSNFModel-forward"><strong>forward</strong></a>(self, x)</dt><dd><span class="code">Forward&nbsp;pass.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><a name="SingleViewSNFModel-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</span></dd></dl>
+
+<dl><dt><a name="SingleViewSNFModel-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="SingleViewSNFModel-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._StubType</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

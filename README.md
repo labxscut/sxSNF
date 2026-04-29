@@ -123,6 +123,23 @@ python simulate_sxSNF.py \
 
 ---
 
+## API Docs Generation (`pydoc`)
+
+Generate API documentation for all top-level Python modules:
+
+```bash
+python scripts/generate_pydoc.py
+```
+
+Outputs:
+
+- `docs/API_REFERENCE.md` (module index)
+- `docs/pydoc/*.html` (per-module API pages)
+
+This repository also includes GitHub Actions workflows to regenerate PyDoc and publish the `docs/` folder with GitHub Pages on pushes to `main`.
+
+---
+
 ## 📂 Project Structure
 
 ```

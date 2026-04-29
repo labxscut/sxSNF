@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module simulate_sxSNF</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">simulate_sxSNF</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:d%3A%5Cwork%5Clabxscut%5Csxsnf%5Csimulate_sxsnf.py">d:\work\labxscut\sxsnf\simulate_sxsnf.py</a></td></tr></table>
+    <p><span class="code">#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="argparse.html">argparse</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+<a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td class="multicolumn"><a href="seaborn.html">seaborn</a><br>
+<a href="sys.html">sys</a><br>
+</td><td class="multicolumn"><a href="torch.html">torch</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-generate_simulated_data"><strong>generate_simulated_data</strong></a>(
+    n_samples=500,
+    n_features1=1000,
+    n_features2=800,
+    n_clusters=3,
+    random_seed=42
+)</dt><dd><span class="code">:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_samples:&nbsp;（）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_features1:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_features2:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_clusters:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;random_seed:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_list:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;labels:</span></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt></dl>
+ <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>()</dt></dl>
+ <dl><dt><a name="-run_sxSNF"><strong>run_sxSNF</strong></a>(data_list, labels, args, save_results=True)</dt><dd><span class="code">sxSNF<br>
+&nbsp;<br>
+:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_list:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;save_results:</span></dd></dl>
+ <dl><dt><a name="-visualize_data"><strong>visualize_data</strong></a>(data_list, labels, file_name='simulated_data_visualization.png')</dt></dl>
+ <dl><dt><a name="-visualize_loss_curve"><strong>visualize_loss_curve</strong></a>(loss_file='training_process/loss_history.npy')</dt></dl>
+</td></tr></table>
+</body></html>

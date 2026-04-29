@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module utils</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">utils</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:d%3A%5Cwork%5Clabxscut%5Csxsnf%5Cutils.py">d:\work\labxscut\sxsnf\utils.py</a></td></tr></table>
+    <p><span class="code">#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="torch.nn.functional.html">torch.nn.functional</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+<a href="scipy.sparse.html">scipy.sparse</a><br>
+</td><td class="multicolumn"><a href="torch.html">torch</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-construct_similarity_graph"><strong>construct_similarity_graph</strong></a>(data, k=20, metric='euclidean', sigma=1.0)</dt><dd><span class="code">Build&nbsp;a&nbsp;KNN-based&nbsp;similarity&nbsp;graph.</span></dd></dl>
+ <dl><dt><a name="-dimension_reduction"><strong>dimension_reduction</strong></a>(data, n_components=2, method='pca')</dt><dd><span class="code">Reduce&nbsp;matrix&nbsp;dimensionality.</span></dd></dl>
+ <dl><dt><a name="-euclidean_distance"><strong>euclidean_distance</strong></a>(data)</dt><dd><span class="code">Compute&nbsp;pairwise&nbsp;Euclidean&nbsp;distances.</span></dd></dl>
+ <dl><dt><a name="-evaluate_clustering"><strong>evaluate_clustering</strong></a>(embeddings, true_labels, pred_labels=None)</dt><dd><span class="code">Compute&nbsp;clustering&nbsp;quality&nbsp;metrics.</span></dd></dl>
+ <dl><dt><a name="-normalize_data"><strong>normalize_data</strong></a>(data, method='z-score')</dt><dd><span class="code">Normalize&nbsp;features&nbsp;with&nbsp;the&nbsp;selected&nbsp;method.</span></dd></dl>
+ <dl><dt><a name="-snf_fusion"><strong>snf_fusion</strong></a>(similarity_matrices, k=20, t=20)</dt><dd><span class="code">Fuse&nbsp;similarity&nbsp;networks&nbsp;with&nbsp;SNF&nbsp;iterations.</span></dd></dl>
+ <dl><dt><a name="-to_sparse_tensor"><strong>to_sparse_tensor</strong></a>(dense_matrix)</dt><dd><span class="code">Convert&nbsp;a&nbsp;dense&nbsp;matrix&nbsp;to&nbsp;a&nbsp;PyTorch&nbsp;sparse&nbsp;tensor.</span></dd></dl>
+ <dl><dt><a name="-visualize_embeddings"><strong>visualize_embeddings</strong></a>(
+    embeddings,
+    labels,
+    title='Embedding Visualization',
+    method='tsne'
+)</dt><dd><span class="code">Plot&nbsp;2D&nbsp;embeddings&nbsp;colored&nbsp;by&nbsp;label.</span></dd></dl>
+</td></tr></table>
+</body></html>

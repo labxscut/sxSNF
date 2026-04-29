@@ -1,0 +1,32 @@
+name: Generate PyDoc
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-pydoc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate pydoc files
+        run: python scripts/generate_pydoc.py
+
+      - name: Commit updated docs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update pydoc output"
+          file_pattern: docs/API_REFERENCE.md docs/pydoc/*.html
