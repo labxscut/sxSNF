@@ -16,6 +16,8 @@ DOCS_DIR = REPO_ROOT / "docs"
 PYDOC_DIR = DOCS_DIR / "pydoc"
 API_INDEX_PATH = DOCS_DIR / "API_REFERENCE.md"
 DOCS_CSS_PATH = DOCS_DIR / "assets" / "docs.css"
+WORKFLOW_MMD_PATH = DOCS_DIR / "workflow.mmd"
+WORKFLOW_SVG_PATH = DOCS_DIR / "assets" / "workflow.svg"
 
 DOCS_CSS = """
 :root {
@@ -106,6 +108,11 @@ p, li, dt, dd {
     border-radius: 8px;
     background: var(--panel);
     color: var(--text);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 """.strip()
 
@@ -219,6 +226,50 @@ def write_docs_css() -> None:
     DOCS_CSS_PATH.write_text(DOCS_CSS + "\n", encoding="utf-8")
 
 
+def render_workflow_svg() -> tuple[bool, str]:
+    if not WORKFLOW_MMD_PATH.exists():
+        return False, f"Missing Mermaid source: {WORKFLOW_MMD_PATH}"
+
+    diagram = WORKFLOW_MMD_PATH.read_text(encoding="utf-8").strip()
+    if not diagram:
+        return False, f"Mermaid source is empty: {WORKFLOW_MMD_PATH}"
+
+    render_cmd = [
+        "mmdc",
+        "-i",
+        str(WORKFLOW_MMD_PATH),
+        "-o",
+        str(WORKFLOW_SVG_PATH),
+        "-b",
+        "transparent",
+    ]
+    try:
+        proc = subprocess.run(render_cmd, cwd=REPO_ROOT, capture_output=True, text=True)
+    except FileNotFoundError:
+        # Fallback for local environments without a preinstalled mmdc binary.
+        fallback_cmd = [
+            "npx",
+            "-y",
+            "@mermaid-js/mermaid-cli",
+            "-i",
+            str(WORKFLOW_MMD_PATH),
+            "-o",
+            str(WORKFLOW_SVG_PATH),
+            "-b",
+            "transparent",
+        ]
+        proc = subprocess.run(fallback_cmd, cwd=REPO_ROOT, capture_output=True, text=True)
+
+    if proc.returncode != 0:
+        err = (proc.stderr or proc.stdout or "unknown error").strip()
+        return False, f"Mermaid CLI failed: {err}"
+
+    if not WORKFLOW_SVG_PATH.exists():
+        return False, "Mermaid CLI completed but workflow SVG was not created."
+
+    return True, ""
+
+
 def style_pydoc_html(html_path: Path) -> None:
     html = html_path.read_text(encoding="utf-8")
 
@@ -282,6 +333,9 @@ def main() -> int:
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     PYDOC_DIR.mkdir(parents=True, exist_ok=True)
     write_docs_css()
+    rendered, render_error = render_workflow_svg()
+    if not rendered:
+        print(f"Warning: {render_error}")
 
     modules = get_top_level_modules(REPO_ROOT)
     if not modules:
