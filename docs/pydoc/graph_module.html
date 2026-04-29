@@ -8,7 +8,7 @@
 <table class="heading">
 <tr class="heading-text decor">
 <td class="title">&nbsp;<br><strong class="title">graph_module</strong></td>
-<td class="extra"><a href=".">index</a><br><a href="file:d%3A%5Cwork%5Clabxscut%5Csxsnf%5Cgraph_module.py">d:\work\labxscut\sxsnf\graph_module.py</a></td></tr></table>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/sxSNF/sxSNF/graph_module.py">/home/runner/work/sxSNF/sxSNF/graph_module.py</a></td></tr></table>
     <p><span class="code">#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</span></p>
 <p>
 <table class="section">
@@ -46,7 +46,9 @@
 <tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="GAT">class <strong>GAT</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
-<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">多头图注意力网络<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="graph_module.html#GAT">GAT</a></dd>
 <dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
@@ -54,15 +56,7 @@
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="GAT-__init__"><strong>__init__</strong></a>(
-    self,
-    input_dim,
-    hidden_dim,
-    output_dim,
-    dropout=0.5,
-    alpha=0.2,
-    n_heads=8
-)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+<dl><dt><a name="GAT-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dim, output_dim, dropout=0.5, alpha=0.2, n_heads=8)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
 <dl><dt><a name="GAT-forward"><strong>forward</strong></a>(self, x, adj)</dt></dl>
 
@@ -87,7 +81,9 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="GAT_Layer">class <strong>GAT_Layer</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
-<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">图注意力网络层<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="graph_module.html#GAT_Layer">GAT_Layer</a></dd>
 <dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
@@ -121,7 +117,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="GCNEncoder">class <strong>GCNEncoder</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">GCN<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">基于GCN的编码器<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="graph_module.html#GCNEncoder">GCNEncoder</a></dd>
@@ -130,14 +126,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="GCNEncoder-__init__"><strong>__init__</strong></a>(
-    self,
-    input_dim,
-    hidden_dim,
-    embedding_dim,
-    dropout=0.5,
-    activation=&lt;class 'torch.nn.functional._StubType'&gt;
-)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+<dl><dt><a name="GCNEncoder-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dim, embedding_dim, dropout=0.5, activation=&lt;class 'torch.nn.functional._StubType'&gt;)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
 <dl><dt><a name="GCNEncoder-forward"><strong>forward</strong></a>(self, x, adj)</dt></dl>
 
@@ -162,7 +151,9 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="GraphConvolution">class <strong>GraphConvolution</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
-<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">图卷积层<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="graph_module.html#GraphConvolution">GraphConvolution</a></dd>
 <dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
@@ -198,7 +189,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="GraphSage">class <strong>GraphSage</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">GraphSAGE<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">GraphSAGE模型<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="graph_module.html#GraphSage">GraphSage</a></dd>
@@ -207,14 +198,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="GraphSage-__init__"><strong>__init__</strong></a>(
-    self,
-    input_dim,
-    hidden_dim,
-    output_dim,
-    dropout=0.5,
-    aggregator_type='mean'
-)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+<dl><dt><a name="GraphSage-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dim, output_dim, dropout=0.5, aggregator_type='mean')</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
 <dl><dt><a name="GraphSage-forward"><strong>forward</strong></a>(self, x, adj)</dt></dl>
 
@@ -240,7 +224,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="GraphSageLayer">class <strong>GraphSageLayer</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">GraphSAGE<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">GraphSAGE层实现<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="graph_module.html#GraphSageLayer">GraphSageLayer</a></dd>
@@ -277,7 +261,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><a name="SNF_GNN">class <strong>SNF_GNN</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
-<td class="decor title-decor" colspan=2><span class="code">SNF<br>&nbsp;</span></td></tr>
+<td class="decor title-decor" colspan=2><span class="code">结合SNF和图神经网络的模型<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="graph_module.html#SNF_GNN">SNF_GNN</a></dd>
@@ -286,14 +270,7 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="SNF_GNN-__init__"><strong>__init__</strong></a>(
-    self,
-    input_dim,
-    hidden_dim,
-    embedding_dim,
-    gnn_type='gcn',
-    dropout=0.5
-)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+<dl><dt><a name="SNF_GNN-__init__"><strong>__init__</strong></a>(self, input_dim, hidden_dim, embedding_dim, gnn_type='gcn', dropout=0.5)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
 <dl><dt><a name="SNF_GNN-forward"><strong>forward</strong></a>(self, x, adj)</dt></dl>
 
@@ -318,7 +295,9 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="VGAE">class <strong>VGAE</strong></a>(<a href="torch.nn.html#_StubType">torch.nn._StubType</a>)</td></tr>
     
-<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">变分图自编码器<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="graph_module.html#VGAE">VGAE</a></dd>
 <dd><a href="torch.nn.html#_StubType">torch.nn._StubType</a></dd>
@@ -356,17 +335,18 @@ Data descriptors inherited from <a href="torch.nn.html#_StubType">torch.nn._Stub
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<td class="singlecolumn"><dl><dt><a name="-loss_function_vgae"><strong>loss_function_vgae</strong></a>(adj_pred, adj_true, mu, logvar)</dt><dd><span class="code"><a href="#VGAE">VGAE</a>：&nbsp;+&nbsp;KL</span></dd></dl>
- <dl><dt><a name="-train_gnn"><strong>train_gnn</strong></a>(model, x, adj, optimizer, epochs=200, verbose=True)</dt><dd><span class="code">GNN<br>
+<td class="singlecolumn"><dl><dt><a name="-loss_function_vgae"><strong>loss_function_vgae</strong></a>(adj_pred, adj_true, mu, logvar)</dt><dd><span class="code">VGAE的损失函数：重构损失&nbsp;+&nbsp;KL散度</span></dd></dl>
+ <dl><dt><a name="-train_gnn"><strong>train_gnn</strong></a>(model, x, adj, optimizer, epochs=200, verbose=True)</dt><dd><span class="code">训练GNN模型的通用函数<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;GNN<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;adj:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;optimizer:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;epochs:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;verbose:&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;model:&nbsp;GNN模型<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;输入特征<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adj:&nbsp;邻接矩阵<br>
+&nbsp;&nbsp;&nbsp;&nbsp;optimizer:&nbsp;优化器<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epochs:&nbsp;训练轮数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;verbose:&nbsp;是否打印进度<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
-:</span></dd></dl>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;训练好的模型</span></dd></dl>
 </td></tr></table>
 </body></html>

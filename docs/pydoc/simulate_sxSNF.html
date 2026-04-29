@@ -8,7 +8,7 @@
 <table class="heading">
 <tr class="heading-text decor">
 <td class="title">&nbsp;<br><strong class="title">simulate_sxSNF</strong></td>
-<td class="extra"><a href=".">index</a><br><a href="file:d%3A%5Cwork%5Clabxscut%5Csxsnf%5Csimulate_sxsnf.py">d:\work\labxscut\sxsnf\simulate_sxsnf.py</a></td></tr></table>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/sxSNF/sxSNF/simulate_sxSNF.py">/home/runner/work/sxSNF/sxSNF/simulate_sxSNF.py</a></td></tr></table>
     <p><span class="code">#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</span></p>
 <p>
 <table class="section">
@@ -29,32 +29,28 @@
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<td class="singlecolumn"><dl><dt><a name="-generate_simulated_data"><strong>generate_simulated_data</strong></a>(
-    n_samples=500,
-    n_features1=1000,
-    n_features2=800,
-    n_clusters=3,
-    random_seed=42
-)</dt><dd><span class="code">:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;n_samples:&nbsp;（）<br>
-&nbsp;&nbsp;&nbsp;&nbsp;n_features1:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;n_features2:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;n_clusters:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;random_seed:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data_list:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;labels:</span></dd></dl>
- <dl><dt><a name="-main"><strong>main</strong></a>()</dt></dl>
- <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>()</dt></dl>
- <dl><dt><a name="-run_sxSNF"><strong>run_sxSNF</strong></a>(data_list, labels, args, save_results=True)</dt><dd><span class="code">sxSNF<br>
+<td class="singlecolumn"><dl><dt><a name="-generate_simulated_data"><strong>generate_simulated_data</strong></a>(n_samples=500, n_features1=1000, n_features2=800, n_clusters=3, random_seed=42)</dt><dd><span class="code">生成模拟的单细胞多模态数据<br>
 &nbsp;<br>
-:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data_list:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;save_results:</span></dd></dl>
- <dl><dt><a name="-visualize_data"><strong>visualize_data</strong></a>(data_list, labels, file_name='simulated_data_visualization.png')</dt></dl>
- <dl><dt><a name="-visualize_loss_curve"><strong>visualize_loss_curve</strong></a>(loss_file='training_process/loss_history.npy')</dt></dl>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_samples:&nbsp;样本数量（细胞数）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_features1:&nbsp;第一个模态的特征数量<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_features2:&nbsp;第二个模态的特征数量<br>
+&nbsp;&nbsp;&nbsp;&nbsp;n_clusters:&nbsp;聚类数量<br>
+&nbsp;&nbsp;&nbsp;&nbsp;random_seed:&nbsp;随机种子<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+返回:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_list:&nbsp;包含两个模态数据的列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;真实标签</span></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><span class="code">主函数</span></dd></dl>
+ <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>()</dt><dd><span class="code">解析命令行参数</span></dd></dl>
+ <dl><dt><a name="-run_sxSNF"><strong>run_sxSNF</strong></a>(data_list, labels, args, save_results=True)</dt><dd><span class="code">运行sxSNF方法<br>
+&nbsp;<br>
+参数:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_list:&nbsp;多模态数据列表<br>
+&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;真实标签<br>
+&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;参数设置<br>
+&nbsp;&nbsp;&nbsp;&nbsp;save_results:&nbsp;是否保存结果</span></dd></dl>
+ <dl><dt><a name="-visualize_data"><strong>visualize_data</strong></a>(data_list, labels, file_name='simulated_data_visualization.png')</dt><dd><span class="code">可视化模拟数据</span></dd></dl>
+ <dl><dt><a name="-visualize_loss_curve"><strong>visualize_loss_curve</strong></a>(loss_file='training_process/loss_history.npy')</dt><dd><span class="code">可视化训练过程中的损失曲线</span></dd></dl>
 </td></tr></table>
 </body></html>
