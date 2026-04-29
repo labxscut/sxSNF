@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>Python: module main</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/docs.css">
 </head><body>
+<div class="doc-nav"><a href="../index.html">Docs Home</a><a href="../WORKFLOW.md">Workflow</a><a href="../API_REFERENCE.md">API Reference</a><a href="../../README.md">README</a></div>
 
 <table class="heading">
 <tr class="heading-text decor">
@@ -29,55 +32,14 @@
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<td class="singlecolumn"><dl><dt><a name="-gnn_embedding"><strong>gnn_embedding</strong></a>(fused_network, args, device)</dt><dd><span class="code">使用GNN对融合网络进行嵌入<br>
-&nbsp;<br>
-参数:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fused_network:&nbsp;融合后的网络<br>
-&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;命令行参数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;device:&nbsp;计算设备<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-返回:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;嵌入向量</span></dd></dl>
- <dl><dt><a name="-load_data"><strong>load_data</strong></a>(args)</dt><dd><span class="code">加载单细胞数据<br>
-&nbsp;<br>
-返回:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data_list:&nbsp;多组学数据列表<br>
-&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;标签（如果有）</span></dd></dl>
- <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><span class="code">主函数</span></dd></dl>
- <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>()</dt><dd><span class="code">解析命令行参数</span></dd></dl>
- <dl><dt><a name="-perform_clustering"><strong>perform_clustering</strong></a>(embeddings, labels, args)</dt><dd><span class="code">对嵌入向量进行聚类并评估结果<br>
-&nbsp;<br>
-参数:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;嵌入向量<br>
-&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;真实标签（如果有）<br>
-&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;命令行参数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-返回:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cluster_labels:&nbsp;聚类标签<br>
-&nbsp;&nbsp;&nbsp;&nbsp;metrics:&nbsp;评估指标（如果有真实标签）</span></dd></dl>
- <dl><dt><a name="-save_results"><strong>save_results</strong></a>(embeddings, cluster_labels, metrics, args)</dt><dd><span class="code">保存结果<br>
-&nbsp;<br>
-参数:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;嵌入向量<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cluster_labels:&nbsp;聚类标签<br>
-&nbsp;&nbsp;&nbsp;&nbsp;metrics:&nbsp;评估指标<br>
-&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;命令行参数</span></dd></dl>
- <dl><dt><a name="-setup_environment"><strong>setup_environment</strong></a>(args)</dt><dd><span class="code">设置环境变量和随机种子</span></dd></dl>
- <dl><dt><a name="-snf_process"><strong>snf_process</strong></a>(data_list, args)</dt><dd><span class="code">执行SNF网络融合过程<br>
-&nbsp;<br>
-参数:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data_list:&nbsp;多组学数据列表<br>
-&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;命令行参数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-返回:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;fused_network:&nbsp;融合后的网络<br>
-&nbsp;&nbsp;&nbsp;&nbsp;similarity_matrices:&nbsp;相似度矩阵列表</span></dd></dl>
- <dl><dt><a name="-visualize_results"><strong>visualize_results</strong></a>(embeddings, labels, cluster_labels, args)</dt><dd><span class="code">可视化嵌入和聚类结果<br>
-&nbsp;<br>
-参数:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embeddings:&nbsp;嵌入向量<br>
-&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;真实标签（如果有）<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cluster_labels:&nbsp;聚类标签<br>
-&nbsp;&nbsp;&nbsp;&nbsp;args:&nbsp;命令行参数</span></dd></dl>
+<td class="singlecolumn"><dl><dt><a name="-gnn_embedding"><strong>gnn_embedding</strong></a>(fused_network, args, device)</dt><dd><span class="code">Train&nbsp;a&nbsp;graph&nbsp;model&nbsp;and&nbsp;return&nbsp;node&nbsp;embeddings.</span></dd></dl>
+ <dl><dt><a name="-load_data"><strong>load_data</strong></a>(args)</dt><dd><span class="code">Load&nbsp;input&nbsp;data&nbsp;and&nbsp;labels&nbsp;from&nbsp;disk.</span></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><span class="code">Run&nbsp;the&nbsp;end-to-end&nbsp;pipeline.</span></dd></dl>
+ <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>()</dt><dd><span class="code">Parse&nbsp;command-line&nbsp;arguments.</span></dd></dl>
+ <dl><dt><a name="-perform_clustering"><strong>perform_clustering</strong></a>(embeddings, labels, args)</dt><dd><span class="code">Cluster&nbsp;embeddings&nbsp;and&nbsp;compute&nbsp;evaluation&nbsp;metrics.</span></dd></dl>
+ <dl><dt><a name="-save_results"><strong>save_results</strong></a>(embeddings, cluster_labels, metrics, args)</dt><dd><span class="code">Save&nbsp;embeddings,&nbsp;labels,&nbsp;and&nbsp;metrics&nbsp;to&nbsp;output&nbsp;files.</span></dd></dl>
+ <dl><dt><a name="-setup_environment"><strong>setup_environment</strong></a>(args)</dt><dd><span class="code">Set&nbsp;random&nbsp;seeds&nbsp;and&nbsp;runtime&nbsp;device&nbsp;settings.</span></dd></dl>
+ <dl><dt><a name="-snf_process"><strong>snf_process</strong></a>(data_list, args)</dt><dd><span class="code">Construct&nbsp;per-view&nbsp;similarity&nbsp;graphs&nbsp;and&nbsp;run&nbsp;SNF&nbsp;fusion.</span></dd></dl>
+ <dl><dt><a name="-visualize_results"><strong>visualize_results</strong></a>(embeddings, labels, cluster_labels, args)</dt><dd><span class="code">Create&nbsp;visualization&nbsp;figures&nbsp;for&nbsp;embeddings&nbsp;and&nbsp;clustering.</span></dd></dl>
 </td></tr></table>
 </body></html>

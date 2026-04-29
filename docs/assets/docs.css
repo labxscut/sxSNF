@@ -65,3 +65,25 @@ strong.bigsection {
 p, li, dt, dd {
     color: var(--text);
 }
+
+.doc-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--panel);
+}
+
+.search-input {
+    margin: 0.4rem 0 1rem;
+    padding: 0.45rem 0.55rem;
+    width: 100%;
+    max-width: 520px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel);
+    color: var(--text);
+}
