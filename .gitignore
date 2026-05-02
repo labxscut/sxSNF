@@ -17,12 +17,16 @@ ENV/
 .ipynb_checkpoints/
 
 # Data and results
-datasets/
 data/
 results/
 outputs/
 sxsnf_multimodal_run*/
-*.h5ad
+
+# Track datasets with Git LFS
+!datasets/
+!datasets/*.h5ad
+
+# Other large/generated files
 *.h5
 *.npy
 *.npz
