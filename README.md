@@ -1,210 +1,143 @@
+# sxSNF
 
----
+**sxSNF** is a single-cell multi-omics integration workflow that combines modality-specific similarity graphs, geometry-anchored Similarity Network Fusion (SNF), and self-supervised graph representation learning.
 
-````markdown
-# sxSNF-GNN: Single-cell Multi-omics Network Fusion with Graph Neural Networks
+This repository version reorganizes the original Chen-2019 notebook into a standard GitHub/Python package layout.
 
-A framework for **single-cell multi-omics integration** based on **Similarity Network Fusion (SNF)** and **Graph Neural Networks (GNNs)**.  
-This tool supports similarity graph construction, SNF fusion, deep graph representation learning, clustering, and visualization.
+## Repository structure
 
----
-
-## Quick Navigation
-
-- Repo entry (you are here): `README.md`
-- Workflow chart (Mermaid): `docs/WORKFLOW.md`
-- API entry (pydoc): `docs/index.html`
-- API markdown index: `docs/API_REFERENCE.md`
-
-## Overall Workflow
-
-```mermaid
-flowchart TD
-    start[Start] --> parseArgs[ParseCLIArgs]
-    parseArgs --> dataChoice{DataSource}
-    dataChoice -->|Simulated| genData[GenerateSimulatedData]
-    dataChoice -->|Real| loadData[LoadRealMultiOmicsData]
-    genData --> preprocess[NormalizeEachModality]
-    loadData --> preprocess
-    preprocess --> buildGraphs[BuildSimilarityGraphsPerModality]
-    buildGraphs --> snfFusion[RunSNFFusion]
-    snfFusion --> fusedGraph[FusedSimilarityNetwork]
-    fusedGraph --> initGNN[InitializeGNNModel]
-    initGNN --> trainGNN[TrainGNNEncoder]
-    trainGNN --> embeddings[GetCellEmbeddings]
-    embeddings --> cluster[RunKMeansClustering]
-    embeddings --> vizEmb[VisualizeEmbeddings]
-    cluster --> metrics[ComputeNMIandARI]
-    cluster --> vizCluster[VisualizeClusterResults]
-    metrics --> saveOutputs[SaveEmbeddingsLabelsMetrics]
-    vizEmb --> saveOutputs
-    vizCluster --> saveOutputs
-    saveOutputs --> endNode[End]
+```text
+sxSNF/
+├── sxsnf/                    # Reusable Python package
+│   ├── config.py             # Runtime configuration
+│   ├── data.py               # Chen-2019 RNA/ATAC loading and preprocessing
+│   ├── graph.py              # kNN graph, local scaling, anchored SNF
+│   ├── clustering.py         # Leiden/KMeans/Spectral clustering and metrics
+│   ├── models.py             # DeepGCNII encoder
+│   ├── training.py           # Masked-edge self-supervised training
+│   ├── diagnostics.py        # RNA/ATAC kNN overlap diagnostics
+│   └── pipeline.py           # End-to-end sxSNF workflow
+├── scripts/
+│   ├── run_chen2019.py       # Command-line entry point
+│   ├── generate_pydoc.py     # Generate PyDoc API pages
+│   └── sync_to_github.sh     # Pull, regenerate docs, commit and push
+├── notebooks/
+│   └── sxSNF2.0_Chen.ipynb   # Original notebook kept for traceability
+├── docs/
+│   ├── index.html            # Documentation home
+│   ├── API_REFERENCE.md      # Markdown API index
+│   ├── WORKFLOW.md           # Workflow description
+│   └── pydoc/                # PyDoc HTML pages
+├── tests/
+│   └── test_imports.py
+├── main.py                   # Root-level compatibility runner
+├── requirements.txt
+└── pyproject.toml
 ```
 
-Search keywords: sxSNF, SNF, GNN, workflow, pipeline, clustering, embeddings, pydoc.
+## Installation
 
----
-
-## ✨ Features
-
-- Support for both **real data** and **simulated data**  
-- Implementation of **SNF** for cross-modal similarity network fusion  
-- Built-in **graph neural networks**:
-  - GCN
-  - GraphSAGE
-  - GAT
-  - VGAE
-- Downstream clustering (K-means) and evaluation metrics (NMI, ARI)  
-- Visualization of embeddings (t-SNE scatter plots, heatmaps, training loss curves)  
-- Support for `.mat` and `.npy` data files with optional label files  
-
----
-
-## 📦 Installation & Dependencies
-
-Environment requirements:
-
-- Python 3.8+
-- PyTorch
-- NumPy
-- scikit-learn
-- SciPy
-- Matplotlib
-- Seaborn
-
-Install dependencies:
+Create an environment and install dependencies:
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
-````
+```
 
----
+For editable development:
 
-## 🚀 Usage
+```bash
+pip install -e .
+```
 
-### 1. Real Data Mode
+## Run Chen-2019 workflow
 
 ```bash
 python main.py \
-  --data_dir ./data \
-  --save_dir ./results \
-  --k 20 \
-  --t 20 \
-  --gnn_type gcn \
-  --hidden_dim 128 \
-  --embedding_dim 64 \
-  --epochs 200 \
-  --n_clusters 10 \
-  --gpu 0 \
-  --verbose
+  --rna datasets/Chen-2019-RNA.h5ad \
+  --atac datasets/Chen-2019-ATAC.h5ad \
+  --outdir results/chen2019
 ```
 
-Results will be saved in the `./results` directory.
-
----
-
-### 2. Simulated Data Experiment
-
-To validate the pipeline, we provide a **simulated dataset experiment** that automatically generates two modalities (e.g., gene expression + epigenomics) with ground-truth labels.
-
-#### Run Script
+Equivalent command:
 
 ```bash
-bash run_simulation.sh
+python scripts/run_chen2019.py \
+  --rna datasets/Chen-2019-RNA.h5ad \
+  --atac datasets/Chen-2019-ATAC.h5ad \
+  --outdir results/chen2019
 ```
 
-This script calls `simulate_sxSNF.py` and saves results into `./results`.
+## Core workflow
 
-#### Key Parameters
-
-* `--n_samples` : Number of samples (default 500)
-* `--n_features1` : Feature size of modality 1 (default 1000)
-* `--n_features2` : Feature size of modality 2 (default 800)
-* `--n_clusters` : Number of clusters (default 3)
-* `--epochs` : Training epochs (default 100)
-* `--gnn_type` : GNN type: `gcn` / `graphsage` / `gat` / `vgae`
-
-Example:
-
-```bash
-python simulate_sxSNF.py \
-  --n_samples 300 \
-  --n_features1 500 \
-  --n_features2 400 \
-  --n_clusters 4 \
-  --gnn_type gat \
-  --epochs 150
+```text
+RNA h5ad + ATAC h5ad
+        ↓
+RNA PCA + ATAC LSI
+        ↓
+Local-scaling kNN graphs
+        ↓
+Geometry-anchored SNF
+        ↓
+Fused cell-cell graph
+        ↓
+Masked-edge self-supervised DeepGCNII
+        ↓
+Cell embeddings and clustering metrics
 ```
 
-#### Output
+## Output files
 
-* **Simulated Data**
+The run directory contains:
 
-  * `simulated_data/modality1_data.npy`
-  * `simulated_data/modality2_data.npy`
-  * `simulated_data/labels.npy`
+```text
+metrics_all_stages.txt
+metrics_all_stages.json
+config.json
+sxsnf_embedding.npy
+snf_fused_network.npy
+training_process/loss_history.npy
+```
 
-* **Experiment Results**
+## Generate PyDoc
 
-  * `results/embeddings.npy` : Learned embeddings
-  * `results/cluster_labels.npy` : Predicted cluster labels
-  * `results/metrics.txt` : Evaluation metrics (NMI, ARI)
-  * `sxSNF_clustering_results.png` : Clustering visualization
-  * `training_loss_curve.png` : Training loss curve
-
-* **Training Snapshots**
-
-  * `training_process/embeddings_epoch_X.npy` : Embeddings saved every 10 epochs
-  * `training_process/loss_history.npy` : Loss history
-
----
-
-## API Docs Generation (`pydoc`)
-
-Generate API documentation for all top-level Python modules:
+After modifying code or docstrings:
 
 ```bash
 python scripts/generate_pydoc.py
 ```
 
-Outputs:
+Open the documentation locally:
 
-- `docs/API_REFERENCE.md` (module index)
-- `docs/pydoc/*.html` (per-module API pages)
-- `docs/index.html` (searchable API landing page)
-- `docs/WORKFLOW.md` (workflow chart for repo + docs entry)
-
-This repository also includes GitHub Actions workflows to regenerate PyDoc and publish the `docs/` folder with GitHub Pages on pushes to `main`.
-
----
-
-## 📂 Project Structure
-
-```
-.
-├── main.py                  # Main pipeline (real data)
-├── simulate_sxSNF.py        # Simulated data experiment
-├── run_simulation.sh        # Simulation script
-├── utils.py                 # Utility functions (normalization, SNF, dimensionality reduction)
-├── graph_module.py          # GNN models and training
-├── data/                    # Real dataset directory
-├── simulated_data/          # Simulated datasets
-├── results/                 # Experiment outputs
-├── training_process/        # Training logs and snapshots
-├── requirements.txt         # Dependencies
-└── README.md                # Project documentation
+```bash
+explorer.exe docs/index.html   # WSL on Windows
+# or
+xdg-open docs/index.html       # Linux
 ```
 
----
+## GitHub update workflow
 
+After copying this organized project into your local repository:
 
-## 📖 Reference
+```bash
+cd /mnt/e/Research/sxSNF/sxSNF
+bash scripts/sync_to_github.sh "Reorganize sxSNF into standard package and update PyDoc"
+```
 
-If you use this code in your research, please cite:
+Manual equivalent:
 
-* Duan H., Xia L.C., *sxSNF: Single-cell Multi-modal Data Integration with Similarity Network Fusion and Graph Learning*, **APBC 2025**.
+```bash
+git pull origin main
+python scripts/generate_pydoc.py
+git add .
+git commit -m "Reorganize sxSNF into standard package and update PyDoc"
+git push origin main
+```
 
----
+## Notes
 
-
+- The original notebook is preserved under `notebooks/` for reproducibility.
+- Large datasets and generated outputs are ignored by `.gitignore`.
+- `scanpy`, `scglue`, `leidenalg`, and `igraph` are needed for the complete Chen-2019 workflow.

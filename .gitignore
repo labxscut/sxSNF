@@ -1,2 +1,36 @@
+# Python
 __pycache__/
 *.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+ENV/
+.conda/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data and results
+datasets/
+data/
+results/
+outputs/
+sxsnf_multimodal_run*/
+*.h5ad
+*.h5
+*.npy
+*.npz
+*.pt
+*.pth
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

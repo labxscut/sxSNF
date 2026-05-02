@@ -1,0 +1,122 @@
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.training</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/e/Research/sxSNF/sxSNF/sxsnf/training.py">/mnt/e/Research/sxSNF/sxSNF/sxsnf/training.py</a></td></tr></table>
+    <p><span class="code">Self-supervised&nbsp;masked-edge&nbsp;training&nbsp;for&nbsp;sxSNF&nbsp;graph&nbsp;encoders.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="torch.nn.functional.html">torch.nn.functional</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+<a href="random.html">random</a><br>
+</td><td class="multicolumn"><a href="torch.html">torch</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-negative_sampling_undirected"><strong>negative_sampling_undirected</strong></a>(n_nodes: 'int', num_samples: 'int', existing_undirected_set, device, seed: 'int' = 42)</dt><dd><span class="code">Sample&nbsp;undirected&nbsp;non-edges&nbsp;and&nbsp;return&nbsp;them&nbsp;as&nbsp;directed&nbsp;edge&nbsp;pairs.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+n_nodes&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;nodes.<br>
+num_samples&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;undirected&nbsp;negative&nbsp;samples.<br>
+existing_undirected_set&nbsp;:&nbsp;set&nbsp;of&nbsp;tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Existing&nbsp;undirected&nbsp;graph&nbsp;edges.<br>
+device&nbsp;:&nbsp;torch.device<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Target&nbsp;device.<br>
+seed&nbsp;:&nbsp;int,&nbsp;default=42<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Random&nbsp;seed.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+torch.Tensor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Directed&nbsp;negative&nbsp;edge&nbsp;list&nbsp;with&nbsp;shape&nbsp;``(2&nbsp;*&nbsp;num_samples,&nbsp;2)``.</span></dd></dl>
+ <dl><dt><a name="-sample_masked_edges_from_sparse_undirected"><strong>sample_masked_edges_from_sparse_undirected</strong></a>(adj_sparse, mask_ratio: 'float' = 0.1, seed: 'int' = 42)</dt><dd><span class="code">Mask&nbsp;a&nbsp;fraction&nbsp;of&nbsp;undirected&nbsp;graph&nbsp;edges&nbsp;for&nbsp;reconstruction.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+adj_sparse&nbsp;:&nbsp;torch.Tensor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sparse&nbsp;COO&nbsp;adjacency&nbsp;tensor.<br>
+mask_ratio&nbsp;:&nbsp;float,&nbsp;default=0.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Fraction&nbsp;of&nbsp;undirected&nbsp;edges&nbsp;to&nbsp;mask.<br>
+seed&nbsp;:&nbsp;int,&nbsp;default=42<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Random&nbsp;seed.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``(adj_masked_sparse,&nbsp;pos_edges_masked)``&nbsp;where&nbsp;the&nbsp;first&nbsp;element&nbsp;is&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;remaining&nbsp;graph&nbsp;and&nbsp;the&nbsp;second&nbsp;is&nbsp;a&nbsp;directed&nbsp;positive&nbsp;edge&nbsp;list.</span></dd></dl>
+ <dl><dt><a name="-train_masked_edge_ssl"><strong>train_masked_edge_ssl</strong></a>(features, adj_fused_sparse, hidden_dim: 'int' = 128, emb_dim: 'int' = 64, dropout: 'float' = 0.5, lr: 'float' = 0.001, weight_decay: 'float' = 0.0005, epochs: 'int' = 200, mask_ratio: 'float' = 0.1, neg_ratio: 'float' = 1.0, seed: 'int' = 42, outdir: 'str' = 'training_process', gnn_layers: 'int' = 6, gcn2_alpha: 'float' = 0.1, gcn2_beta: 'float' = 0.5, use_norm: 'bool' = True, log_every: 'int' = 10)</dt><dd><span class="code">Train&nbsp;a&nbsp;DeepGCNII&nbsp;encoder&nbsp;with&nbsp;masked-edge&nbsp;reconstruction.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+features&nbsp;:&nbsp;torch.Tensor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;features&nbsp;with&nbsp;shape&nbsp;``(n_cells,&nbsp;n_features)``.<br>
+adj_fused_sparse&nbsp;:&nbsp;torch.Tensor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sparse&nbsp;fused&nbsp;graph&nbsp;adjacency.<br>
+hidden_dim&nbsp;:&nbsp;int,&nbsp;default=128<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Encoder&nbsp;hidden&nbsp;dimension.<br>
+emb_dim&nbsp;:&nbsp;int,&nbsp;default=64<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Output&nbsp;embedding&nbsp;dimension.<br>
+dropout&nbsp;:&nbsp;float,&nbsp;default=0.5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dropout&nbsp;probability.<br>
+lr&nbsp;:&nbsp;float,&nbsp;default=1e-3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Adam&nbsp;learning&nbsp;rate.<br>
+weight_decay&nbsp;:&nbsp;float,&nbsp;default=5e-4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Adam&nbsp;weight&nbsp;decay.<br>
+epochs&nbsp;:&nbsp;int,&nbsp;default=200<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;training&nbsp;epochs.<br>
+mask_ratio&nbsp;:&nbsp;float,&nbsp;default=0.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Fraction&nbsp;of&nbsp;graph&nbsp;edges&nbsp;masked&nbsp;as&nbsp;positive&nbsp;examples.<br>
+neg_ratio&nbsp;:&nbsp;float,&nbsp;default=1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Negative-to-positive&nbsp;sampling&nbsp;ratio.<br>
+seed&nbsp;:&nbsp;int,&nbsp;default=42<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Random&nbsp;seed.<br>
+outdir&nbsp;:&nbsp;str,&nbsp;default="training_process"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Directory&nbsp;where&nbsp;``loss_history.npy``&nbsp;is&nbsp;saved.<br>
+gnn_layers&nbsp;:&nbsp;int,&nbsp;default=6<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;GCNII-style&nbsp;graph&nbsp;blocks.<br>
+gcn2_alpha&nbsp;:&nbsp;float,&nbsp;default=0.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Initial&nbsp;residual&nbsp;strength.<br>
+gcn2_beta&nbsp;:&nbsp;float,&nbsp;default=0.5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Identity&nbsp;mapping&nbsp;strength.<br>
+use_norm&nbsp;:&nbsp;bool,&nbsp;default=True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;use&nbsp;LayerNorm.<br>
+log_every&nbsp;:&nbsp;int,&nbsp;default=10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;loss&nbsp;every&nbsp;N&nbsp;epochs.&nbsp;Set&nbsp;to&nbsp;0&nbsp;to&nbsp;disable.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Trained&nbsp;model&nbsp;and&nbsp;normalized&nbsp;masked&nbsp;adjacency.</span></dd></dl>
+ <dl><dt><a name="-undirected_edge_set_from_sparse"><strong>undirected_edge_set_from_sparse</strong></a>(adj_sparse, drop_self_loops: 'bool' = True) -&gt; 'Set[Tuple[int, int]]'</dt><dd><span class="code">Extract&nbsp;an&nbsp;undirected&nbsp;edge&nbsp;set&nbsp;from&nbsp;a&nbsp;sparse&nbsp;adjacency&nbsp;tensor.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+adj_sparse&nbsp;:&nbsp;torch.Tensor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sparse&nbsp;COO&nbsp;adjacency&nbsp;matrix.<br>
+drop_self_loops&nbsp;:&nbsp;bool,&nbsp;default=True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;remove&nbsp;self-loops.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+set&nbsp;of&nbsp;tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Undirected&nbsp;edge&nbsp;set&nbsp;represented&nbsp;as&nbsp;``(min(u,&nbsp;v),&nbsp;max(u,&nbsp;v))``.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Set</strong> = typing.Set<br>
+<strong>Tuple</strong> = typing.Tuple</td></tr></table>

@@ -1,0 +1,79 @@
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.diagnostics</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/e/Research/sxSNF/sxSNF/sxsnf/diagnostics.py">/mnt/e/Research/sxSNF/sxSNF/sxsnf/diagnostics.py</a></td></tr></table>
+    <p><span class="code">Diagnostic&nbsp;utilities&nbsp;for&nbsp;checking&nbsp;modality-specific&nbsp;neighborhood&nbsp;consistency.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-diagnose_knn_overlap"><strong>diagnose_knn_overlap</strong></a>(rna_pca: 'np.ndarray', atac_lsi: 'np.ndarray', k: 'int' = 20, metric: 'str' = 'cosine', normalize: 'bool' = True, verbose: 'bool' = True)</dt><dd><span class="code">Compare&nbsp;RNA&nbsp;and&nbsp;ATAC&nbsp;nearest-neighbor&nbsp;neighborhoods.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+rna_pca&nbsp;:&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RNA&nbsp;PCA&nbsp;matrix.<br>
+atac_lsi&nbsp;:&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ATAC&nbsp;LSI&nbsp;matrix.<br>
+k&nbsp;:&nbsp;int,&nbsp;default=20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;neighbors.<br>
+metric&nbsp;:&nbsp;str,&nbsp;default="cosine"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Distance&nbsp;metric.<br>
+normalize&nbsp;:&nbsp;bool,&nbsp;default=True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;L2-normalize&nbsp;rows&nbsp;before&nbsp;neighbor&nbsp;search.<br>
+verbose&nbsp;:&nbsp;bool,&nbsp;default=True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;print&nbsp;a&nbsp;compact&nbsp;summary.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``(idx_rna,&nbsp;idx_atac,&nbsp;summary_dict)``.</span></dd></dl>
+ <dl><dt><a name="-knn_indices"><strong>knn_indices</strong></a>(X: 'np.ndarray', k: 'int' = 20, metric: 'str' = 'cosine') -&gt; 'np.ndarray'</dt><dd><span class="code">Return&nbsp;k-nearest-neighbor&nbsp;indices&nbsp;excluding&nbsp;each&nbsp;cell&nbsp;itself.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+X&nbsp;:&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Feature&nbsp;matrix.<br>
+k&nbsp;:&nbsp;int,&nbsp;default=20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;neighbors.<br>
+metric&nbsp;:&nbsp;str,&nbsp;default="cosine"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Distance&nbsp;metric&nbsp;for&nbsp;neighbor&nbsp;search.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Neighbor&nbsp;indices&nbsp;with&nbsp;shape&nbsp;``(n_cells,&nbsp;k)``&nbsp;or&nbsp;fewer&nbsp;when&nbsp;``n_cells``&nbsp;is&nbsp;small.</span></dd></dl>
+ <dl><dt><a name="-knn_jaccard_overlap"><strong>knn_jaccard_overlap</strong></a>(idx_a: 'np.ndarray', idx_b: 'np.ndarray', k: 'Optional[int]' = None) -&gt; 'Dict[str, object]'</dt><dd><span class="code">Compute&nbsp;per-cell&nbsp;Jaccard&nbsp;overlap&nbsp;between&nbsp;two&nbsp;kNN&nbsp;neighborhoods.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+idx_a&nbsp;:&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;First&nbsp;neighbor&nbsp;index&nbsp;matrix.<br>
+idx_b&nbsp;:&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Second&nbsp;neighbor&nbsp;index&nbsp;matrix.<br>
+k&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;only&nbsp;the&nbsp;first&nbsp;k&nbsp;neighbors&nbsp;from&nbsp;each&nbsp;matrix.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Summary&nbsp;statistics&nbsp;and&nbsp;per-cell&nbsp;overlap&nbsp;arrays.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Dict</strong> = typing.Dict<br>
+<strong>Optional</strong> = typing.Optional<br>
+<strong>Tuple</strong> = typing.Tuple</td></tr></table>

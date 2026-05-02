@@ -1,0 +1,125 @@
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.clustering</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/e/Research/sxSNF/sxSNF/sxsnf/clustering.py">/mnt/e/Research/sxSNF/sxSNF/sxsnf/clustering.py</a></td></tr></table>
+    <p><span class="code">Clustering&nbsp;and&nbsp;evaluation&nbsp;utilities&nbsp;for&nbsp;sxSNF.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="pandas.html">pandas</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-atac_only_eval_exact_scanpy"><strong>atac_only_eval_exact_scanpy</strong></a>(atac_adata, label_key: 'str' = 'cell_type', n_neighbors: 'int' = 15, resolution: 'float' = 1.0) -&gt; 'Tuple[np.ndarray, Dict[str, float]]'</dt><dd><span class="code">Evaluate&nbsp;ATAC-only&nbsp;clustering&nbsp;using&nbsp;the&nbsp;original&nbsp;notebook's&nbsp;Scanpy&nbsp;procedure.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+atac_adata&nbsp;:&nbsp;anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ATAC&nbsp;AnnData&nbsp;object&nbsp;containing&nbsp;``obsm["X_lsi"]``.<br>
+label_key&nbsp;:&nbsp;str,&nbsp;default="cell_type"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ground-truth&nbsp;label&nbsp;column&nbsp;in&nbsp;``atac_adata.obs``.<br>
+n_neighbors&nbsp;:&nbsp;int,&nbsp;default=15<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;neighbors&nbsp;for&nbsp;Scanpy&nbsp;graph&nbsp;construction.<br>
+resolution&nbsp;:&nbsp;float,&nbsp;default=1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Leiden&nbsp;resolution.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Predicted&nbsp;integer&nbsp;labels&nbsp;and&nbsp;metrics&nbsp;dictionary.</span></dd></dl>
+ <dl><dt><a name="-atac_only_eval_from_array_scanpy"><strong>atac_only_eval_from_array_scanpy</strong></a>(atac_lsi: 'np.ndarray', labels, n_neighbors: 'int' = 15, resolution: 'float' = 1.0, seed: 'int' = 42) -&gt; 'Tuple[np.ndarray, Dict[str, float]]'</dt><dd><span class="code">Evaluate&nbsp;ATAC-only&nbsp;clustering&nbsp;from&nbsp;a&nbsp;precomputed&nbsp;LSI&nbsp;matrix.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+atac_lsi&nbsp;:&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ATAC&nbsp;LSI&nbsp;matrix.<br>
+labels&nbsp;:&nbsp;array-like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ground-truth&nbsp;cell&nbsp;labels.<br>
+n_neighbors&nbsp;:&nbsp;int,&nbsp;default=15<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;neighbors&nbsp;for&nbsp;Scanpy&nbsp;graph&nbsp;construction.<br>
+resolution&nbsp;:&nbsp;float,&nbsp;default=1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Leiden&nbsp;resolution.<br>
+seed&nbsp;:&nbsp;int,&nbsp;default=42<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Random&nbsp;seed.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Predicted&nbsp;integer&nbsp;labels&nbsp;and&nbsp;metrics&nbsp;dictionary.</span></dd></dl>
+ <dl><dt><a name="-clustering_metrics"><strong>clustering_metrics</strong></a>(true_labels, pred_labels) -&gt; 'Dict[str, float]'</dt><dd><span class="code">Compute&nbsp;standard&nbsp;clustering&nbsp;metrics.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+true_labels&nbsp;:&nbsp;array-like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ground-truth&nbsp;labels.<br>
+pred_labels&nbsp;:&nbsp;array-like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Predicted&nbsp;cluster&nbsp;labels.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dictionary&nbsp;with&nbsp;ARI,&nbsp;NMI&nbsp;and&nbsp;AMI.</span></dd></dl>
+ <dl><dt><a name="-labels_to_int"><strong>labels_to_int</strong></a>(labels) -&gt; 'np.ndarray'</dt><dd><span class="code">Convert&nbsp;arbitrary&nbsp;labels&nbsp;to&nbsp;integer&nbsp;category&nbsp;codes.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+labels&nbsp;:&nbsp;array-like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ground-truth&nbsp;or&nbsp;predicted&nbsp;labels.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;labels&nbsp;with&nbsp;dtype&nbsp;int32.</span></dd></dl>
+ <dl><dt><a name="-leiden_cluster_from_affinity"><strong>leiden_cluster_from_affinity</strong></a>(W: 'np.ndarray', resolution: 'float' = 1.0, seed: 'int' = 42, fallback_n_clusters: 'Optional[int]' = None) -&gt; 'np.ndarray'</dt><dd><span class="code">Cluster&nbsp;a&nbsp;precomputed&nbsp;affinity&nbsp;matrix&nbsp;using&nbsp;Leiden.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+W&nbsp;:&nbsp;np.ndarray,&nbsp;shape&nbsp;(n_cells,&nbsp;n_cells)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cell-cell&nbsp;affinity&nbsp;matrix.<br>
+resolution&nbsp;:&nbsp;float,&nbsp;default=1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Leiden&nbsp;resolution.<br>
+seed&nbsp;:&nbsp;int,&nbsp;default=42<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Random&nbsp;seed.<br>
+fallback_n_clusters&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;spectral&nbsp;clusters&nbsp;used&nbsp;if&nbsp;Scanpy/Leiden&nbsp;is&nbsp;unavailable.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;cluster&nbsp;labels.</span></dd></dl>
+ <dl><dt><a name="-leiden_cluster_from_embedding"><strong>leiden_cluster_from_embedding</strong></a>(Z: 'np.ndarray', n_neighbors: 'int' = 15, resolution: 'float' = 1.0, seed: 'int' = 42, fallback_n_clusters: 'int' = 10) -&gt; 'np.ndarray'</dt><dd><span class="code">Cluster&nbsp;low-dimensional&nbsp;cell&nbsp;embeddings&nbsp;using&nbsp;Leiden.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+Z&nbsp;:&nbsp;np.ndarray,&nbsp;shape&nbsp;(n_cells,&nbsp;n_features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Embedding&nbsp;matrix.<br>
+n_neighbors&nbsp;:&nbsp;int,&nbsp;default=15<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;neighbors&nbsp;for&nbsp;Scanpy&nbsp;graph&nbsp;construction.<br>
+resolution&nbsp;:&nbsp;float,&nbsp;default=1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Leiden&nbsp;resolution.<br>
+seed&nbsp;:&nbsp;int,&nbsp;default=42<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Random&nbsp;seed.<br>
+fallback_n_clusters&nbsp;:&nbsp;int,&nbsp;default=10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;KMeans&nbsp;cluster&nbsp;number&nbsp;used&nbsp;when&nbsp;Scanpy/Leiden&nbsp;is&nbsp;unavailable.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;cluster&nbsp;labels.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Dict</strong> = typing.Dict<br>
+<strong>Optional</strong> = typing.Optional<br>
+<strong>Tuple</strong> = typing.Tuple</td></tr></table>

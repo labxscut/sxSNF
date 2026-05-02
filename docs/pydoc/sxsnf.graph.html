@@ -1,0 +1,154 @@
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.graph</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/e/Research/sxSNF/sxSNF/sxsnf/graph.py">/mnt/e/Research/sxSNF/sxSNF/sxsnf/graph.py</a></td></tr></table>
+    <p><span class="code">Graph&nbsp;construction,&nbsp;geometry-anchored&nbsp;SNF,&nbsp;and&nbsp;sparse&nbsp;PyTorch&nbsp;graph&nbsp;helpers.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-dense_to_torch_sparse"><strong>dense_to_torch_sparse</strong></a>(A: 'np.ndarray', device)</dt><dd><span class="code">Convert&nbsp;a&nbsp;dense&nbsp;NumPy&nbsp;matrix&nbsp;to&nbsp;a&nbsp;PyTorch&nbsp;sparse&nbsp;COO&nbsp;tensor.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+A&nbsp;:&nbsp;np.ndarray,&nbsp;shape&nbsp;(n_cells,&nbsp;n_cells)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dense&nbsp;matrix.<br>
+device&nbsp;:&nbsp;torch.device&nbsp;or&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Target&nbsp;device.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+torch.Tensor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sparse&nbsp;COO&nbsp;tensor.</span></dd></dl>
+ <dl><dt><a name="-knn_affinity"><strong>knn_affinity</strong></a>(X, k: 'int' = 20, metric: 'str' = 'cosine', mode: 'str' = 'cos', sigma: 'Optional[float]' = None, sym: 'bool' = True) -&gt; 'np.ndarray'</dt><dd><span class="code">Construct&nbsp;a&nbsp;dense&nbsp;k-nearest-neighbor&nbsp;affinity&nbsp;matrix.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+X&nbsp;:&nbsp;np.ndarray,&nbsp;shape&nbsp;(n_cells,&nbsp;n_features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cell-level&nbsp;feature&nbsp;matrix.<br>
+k&nbsp;:&nbsp;int,&nbsp;default=20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;nearest&nbsp;neighbors&nbsp;retained&nbsp;for&nbsp;each&nbsp;cell.<br>
+metric&nbsp;:&nbsp;str,&nbsp;default="cosine"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Distance&nbsp;metric&nbsp;passed&nbsp;to&nbsp;``sklearn.neighbors.NearestNeighbors``.<br>
+mode&nbsp;:&nbsp;{"cos",&nbsp;"heat"},&nbsp;default="cos"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Weighting&nbsp;mode.&nbsp;``"cos"``&nbsp;converts&nbsp;cosine&nbsp;distance&nbsp;to&nbsp;similarity&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``1&nbsp;-&nbsp;distance``.&nbsp;``"heat"``&nbsp;uses&nbsp;a&nbsp;Gaussian&nbsp;heat&nbsp;kernel.<br>
+sigma&nbsp;:&nbsp;float,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Heat-kernel&nbsp;bandwidth.&nbsp;If&nbsp;omitted,&nbsp;the&nbsp;median&nbsp;neighbor&nbsp;distance&nbsp;is&nbsp;used.<br>
+sym&nbsp;:&nbsp;bool,&nbsp;default=True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;symmetrize&nbsp;the&nbsp;graph&nbsp;by&nbsp;``max(W,&nbsp;W.T)``.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dense&nbsp;affinity&nbsp;matrix&nbsp;of&nbsp;shape&nbsp;``(n_cells,&nbsp;n_cells)``.</span></dd></dl>
+ <dl><dt><a name="-knn_affinity_local_scaling"><strong>knn_affinity_local_scaling</strong></a>(X, k: 'int' = 20, metric: 'str' = 'cosine', sym: 'bool' = True, eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><span class="code">Construct&nbsp;a&nbsp;self-tuning&nbsp;kNN&nbsp;affinity&nbsp;matrix&nbsp;with&nbsp;local&nbsp;scaling.<br>
+&nbsp;<br>
+The&nbsp;affinity&nbsp;uses<br>
+&nbsp;<br>
+``W_ij&nbsp;=&nbsp;exp(-d_ij^2&nbsp;/&nbsp;(sigma_i&nbsp;*&nbsp;sigma_j&nbsp;+&nbsp;eps))``,<br>
+&nbsp;<br>
+where&nbsp;``sigma_i``&nbsp;is&nbsp;the&nbsp;distance&nbsp;from&nbsp;cell&nbsp;``i``&nbsp;to&nbsp;its&nbsp;k-th&nbsp;nearest<br>
+neighbor.&nbsp;This&nbsp;is&nbsp;the&nbsp;graph&nbsp;construction&nbsp;used&nbsp;in&nbsp;the&nbsp;Chen-2019&nbsp;notebook.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+X&nbsp;:&nbsp;np.ndarray,&nbsp;shape&nbsp;(n_cells,&nbsp;n_features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Feature&nbsp;matrix,&nbsp;usually&nbsp;L2-normalized&nbsp;PCA/LSI&nbsp;features.<br>
+k&nbsp;:&nbsp;int,&nbsp;default=20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;nearest&nbsp;neighbors.<br>
+metric&nbsp;:&nbsp;str,&nbsp;default="cosine"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Neighbor&nbsp;search&nbsp;distance&nbsp;metric.<br>
+sym&nbsp;:&nbsp;bool,&nbsp;default=True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;symmetrize&nbsp;the&nbsp;graph.<br>
+eps&nbsp;:&nbsp;float,&nbsp;default=1e-12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Numerical&nbsp;constant&nbsp;to&nbsp;avoid&nbsp;division&nbsp;by&nbsp;zero.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dense&nbsp;local-scaling&nbsp;affinity&nbsp;matrix.</span></dd></dl>
+ <dl><dt><a name="-knn_sparsify_dense"><strong>knn_sparsify_dense</strong></a>(W: 'np.ndarray', k: 'int' = 20) -&gt; 'np.ndarray'</dt><dd><span class="code">Keep&nbsp;the&nbsp;top-k&nbsp;neighbors&nbsp;per&nbsp;row&nbsp;in&nbsp;a&nbsp;dense&nbsp;affinity&nbsp;matrix.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+W&nbsp;:&nbsp;np.ndarray,&nbsp;shape&nbsp;(n_cells,&nbsp;n_cells)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dense&nbsp;affinity&nbsp;matrix.<br>
+k&nbsp;:&nbsp;int,&nbsp;default=20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;strongest&nbsp;row-wise&nbsp;edges&nbsp;retained.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Symmetric&nbsp;sparsified&nbsp;dense&nbsp;matrix.</span></dd></dl>
+ <dl><dt><a name="-normalize_adj_torch_sparse"><strong>normalize_adj_torch_sparse</strong></a>(adj)</dt><dd><span class="code">Symmetrically&nbsp;normalize&nbsp;a&nbsp;sparse&nbsp;adjacency&nbsp;matrix&nbsp;with&nbsp;self-loops.<br>
+&nbsp;<br>
+Computes&nbsp;``D^{-1/2}&nbsp;(A&nbsp;+&nbsp;I)&nbsp;D^{-1/2}``.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+adj&nbsp;:&nbsp;torch.Tensor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sparse&nbsp;COO&nbsp;adjacency&nbsp;tensor&nbsp;with&nbsp;shape&nbsp;``(n_cells,&nbsp;n_cells)``.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+torch.Tensor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Normalized&nbsp;sparse&nbsp;COO&nbsp;adjacency&nbsp;tensor.</span></dd></dl>
+ <dl><dt><a name="-row_normalize"><strong>row_normalize</strong></a>(W: 'np.ndarray', eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><span class="code">Row-normalize&nbsp;a&nbsp;nonnegative&nbsp;matrix.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+W&nbsp;:&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Input&nbsp;matrix.<br>
+eps&nbsp;:&nbsp;float,&nbsp;default=1e-12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Numerical&nbsp;constant&nbsp;to&nbsp;avoid&nbsp;division&nbsp;by&nbsp;zero.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Row-normalized&nbsp;matrix&nbsp;with&nbsp;dtype&nbsp;float32.</span></dd></dl>
+ <dl><dt><a name="-snf_fusion_dense_anchored"><strong>snf_fusion_dense_anchored</strong></a>(W_list: 'Iterable[np.ndarray]', k: 'int' = 20, t: 'int' = 20, alpha: 'float' = 0.2, eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><span class="code">Fuse&nbsp;multiple&nbsp;modality-specific&nbsp;graphs&nbsp;using&nbsp;geometry-anchored&nbsp;SNF.<br>
+&nbsp;<br>
+Compared&nbsp;with&nbsp;standard&nbsp;SNF,&nbsp;this&nbsp;variant&nbsp;preserves&nbsp;part&nbsp;of&nbsp;each&nbsp;original<br>
+modality&nbsp;graph&nbsp;at&nbsp;every&nbsp;iteration:<br>
+&nbsp;<br>
+``P_i&nbsp;&lt;-&nbsp;(1&nbsp;-&nbsp;alpha)&nbsp;*&nbsp;Normalize(S_i&nbsp;@&nbsp;P_others&nbsp;@&nbsp;S_i.T)&nbsp;+&nbsp;alpha&nbsp;*&nbsp;P0_i``<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+W_list&nbsp;:&nbsp;iterable&nbsp;of&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Modality-specific&nbsp;dense&nbsp;affinity&nbsp;matrices.&nbsp;Each&nbsp;matrix&nbsp;must&nbsp;have&nbsp;shape<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``(n_cells,&nbsp;n_cells)``.<br>
+k&nbsp;:&nbsp;int,&nbsp;default=20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;neighbors&nbsp;used&nbsp;to&nbsp;construct&nbsp;the&nbsp;sparse&nbsp;diffusion&nbsp;operators.<br>
+t&nbsp;:&nbsp;int,&nbsp;default=20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;SNF&nbsp;cross-diffusion&nbsp;iterations.<br>
+alpha&nbsp;:&nbsp;float,&nbsp;default=0.2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Anchor&nbsp;strength&nbsp;in&nbsp;``[0,&nbsp;1]``.&nbsp;Larger&nbsp;values&nbsp;preserve&nbsp;original&nbsp;modality<br>
+&nbsp;&nbsp;&nbsp;&nbsp;geometry&nbsp;more&nbsp;strongly.<br>
+eps&nbsp;:&nbsp;float,&nbsp;default=1e-12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Numerical&nbsp;constant&nbsp;for&nbsp;row&nbsp;normalization.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Symmetric&nbsp;fused&nbsp;similarity&nbsp;matrix&nbsp;with&nbsp;shape&nbsp;``(n_cells,&nbsp;n_cells)``.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Iterable</strong> = typing.Iterable<br>
+<strong>List</strong> = typing.List<br>
+<strong>Optional</strong> = typing.Optional</td></tr></table>

@@ -1,0 +1,97 @@
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.pipeline</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/e/Research/sxSNF/sxSNF/sxsnf/pipeline.py">/mnt/e/Research/sxSNF/sxSNF/sxsnf/pipeline.py</a></td></tr></table>
+    <p><span class="code">End-to-end&nbsp;sxSNF&nbsp;multimodal&nbsp;integration&nbsp;pipeline.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="torch.html">torch</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-run_chen2019_from_h5ad"><strong>run_chen2019_from_h5ad</strong></a>(rna_path: 'str', atac_path: 'str', config: 'Optional[SxSNFConfig]' = None, label_key: 'str' = 'cell_type', n_top_genes: 'int' = 2000, n_pcs: 'int' = 100, lsi_components: 'int' = 100, lsi_iter: 'int' = 15, save_results: 'bool' = True)</dt><dd><span class="code">Run&nbsp;sxSNF&nbsp;directly&nbsp;from&nbsp;Chen-2019&nbsp;RNA&nbsp;and&nbsp;ATAC&nbsp;``.h5ad``&nbsp;files.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+rna_path&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Path&nbsp;to&nbsp;``Chen-2019-RNA.h5ad``.<br>
+atac_path&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Path&nbsp;to&nbsp;``Chen-2019-ATAC.h5ad``.<br>
+config&nbsp;:&nbsp;SxSNFConfig,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pipeline&nbsp;configuration.&nbsp;If&nbsp;omitted,&nbsp;defaults&nbsp;are&nbsp;used.<br>
+label_key&nbsp;:&nbsp;str,&nbsp;default="cell_type"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cell-type&nbsp;label&nbsp;column.<br>
+n_top_genes&nbsp;:&nbsp;int,&nbsp;default=2000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Highly&nbsp;variable&nbsp;genes&nbsp;for&nbsp;RNA&nbsp;preprocessing.<br>
+n_pcs&nbsp;:&nbsp;int,&nbsp;default=100<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PCA&nbsp;components&nbsp;for&nbsp;RNA.<br>
+lsi_components&nbsp;:&nbsp;int,&nbsp;default=100<br>
+&nbsp;&nbsp;&nbsp;&nbsp;LSI&nbsp;components&nbsp;for&nbsp;ATAC.<br>
+lsi_iter&nbsp;:&nbsp;int,&nbsp;default=15<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;LSI&nbsp;iterations.<br>
+save_results&nbsp;:&nbsp;bool,&nbsp;default=True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;save&nbsp;metrics&nbsp;and&nbsp;embeddings.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Stage-wise&nbsp;ARI/NMI/AMI&nbsp;metrics.</span></dd></dl>
+ <dl><dt><a name="-run_multimodal_flow"><strong>run_multimodal_flow</strong></a>(rna_pca, atac_lsi, labels, config: 'SxSNFConfig', atac_adata=None, atac_label_key: 'str' = 'cell_type', save_results: 'bool' = True) -&gt; 'Dict[str, Dict[str, float]]'</dt><dd><span class="code">Run&nbsp;the&nbsp;complete&nbsp;sxSNF&nbsp;workflow&nbsp;from&nbsp;low-dimensional&nbsp;RNA/ATAC&nbsp;features.<br>
+&nbsp;<br>
+The&nbsp;workflow&nbsp;includes:<br>
+1.&nbsp;RNA&nbsp;and&nbsp;ATAC&nbsp;local-scaling&nbsp;graph&nbsp;construction.<br>
+2.&nbsp;RNA-only&nbsp;and&nbsp;ATAC-only&nbsp;baseline&nbsp;clustering.<br>
+3.&nbsp;Geometry-anchored&nbsp;SNF&nbsp;graph&nbsp;fusion.<br>
+4.&nbsp;SNF-network&nbsp;clustering.<br>
+5.&nbsp;Masked-edge&nbsp;self-supervised&nbsp;graph&nbsp;learning&nbsp;with&nbsp;DeepGCNII.<br>
+6.&nbsp;GNN-embedding&nbsp;clustering.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+rna_pca&nbsp;:&nbsp;array-like,&nbsp;shape&nbsp;(n_cells,&nbsp;n_rna_features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RNA&nbsp;PCA&nbsp;representation.<br>
+atac_lsi&nbsp;:&nbsp;array-like,&nbsp;shape&nbsp;(n_cells,&nbsp;n_atac_features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ATAC&nbsp;LSI&nbsp;representation.<br>
+labels&nbsp;:&nbsp;array-like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ground-truth&nbsp;cell&nbsp;labels.<br>
+config&nbsp;:&nbsp;SxSNFConfig<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pipeline&nbsp;configuration.<br>
+atac_adata&nbsp;:&nbsp;anndata.AnnData,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;ATAC&nbsp;AnnData&nbsp;object.&nbsp;If&nbsp;provided,&nbsp;the&nbsp;ATAC-only&nbsp;baseline<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exactly&nbsp;follows&nbsp;the&nbsp;Scanpy&nbsp;workflow&nbsp;used&nbsp;in&nbsp;the&nbsp;notebook.<br>
+atac_label_key&nbsp;:&nbsp;str,&nbsp;default="cell_type"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Label&nbsp;column&nbsp;for&nbsp;ATAC-only&nbsp;evaluation&nbsp;when&nbsp;``atac_adata``&nbsp;is&nbsp;provided.<br>
+save_results&nbsp;:&nbsp;bool,&nbsp;default=True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;save&nbsp;stage-wise&nbsp;metrics.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Stage-wise&nbsp;ARI/NMI/AMI&nbsp;metrics.</span></dd></dl>
+ <dl><dt><a name="-save_metrics"><strong>save_metrics</strong></a>(metrics: 'Dict[str, Dict[str, float]]', outdir: 'str') -&gt; 'None'</dt><dd><span class="code">Save&nbsp;stage-wise&nbsp;clustering&nbsp;metrics&nbsp;as&nbsp;text&nbsp;and&nbsp;JSON.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+metrics&nbsp;:&nbsp;dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nested&nbsp;mapping&nbsp;from&nbsp;stage&nbsp;name&nbsp;to&nbsp;metric&nbsp;dictionary.<br>
+outdir&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Output&nbsp;directory.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Dict</strong> = typing.Dict<br>
+<strong>Optional</strong> = typing.Optional</td></tr></table>

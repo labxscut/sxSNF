@@ -1,0 +1,101 @@
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.data</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/e/Research/sxSNF/sxSNF/sxsnf/data.py">/mnt/e/Research/sxSNF/sxSNF/sxsnf/data.py</a></td></tr></table>
+    <p><span class="code">Data&nbsp;loading&nbsp;and&nbsp;preprocessing&nbsp;utilities&nbsp;for&nbsp;the&nbsp;Chen-2019&nbsp;RNA/ATAC&nbsp;workflow.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-check_cell_alignment"><strong>check_cell_alignment</strong></a>(rna, atac) -&gt; 'bool'</dt><dd><span class="code">Check&nbsp;that&nbsp;RNA&nbsp;and&nbsp;ATAC&nbsp;objects&nbsp;are&nbsp;in&nbsp;the&nbsp;same&nbsp;cell&nbsp;order.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+rna&nbsp;:&nbsp;anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RNA&nbsp;object.<br>
+atac&nbsp;:&nbsp;anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ATAC&nbsp;object.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``True``&nbsp;if&nbsp;``obs_names``&nbsp;are&nbsp;aligned.</span></dd></dl>
+ <dl><dt><a name="-load_h5ad"><strong>load_h5ad</strong></a>(path: 'str')</dt><dd><span class="code">Load&nbsp;an&nbsp;AnnData&nbsp;object&nbsp;from&nbsp;an&nbsp;``.h5ad``&nbsp;file.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+path&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Path&nbsp;to&nbsp;the&nbsp;input&nbsp;``.h5ad``&nbsp;file.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Loaded&nbsp;AnnData&nbsp;object.</span></dd></dl>
+ <dl><dt><a name="-make_chen2019_representations"><strong>make_chen2019_representations</strong></a>(rna, atac, label_key: 'str' = 'cell_type') -&gt; 'Tuple[np.ndarray, np.ndarray, np.ndarray]'</dt><dd><span class="code">Extract&nbsp;RNA&nbsp;PCA,&nbsp;ATAC&nbsp;LSI&nbsp;and&nbsp;integer&nbsp;labels&nbsp;from&nbsp;processed&nbsp;AnnData&nbsp;objects.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+rna&nbsp;:&nbsp;anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;RNA&nbsp;object&nbsp;with&nbsp;``obsm["X_pca"]``.<br>
+atac&nbsp;:&nbsp;anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;ATAC&nbsp;object&nbsp;with&nbsp;``obsm["X_lsi"]``.<br>
+label_key&nbsp;:&nbsp;str,&nbsp;default="cell_type"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Label&nbsp;column&nbsp;in&nbsp;``rna.obs``.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+tuple&nbsp;of&nbsp;np.ndarray<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``(rna_pca,&nbsp;atac_lsi,&nbsp;labels)``.</span></dd></dl>
+ <dl><dt><a name="-preprocess_atac"><strong>preprocess_atac</strong></a>(atac, n_components: 'int' = 100, n_iter: 'int' = 15)</dt><dd><span class="code">Preprocess&nbsp;ATAC&nbsp;AnnData&nbsp;using&nbsp;scGLUE&nbsp;LSI&nbsp;and&nbsp;Scanpy&nbsp;neighbors.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+atac&nbsp;:&nbsp;anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ATAC&nbsp;AnnData&nbsp;object.<br>
+n_components&nbsp;:&nbsp;int,&nbsp;default=100<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;LSI&nbsp;components.<br>
+n_iter&nbsp;:&nbsp;int,&nbsp;default=15<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;randomized&nbsp;SVD&nbsp;iterations&nbsp;used&nbsp;by&nbsp;scGLUE&nbsp;LSI.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;ATAC&nbsp;AnnData&nbsp;object&nbsp;containing&nbsp;``obsm["X_lsi"]``.</span></dd></dl>
+ <dl><dt><a name="-preprocess_rna"><strong>preprocess_rna</strong></a>(rna, n_top_genes: 'int' = 2000, n_pcs: 'int' = 100, cell_type_key: 'str' = 'cell_type')</dt><dd><span class="code">Preprocess&nbsp;RNA&nbsp;AnnData&nbsp;using&nbsp;the&nbsp;notebook&nbsp;workflow.<br>
+&nbsp;<br>
+Steps&nbsp;include&nbsp;count-layer&nbsp;preservation,&nbsp;highly&nbsp;variable&nbsp;gene&nbsp;selection,<br>
+library-size&nbsp;normalization,&nbsp;log&nbsp;transformation,&nbsp;scaling,&nbsp;PCA,&nbsp;neighbors<br>
+and&nbsp;UMAP.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+rna&nbsp;:&nbsp;anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RNA&nbsp;AnnData&nbsp;object.<br>
+n_top_genes&nbsp;:&nbsp;int,&nbsp;default=2000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;highly&nbsp;variable&nbsp;genes.<br>
+n_pcs&nbsp;:&nbsp;int,&nbsp;default=100<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;PCA&nbsp;components.<br>
+cell_type_key&nbsp;:&nbsp;str,&nbsp;default="cell_type"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cell-type&nbsp;label&nbsp;used&nbsp;for&nbsp;optional&nbsp;UMAP&nbsp;plotting.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+anndata.AnnData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;RNA&nbsp;AnnData&nbsp;object.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Tuple</strong> = typing.Tuple</td></tr></table>

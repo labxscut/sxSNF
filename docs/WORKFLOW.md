@@ -1,33 +1,39 @@
-# sxSNF Overall Workflow
+# sxSNF Workflow
 
-This page is the high-level workflow entry for the repository and pydoc documentation.
-
-## Pipeline Diagram
-
-```mermaid
-flowchart TD
-    start[Start] --> parseArgs[ParseCLIArgs]
-    parseArgs --> dataChoice{DataSource}
-    dataChoice -->|Simulated| genData[GenerateSimulatedData]
-    dataChoice -->|Real| loadData[LoadRealMultiOmicsData]
-    genData --> preprocess[NormalizeEachModality]
-    loadData --> preprocess
-    preprocess --> buildGraphs[BuildSimilarityGraphsPerModality]
-    buildGraphs --> snfFusion[RunSNFFusion]
-    snfFusion --> fusedGraph[FusedSimilarityNetwork]
-    fusedGraph --> initGNN[InitializeGNNModel]
-    initGNN --> trainGNN[TrainGNNEncoder]
-    trainGNN --> embeddings[GetCellEmbeddings]
-    embeddings --> cluster[RunKMeansClustering]
-    embeddings --> vizEmb[VisualizeEmbeddings]
-    cluster --> metrics[ComputeNMIandARI]
-    cluster --> vizCluster[VisualizeClusterResults]
-    metrics --> saveOutputs[SaveEmbeddingsLabelsMetrics]
-    vizEmb --> saveOutputs
-    vizCluster --> saveOutputs
-    saveOutputs --> endNode[End]
+```text
+Chen-2019 RNA h5ad           Chen-2019 ATAC h5ad
+        |                            |
+        v                            v
+RNA preprocessing              ATAC preprocessing
+HVG -> normalize -> log1p      LSI with scGLUE
+scale -> PCA                   neighbors / UMAP
+        |                            |
+        v                            v
+RNA PCA matrix                 ATAC LSI matrix
+        |                            |
+        +------------+---------------+
+                     |
+                     v
+       Local-scaling kNN affinity graphs
+                     |
+                     v
+          Geometry-anchored SNF fusion
+                     |
+                     v
+        Fused cell-cell similarity graph
+                     |
+                     v
+  Masked-edge self-supervised DeepGCNII encoder
+                     |
+                     v
+      Cell embeddings + Leiden/KMeans evaluation
 ```
 
-## Search Keywords
+Core command:
 
-sxSNF, SNF, GNN, workflow, pipeline, multi-omics, similarity graph, fusion, embeddings, clustering, NMI, ARI, pydoc.
+```bash
+python main.py \
+  --rna datasets/Chen-2019-RNA.h5ad \
+  --atac datasets/Chen-2019-ATAC.h5ad \
+  --outdir results/chen2019
+```
