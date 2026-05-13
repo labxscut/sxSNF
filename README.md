@@ -103,9 +103,10 @@ training_process/loss_history.npy
 
 ## Generate PyDoc
 
-After modifying code or docstrings:
+After modifying code or docstrings, install the optional doc dependency (for Markdown→HTML pages), then regenerate:
 
 ```bash
+pip install -e ".[docs]"
 python scripts/generate_pydoc.py
 ```
 

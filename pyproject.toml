@@ -26,6 +26,11 @@ dependencies = [
   "umap-learn>=0.5"
 ]
 
+[project.optional-dependencies]
+docs = [
+  "markdown>=3.5",
+]
+
 [project.scripts]
 sxsnf-chen2019 = "scripts.run_chen2019:main"
 

@@ -37,6 +37,8 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+.muted { color: var(--muted); }
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -91,4 +93,30 @@ p, li, dt, dd {
 img {
     max-width: 100%;
     height: auto;
+}
+
+.doc-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin: 1rem 0;
+    background: var(--panel);
+}
+
+.doc-card h2 {
+    margin-top: 0;
+    font-size: 1.15rem;
+}
+
+.md-body pre {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+}
+
+.md-body code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
 }

@@ -6,7 +6,7 @@ This file is generated from module docstrings and public functions/classes.
 
 Clustering and evaluation utilities for sxSNF.
 
-- HTML: [`docs/pydoc/sxsnf.clustering.html`](pydoc/sxsnf.clustering.html)
+- **HTML:** [`pydoc/sxsnf.clustering.html`](pydoc/sxsnf.clustering.html)
 
 | Name | Type | Signature |
 |---|---|---|
@@ -21,7 +21,7 @@ Clustering and evaluation utilities for sxSNF.
 
 Configuration objects for sxSNF workflows.
 
-- HTML: [`docs/pydoc/sxsnf.config.html`](pydoc/sxsnf.config.html)
+- **HTML:** [`pydoc/sxsnf.config.html`](pydoc/sxsnf.config.html)
 
 | Name | Type | Signature |
 |---|---|---|
@@ -31,7 +31,7 @@ Configuration objects for sxSNF workflows.
 
 Data loading and preprocessing utilities for the Chen-2019 RNA/ATAC workflow.
 
-- HTML: [`docs/pydoc/sxsnf.data.html`](pydoc/sxsnf.data.html)
+- **HTML:** [`pydoc/sxsnf.data.html`](pydoc/sxsnf.data.html)
 
 | Name | Type | Signature |
 |---|---|---|
@@ -45,7 +45,7 @@ Data loading and preprocessing utilities for the Chen-2019 RNA/ATAC workflow.
 
 Diagnostic utilities for checking modality-specific neighborhood consistency.
 
-- HTML: [`docs/pydoc/sxsnf.diagnostics.html`](pydoc/sxsnf.diagnostics.html)
+- **HTML:** [`pydoc/sxsnf.diagnostics.html`](pydoc/sxsnf.diagnostics.html)
 
 | Name | Type | Signature |
 |---|---|---|
@@ -57,7 +57,7 @@ Diagnostic utilities for checking modality-specific neighborhood consistency.
 
 Graph construction, geometry-anchored SNF, and sparse PyTorch graph helpers.
 
-- HTML: [`docs/pydoc/sxsnf.graph.html`](pydoc/sxsnf.graph.html)
+- **HTML:** [`pydoc/sxsnf.graph.html`](pydoc/sxsnf.graph.html)
 
 | Name | Type | Signature |
 |---|---|---|
@@ -73,7 +73,7 @@ Graph construction, geometry-anchored SNF, and sparse PyTorch graph helpers.
 
 PyTorch neural network modules used by sxSNF.
 
-- HTML: [`docs/pydoc/sxsnf.models.html`](pydoc/sxsnf.models.html)
+- **HTML:** [`pydoc/sxsnf.models.html`](pydoc/sxsnf.models.html)
 
 | Name | Type | Signature |
 |---|---|---|
@@ -86,7 +86,7 @@ PyTorch neural network modules used by sxSNF.
 
 End-to-end sxSNF multimodal integration pipeline.
 
-- HTML: [`docs/pydoc/sxsnf.pipeline.html`](pydoc/sxsnf.pipeline.html)
+- **HTML:** [`pydoc/sxsnf.pipeline.html`](pydoc/sxsnf.pipeline.html)
 
 | Name | Type | Signature |
 |---|---|---|
@@ -98,7 +98,7 @@ End-to-end sxSNF multimodal integration pipeline.
 
 Self-supervised masked-edge training for sxSNF graph encoders.
 
-- HTML: [`docs/pydoc/sxsnf.training.html`](pydoc/sxsnf.training.html)
+- **HTML:** [`pydoc/sxsnf.training.html`](pydoc/sxsnf.training.html)
 
 | Name | Type | Signature |
 |---|---|---|
@@ -111,7 +111,7 @@ Self-supervised masked-edge training for sxSNF graph encoders.
 
 General utility functions shared across sxSNF modules.
 
-- HTML: [`docs/pydoc/sxsnf.utils.html`](pydoc/sxsnf.utils.html)
+- **HTML:** [`pydoc/sxsnf.utils.html`](pydoc/sxsnf.utils.html)
 
 | Name | Type | Signature |
 |---|---|---|

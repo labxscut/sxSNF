@@ -18,6 +18,16 @@ DOCS_DIR = PROJECT_ROOT / "docs"
 PYDOC_DIR = DOCS_DIR / "pydoc"
 PACKAGE = "sxsnf"
 
+# Section title -> submodule names (without the sxsnf. prefix) for docs/index.html
+API_GROUPS: list[tuple[str, list[str]]] = [
+    ("Data & configuration", ["config", "data"]),
+    ("Graphs & SNF", ["graph"]),
+    ("Models & training", ["models", "training"]),
+    ("Pipeline", ["pipeline"]),
+    ("Clustering & diagnostics", ["clustering", "diagnostics"]),
+    ("Utilities", ["utils"]),
+]
+
 
 def module_names():
     """Return sxSNF module names that should be documented."""
@@ -28,6 +38,21 @@ def module_names():
         if not module_info.name.startswith("_"):
             names.append(f"{PACKAGE}.{module_info.name}")
     return sorted(names)
+
+
+def _grouped_modules(modules: list[str]) -> list[tuple[str, list[str]]]:
+    """Order modules into API_GROUPS; append 'Other' for anything not listed."""
+    ms = set(modules)
+    sections: list[tuple[str, list[str]]] = []
+    for title, suffixes in API_GROUPS:
+        items = [f"{PACKAGE}.{s}" for s in suffixes if f"{PACKAGE}.{s}" in ms]
+        if items:
+            sections.append((title, items))
+    covered = {m for _, lst in sections for m in lst}
+    leftover = sorted(m for m in modules if m not in covered)
+    if leftover:
+        sections.append(("Other", leftover))
+    return sections
 
 
 def generate_html(modules):
@@ -57,7 +82,7 @@ def generate_api_reference(modules):
         doc = inspect.getdoc(module) or "No module docstring provided."
         lines.append(doc.splitlines()[0])
         lines.append("")
-        lines.append(f"- HTML: [`docs/pydoc/{module_name}.html`](pydoc/{module_name}.html)")
+        lines.append(f"- **HTML:** [`pydoc/{module_name}.html`](pydoc/{module_name}.html)")
         lines.append("")
 
         public = []
@@ -125,44 +150,102 @@ python main.py \\
     (DOCS_DIR / "WORKFLOW.md").write_text(text, encoding="utf-8")
 
 
-def generate_index(modules):
-    """Generate docs/index.html."""
-    links = []
-    for module in modules:
-        links.append(
-            f'<li><a href="pydoc/{module}.html"><code>{module}</code></a></li>'
+def _markdown_to_html_pages():
+    """Emit browsable HTML from Markdown (requires optional ``markdown``)."""
+    try:
+        import markdown
+    except ImportError:
+        print(
+            "[warn] package 'markdown' not installed; "
+            "install with `pip install -e \".[docs]\"` to build API_REFERENCE.html "
+            "and WORKFLOW.html"
         )
+        return
 
-    index = f"""<!DOCTYPE html>
-<html>
+    md = markdown.Markdown(extensions=["tables", "fenced_code"])
+    for stem, page_title in (
+        ("API_REFERENCE", "API reference"),
+        ("WORKFLOW", "Workflow"),
+    ):
+        src = DOCS_DIR / f"{stem}.md"
+        if not src.exists():
+            continue
+        body = md.convert(src.read_text(encoding="utf-8"))
+        md.reset()
+        out = DOCS_DIR / f"{stem}.html"
+        out.write_text(
+            _wrap_doc_page(f"sxSNF — {page_title}", body),
+            encoding="utf-8",
+        )
+        print(f"[html] {out.relative_to(PROJECT_ROOT)}")
+
+
+def _wrap_doc_page(title: str, inner_html: str) -> str:
+    esc = html_lib.escape(title)
+    return f"""<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>sxSNF API Documentation</title>
-  <style>
-    body {{ font-family: Arial, sans-serif; max-width: 960px; margin: 40px auto; line-height: 1.6; }}
-    h1 {{ border-bottom: 2px solid #333; padding-bottom: 10px; }}
-    code {{ background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }}
-    .card {{ border: 1px solid #ddd; border-radius: 10px; padding: 16px; margin: 14px 0; }}
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc}</title>
+  <link rel="stylesheet" href="assets/docs.css">
 </head>
 <body>
-  <h1>sxSNF API Documentation</h1>
-  <p>This documentation was generated with Python <code>pydoc</code>.</p>
+  <nav class="doc-nav">
+    <a href="index.html">Home</a>
+    <a href="API_REFERENCE.html">API reference</a>
+    <a href="WORKFLOW.html">Workflow</a>
+    <a href="https://github.com/labxscut/sxSNF">Repository</a>
+  </nav>
+  <article class="md-body">
+{inner_html}
+  </article>
+</body>
+</html>
+"""
 
-  <div class="card">
-    <h2>Project Documents</h2>
+
+def generate_index(modules):
+    """Generate docs/index.html with grouped API navigation."""
+    sections_html = []
+    for title, names in _grouped_modules(modules):
+        items = "".join(
+            f'<li><a href="pydoc/{m}.html"><code>{html_lib.escape(m)}</code></a></li>'
+            for m in names
+        )
+        sections_html.append(
+            f'  <div class="doc-card"><h2>{html_lib.escape(title)}</h2><ul>{items}</ul></div>'
+        )
+
+    blocks = "\n".join(sections_html)
+    index = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sxSNF API Documentation</title>
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <nav class="doc-nav">
+    <a href="index.html"><strong>sxSNF docs</strong></a>
+    <a href="API_REFERENCE.html">API reference</a>
+    <a href="WORKFLOW.html">Workflow</a>
+    <a href="https://github.com/labxscut/sxSNF">Repository</a>
+  </nav>
+
+  <h1>sxSNF API documentation</h1>
+  <p class="muted">Generated with Python <code>pydoc</code> for the <code>sxsnf</code> package.</p>
+
+  <div class="doc-card">
+    <h2>Guides</h2>
     <ul>
-      <li><a href="API_REFERENCE.md">API_REFERENCE.md</a></li>
-      <li><a href="WORKFLOW.md">WORKFLOW.md</a></li>
+      <li><a href="API_REFERENCE.html">API reference</a> (HTML) · <a href="API_REFERENCE.md">Markdown source</a></li>
+      <li><a href="WORKFLOW.html">Workflow overview</a> (HTML) · <a href="WORKFLOW.md">Markdown source</a></li>
     </ul>
   </div>
 
-  <div class="card">
-    <h2>PyDoc Modules</h2>
-    <ul>
-      {''.join(links)}
-    </ul>
-  </div>
+{blocks}
 </body>
 </html>
 """
@@ -177,6 +260,7 @@ def main():
     generate_html(modules)
     generate_api_reference(modules)
     generate_workflow()
+    _markdown_to_html_pages()
     generate_index(modules)
     print(f"[done] Documentation generated under {DOCS_DIR}")
 
