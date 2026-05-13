@@ -1,27 +1,23 @@
 
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
-<tr bgcolor="#7799ee">
-<td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="sxsnf.html"><font color="#ffffff">sxsnf</font></a>.graph</strong></big></big></font></td
-><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/mnt/d/work/labxscut/sxSNF/sxsnf/graph.py">/mnt/d/work/labxscut/sxSNF/sxsnf/graph.py</a></font></td></tr></table>
-    <p><tt>Graph&nbsp;construction,&nbsp;geometry-anchored&nbsp;SNF,&nbsp;and&nbsp;sparse&nbsp;PyTorch&nbsp;graph&nbsp;helpers.</tt></p>
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.graph</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/sxSNF/sxSNF/sxsnf/graph.py">/home/runner/work/sxSNF/sxSNF/sxsnf/graph.py</a></td></tr></table>
+    <p><span class="code">Graph&nbsp;construction,&nbsp;geometry-anchored&nbsp;SNF,&nbsp;and&nbsp;sparse&nbsp;PyTorch&nbsp;graph&nbsp;helpers.</span></p>
 <p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#aa55cc">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
     
-<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#eeaa77">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
-<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-dense_to_torch_sparse"><strong>dense_to_torch_sparse</strong></a>(A: 'np.ndarray', device)</dt><dd><tt>Convert&nbsp;a&nbsp;dense&nbsp;NumPy&nbsp;matrix&nbsp;to&nbsp;a&nbsp;PyTorch&nbsp;sparse&nbsp;COO&nbsp;tensor.<br>
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-dense_to_torch_sparse"><strong>dense_to_torch_sparse</strong></a>(A: 'np.ndarray', device)</dt><dd><span class="code">Convert&nbsp;a&nbsp;dense&nbsp;NumPy&nbsp;matrix&nbsp;to&nbsp;a&nbsp;PyTorch&nbsp;sparse&nbsp;COO&nbsp;tensor.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -33,8 +29,8 @@ device&nbsp;:&nbsp;torch.device&nbsp;or&nbsp;str<br>
 Returns<br>
 -------<br>
 torch.Tensor<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Sparse&nbsp;COO&nbsp;tensor.</tt></dd></dl>
- <dl><dt><a name="-knn_affinity"><strong>knn_affinity</strong></a>(X, k: 'int' = 20, metric: 'str' = 'cosine', mode: 'str' = 'cos', sigma: 'Optional[float]' = None, sym: 'bool' = True) -&gt; 'np.ndarray'</dt><dd><tt>Construct&nbsp;a&nbsp;dense&nbsp;k-nearest-neighbor&nbsp;affinity&nbsp;matrix.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sparse&nbsp;COO&nbsp;tensor.</span></dd></dl>
+ <dl><dt><a name="-knn_affinity"><strong>knn_affinity</strong></a>(X, k: 'int' = 20, metric: 'str' = 'cosine', mode: 'str' = 'cos', sigma: 'Optional[float]' = None, sym: 'bool' = True) -&gt; 'np.ndarray'</dt><dd><span class="code">Construct&nbsp;a&nbsp;dense&nbsp;k-nearest-neighbor&nbsp;affinity&nbsp;matrix.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -55,8 +51,8 @@ sym&nbsp;:&nbsp;bool,&nbsp;default=True<br>
 Returns<br>
 -------<br>
 np.ndarray<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Dense&nbsp;affinity&nbsp;matrix&nbsp;of&nbsp;shape&nbsp;``(n_cells,&nbsp;n_cells)``.</tt></dd></dl>
- <dl><dt><a name="-knn_affinity_local_scaling"><strong>knn_affinity_local_scaling</strong></a>(X, k: 'int' = 20, metric: 'str' = 'cosine', sym: 'bool' = True, eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><tt>Construct&nbsp;a&nbsp;self-tuning&nbsp;kNN&nbsp;affinity&nbsp;matrix&nbsp;with&nbsp;local&nbsp;scaling.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dense&nbsp;affinity&nbsp;matrix&nbsp;of&nbsp;shape&nbsp;``(n_cells,&nbsp;n_cells)``.</span></dd></dl>
+ <dl><dt><a name="-knn_affinity_local_scaling"><strong>knn_affinity_local_scaling</strong></a>(X, k: 'int' = 20, metric: 'str' = 'cosine', sym: 'bool' = True, eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><span class="code">Construct&nbsp;a&nbsp;self-tuning&nbsp;kNN&nbsp;affinity&nbsp;matrix&nbsp;with&nbsp;local&nbsp;scaling.<br>
 &nbsp;<br>
 The&nbsp;affinity&nbsp;uses<br>
 &nbsp;<br>
@@ -81,8 +77,8 @@ eps&nbsp;:&nbsp;float,&nbsp;default=1e-12<br>
 Returns<br>
 -------<br>
 np.ndarray<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Dense&nbsp;local-scaling&nbsp;affinity&nbsp;matrix.</tt></dd></dl>
- <dl><dt><a name="-knn_sparsify_dense"><strong>knn_sparsify_dense</strong></a>(W: 'np.ndarray', k: 'int' = 20) -&gt; 'np.ndarray'</dt><dd><tt>Keep&nbsp;the&nbsp;top-k&nbsp;neighbors&nbsp;per&nbsp;row&nbsp;in&nbsp;a&nbsp;dense&nbsp;affinity&nbsp;matrix.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dense&nbsp;local-scaling&nbsp;affinity&nbsp;matrix.</span></dd></dl>
+ <dl><dt><a name="-knn_sparsify_dense"><strong>knn_sparsify_dense</strong></a>(W: 'np.ndarray', k: 'int' = 20) -&gt; 'np.ndarray'</dt><dd><span class="code">Keep&nbsp;the&nbsp;top-k&nbsp;neighbors&nbsp;per&nbsp;row&nbsp;in&nbsp;a&nbsp;dense&nbsp;affinity&nbsp;matrix.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -94,8 +90,8 @@ k&nbsp;:&nbsp;int,&nbsp;default=20<br>
 Returns<br>
 -------<br>
 np.ndarray<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Symmetric&nbsp;sparsified&nbsp;dense&nbsp;matrix.</tt></dd></dl>
- <dl><dt><a name="-normalize_adj_torch_sparse"><strong>normalize_adj_torch_sparse</strong></a>(adj)</dt><dd><tt>Symmetrically&nbsp;normalize&nbsp;a&nbsp;sparse&nbsp;adjacency&nbsp;matrix&nbsp;with&nbsp;self-loops.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Symmetric&nbsp;sparsified&nbsp;dense&nbsp;matrix.</span></dd></dl>
+ <dl><dt><a name="-normalize_adj_torch_sparse"><strong>normalize_adj_torch_sparse</strong></a>(adj)</dt><dd><span class="code">Symmetrically&nbsp;normalize&nbsp;a&nbsp;sparse&nbsp;adjacency&nbsp;matrix&nbsp;with&nbsp;self-loops.<br>
 &nbsp;<br>
 Computes&nbsp;``D^{-1/2}&nbsp;(A&nbsp;+&nbsp;I)&nbsp;D^{-1/2}``.<br>
 &nbsp;<br>
@@ -107,8 +103,8 @@ adj&nbsp;:&nbsp;torch.Tensor<br>
 Returns<br>
 -------<br>
 torch.Tensor<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Normalized&nbsp;sparse&nbsp;COO&nbsp;adjacency&nbsp;tensor.</tt></dd></dl>
- <dl><dt><a name="-row_normalize"><strong>row_normalize</strong></a>(W: 'np.ndarray', eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><tt>Row-normalize&nbsp;a&nbsp;nonnegative&nbsp;matrix.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Normalized&nbsp;sparse&nbsp;COO&nbsp;adjacency&nbsp;tensor.</span></dd></dl>
+ <dl><dt><a name="-row_normalize"><strong>row_normalize</strong></a>(W: 'np.ndarray', eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><span class="code">Row-normalize&nbsp;a&nbsp;nonnegative&nbsp;matrix.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -120,8 +116,8 @@ eps&nbsp;:&nbsp;float,&nbsp;default=1e-12<br>
 Returns<br>
 -------<br>
 np.ndarray<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Row-normalized&nbsp;matrix&nbsp;with&nbsp;dtype&nbsp;float32.</tt></dd></dl>
- <dl><dt><a name="-snf_fusion_dense_anchored"><strong>snf_fusion_dense_anchored</strong></a>(W_list: 'Iterable[np.ndarray]', k: 'int' = 20, t: 'int' = 20, alpha: 'float' = 0.2, eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><tt>Fuse&nbsp;multiple&nbsp;modality-specific&nbsp;graphs&nbsp;using&nbsp;geometry-anchored&nbsp;SNF.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Row-normalized&nbsp;matrix&nbsp;with&nbsp;dtype&nbsp;float32.</span></dd></dl>
+ <dl><dt><a name="-snf_fusion_dense_anchored"><strong>snf_fusion_dense_anchored</strong></a>(W_list: 'Iterable[np.ndarray]', k: 'int' = 20, t: 'int' = 20, alpha: 'float' = 0.2, eps: 'float' = 1e-12) -&gt; 'np.ndarray'</dt><dd><span class="code">Fuse&nbsp;multiple&nbsp;modality-specific&nbsp;graphs&nbsp;using&nbsp;geometry-anchored&nbsp;SNF.<br>
 &nbsp;<br>
 Compared&nbsp;with&nbsp;standard&nbsp;SNF,&nbsp;this&nbsp;variant&nbsp;preserves&nbsp;part&nbsp;of&nbsp;each&nbsp;original<br>
 modality&nbsp;graph&nbsp;at&nbsp;every&nbsp;iteration:<br>
@@ -146,15 +142,13 @@ eps&nbsp;:&nbsp;float,&nbsp;default=1e-12<br>
 Returns<br>
 -------<br>
 np.ndarray<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Symmetric&nbsp;fused&nbsp;similarity&nbsp;matrix&nbsp;with&nbsp;shape&nbsp;``(n_cells,&nbsp;n_cells)``.</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;Symmetric&nbsp;fused&nbsp;similarity&nbsp;matrix&nbsp;with&nbsp;shape&nbsp;``(n_cells,&nbsp;n_cells)``.</span></dd></dl>
 </td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#55aa55">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
     
-<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Iterable</strong> = typing.Iterable<br>
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Iterable</strong> = typing.Iterable<br>
 <strong>List</strong> = typing.List<br>
-<strong>Optional</strong> = typing.Optional<br>
-<strong>annotations</strong> = _Feature((3, 7, 0, 'beta', 1), (3, 11, 0, 'alpha', 0), 16777216)</td></tr></table>
+<strong>Optional</strong> = typing.Optional</td></tr></table>

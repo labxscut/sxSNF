@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sxSNF — Workflow</title>
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <nav class="doc-nav">
+    <a href="index.html">Home</a>
+    <a href="API_REFERENCE.html">API reference</a>
+    <a href="WORKFLOW.html">Workflow</a>
+    <a href="https://github.com/labxscut/sxSNF">Repository</a>
+  </nav>
+  <article class="md-body">
+<h1>sxSNF Workflow</h1>
+<pre><code class="language-text">Chen-2019 RNA h5ad           Chen-2019 ATAC h5ad
+        |                            |
+        v                            v
+RNA preprocessing              ATAC preprocessing
+HVG -&gt; normalize -&gt; log1p      LSI with scGLUE
+scale -&gt; PCA                   neighbors / UMAP
+        |                            |
+        v                            v
+RNA PCA matrix                 ATAC LSI matrix
+        |                            |
+        +------------+---------------+
+                     |
+                     v
+       Local-scaling kNN affinity graphs
+                     |
+                     v
+          Geometry-anchored SNF fusion
+                     |
+                     v
+        Fused cell-cell similarity graph
+                     |
+                     v
+  Masked-edge self-supervised DeepGCNII encoder
+                     |
+                     v
+      Cell embeddings + Leiden/KMeans evaluation
+</code></pre>
+<p>Core command:</p>
+<pre><code class="language-bash">python main.py \
+  --rna datasets/Chen-2019-RNA.h5ad \
+  --atac datasets/Chen-2019-ATAC.h5ad \
+  --outdir results/chen2019
+</code></pre>
+  </article>
+</body>
+</html>

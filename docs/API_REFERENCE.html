@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sxSNF — API reference</title>
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <nav class="doc-nav">
+    <a href="index.html">Home</a>
+    <a href="API_REFERENCE.html">API reference</a>
+    <a href="WORKFLOW.html">Workflow</a>
+    <a href="https://github.com/labxscut/sxSNF">Repository</a>
+  </nav>
+  <article class="md-body">
+<h1>API Reference</h1>
+<p>This file is generated from module docstrings and public functions/classes.</p>
+<h2><code>sxsnf.clustering</code></h2>
+<p>Clustering and evaluation utilities for sxSNF.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.clustering.html"><code>pydoc/sxsnf.clustering.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>atac_only_eval_exact_scanpy</code></td>
+<td>function</td>
+<td><code>(atac_adata, label_key: &amp;#x27;str&amp;#x27; = &amp;#x27;cell_type&amp;#x27;, n_neighbors: &amp;#x27;int&amp;#x27; = 15, resolution: &amp;#x27;float&amp;#x27; = 1.0) -&amp;gt; &amp;#x27;Tuple[np.ndarray, Dict[str, float]]&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>atac_only_eval_from_array_scanpy</code></td>
+<td>function</td>
+<td><code>(atac_lsi: &amp;#x27;np.ndarray&amp;#x27;, labels, n_neighbors: &amp;#x27;int&amp;#x27; = 15, resolution: &amp;#x27;float&amp;#x27; = 1.0, seed: &amp;#x27;int&amp;#x27; = 42) -&amp;gt; &amp;#x27;Tuple[np.ndarray, Dict[str, float]]&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>clustering_metrics</code></td>
+<td>function</td>
+<td><code>(true_labels, pred_labels) -&amp;gt; &amp;#x27;Dict[str, float]&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>labels_to_int</code></td>
+<td>function</td>
+<td><code>(labels) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>leiden_cluster_from_affinity</code></td>
+<td>function</td>
+<td><code>(W: &amp;#x27;np.ndarray&amp;#x27;, resolution: &amp;#x27;float&amp;#x27; = 1.0, seed: &amp;#x27;int&amp;#x27; = 42, fallback_n_clusters: &amp;#x27;Optional[int]&amp;#x27; = None) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>leiden_cluster_from_embedding</code></td>
+<td>function</td>
+<td><code>(Z: &amp;#x27;np.ndarray&amp;#x27;, n_neighbors: &amp;#x27;int&amp;#x27; = 15, resolution: &amp;#x27;float&amp;#x27; = 1.0, seed: &amp;#x27;int&amp;#x27; = 42, fallback_n_clusters: &amp;#x27;int&amp;#x27; = 10) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+</tbody>
+</table>
+<h2><code>sxsnf.config</code></h2>
+<p>Configuration objects for sxSNF workflows.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.config.html"><code>pydoc/sxsnf.config.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SxSNFConfig</code></td>
+<td>class</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2><code>sxsnf.data</code></h2>
+<p>Data loading and preprocessing utilities for the Chen-2019 RNA/ATAC workflow.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.data.html"><code>pydoc/sxsnf.data.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>check_cell_alignment</code></td>
+<td>function</td>
+<td><code>(rna, atac) -&amp;gt; &amp;#x27;bool&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>load_h5ad</code></td>
+<td>function</td>
+<td><code>(path: &amp;#x27;str&amp;#x27;)</code></td>
+</tr>
+<tr>
+<td><code>make_chen2019_representations</code></td>
+<td>function</td>
+<td><code>(rna, atac, label_key: &amp;#x27;str&amp;#x27; = &amp;#x27;cell_type&amp;#x27;) -&amp;gt; &amp;#x27;Tuple[np.ndarray, np.ndarray, np.ndarray]&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>preprocess_atac</code></td>
+<td>function</td>
+<td><code>(atac, n_components: &amp;#x27;int&amp;#x27; = 100, n_iter: &amp;#x27;int&amp;#x27; = 15)</code></td>
+</tr>
+<tr>
+<td><code>preprocess_rna</code></td>
+<td>function</td>
+<td><code>(rna, n_top_genes: &amp;#x27;int&amp;#x27; = 2000, n_pcs: &amp;#x27;int&amp;#x27; = 100, cell_type_key: &amp;#x27;str&amp;#x27; = &amp;#x27;cell_type&amp;#x27;)</code></td>
+</tr>
+</tbody>
+</table>
+<h2><code>sxsnf.diagnostics</code></h2>
+<p>Diagnostic utilities for checking modality-specific neighborhood consistency.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.diagnostics.html"><code>pydoc/sxsnf.diagnostics.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>diagnose_knn_overlap</code></td>
+<td>function</td>
+<td><code>(rna_pca: &amp;#x27;np.ndarray&amp;#x27;, atac_lsi: &amp;#x27;np.ndarray&amp;#x27;, k: &amp;#x27;int&amp;#x27; = 20, metric: &amp;#x27;str&amp;#x27; = &amp;#x27;cosine&amp;#x27;, normalize: &amp;#x27;bool&amp;#x27; = True, verbose: &amp;#x27;bool&amp;#x27; = True)</code></td>
+</tr>
+<tr>
+<td><code>knn_indices</code></td>
+<td>function</td>
+<td><code>(X: &amp;#x27;np.ndarray&amp;#x27;, k: &amp;#x27;int&amp;#x27; = 20, metric: &amp;#x27;str&amp;#x27; = &amp;#x27;cosine&amp;#x27;) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>knn_jaccard_overlap</code></td>
+<td>function</td>
+<td><code>(idx_a: &amp;#x27;np.ndarray&amp;#x27;, idx_b: &amp;#x27;np.ndarray&amp;#x27;, k: &amp;#x27;Optional[int]&amp;#x27; = None) -&amp;gt; &amp;#x27;Dict[str, object]&amp;#x27;</code></td>
+</tr>
+</tbody>
+</table>
+<h2><code>sxsnf.graph</code></h2>
+<p>Graph construction, geometry-anchored SNF, and sparse PyTorch graph helpers.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.graph.html"><code>pydoc/sxsnf.graph.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dense_to_torch_sparse</code></td>
+<td>function</td>
+<td><code>(A: &amp;#x27;np.ndarray&amp;#x27;, device)</code></td>
+</tr>
+<tr>
+<td><code>knn_affinity</code></td>
+<td>function</td>
+<td><code>(X, k: &amp;#x27;int&amp;#x27; = 20, metric: &amp;#x27;str&amp;#x27; = &amp;#x27;cosine&amp;#x27;, mode: &amp;#x27;str&amp;#x27; = &amp;#x27;cos&amp;#x27;, sigma: &amp;#x27;Optional[float]&amp;#x27; = None, sym: &amp;#x27;bool&amp;#x27; = True) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>knn_affinity_local_scaling</code></td>
+<td>function</td>
+<td><code>(X, k: &amp;#x27;int&amp;#x27; = 20, metric: &amp;#x27;str&amp;#x27; = &amp;#x27;cosine&amp;#x27;, sym: &amp;#x27;bool&amp;#x27; = True, eps: &amp;#x27;float&amp;#x27; = 1e-12) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>knn_sparsify_dense</code></td>
+<td>function</td>
+<td><code>(W: &amp;#x27;np.ndarray&amp;#x27;, k: &amp;#x27;int&amp;#x27; = 20) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>normalize_adj_torch_sparse</code></td>
+<td>function</td>
+<td><code>(adj)</code></td>
+</tr>
+<tr>
+<td><code>row_normalize</code></td>
+<td>function</td>
+<td><code>(W: &amp;#x27;np.ndarray&amp;#x27;, eps: &amp;#x27;float&amp;#x27; = 1e-12) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>snf_fusion_dense_anchored</code></td>
+<td>function</td>
+<td><code>(W_list: &amp;#x27;Iterable[np.ndarray]&amp;#x27;, k: &amp;#x27;int&amp;#x27; = 20, t: &amp;#x27;int&amp;#x27; = 20, alpha: &amp;#x27;float&amp;#x27; = 0.2, eps: &amp;#x27;float&amp;#x27; = 1e-12) -&amp;gt; &amp;#x27;np.ndarray&amp;#x27;</code></td>
+</tr>
+</tbody>
+</table>
+<h2><code>sxsnf.models</code></h2>
+<p>PyTorch neural network modules used by sxSNF.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.models.html"><code>pydoc/sxsnf.models.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DeepGCNIIEncoder</code></td>
+<td>class</td>
+<td></td>
+</tr>
+<tr>
+<td><code>GCNIIBlock</code></td>
+<td>class</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MLP</code></td>
+<td>class</td>
+<td></td>
+</tr>
+<tr>
+<td><code>edge_logits</code></td>
+<td>function</td>
+<td><code>(z, edges_uv)</code></td>
+</tr>
+</tbody>
+</table>
+<h2><code>sxsnf.pipeline</code></h2>
+<p>End-to-end sxSNF multimodal integration pipeline.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.pipeline.html"><code>pydoc/sxsnf.pipeline.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>run_chen2019_from_h5ad</code></td>
+<td>function</td>
+<td><code>(rna_path: &amp;#x27;str&amp;#x27;, atac_path: &amp;#x27;str&amp;#x27;, config: &amp;#x27;Optional[SxSNFConfig]&amp;#x27; = None, label_key: &amp;#x27;str&amp;#x27; = &amp;#x27;cell_type&amp;#x27;, n_top_genes: &amp;#x27;int&amp;#x27; = 2000, n_pcs: &amp;#x27;int&amp;#x27; = 100, lsi_components: &amp;#x27;int&amp;#x27; = 100, lsi_iter: &amp;#x27;int&amp;#x27; = 15, save_results: &amp;#x27;bool&amp;#x27; = True)</code></td>
+</tr>
+<tr>
+<td><code>run_multimodal_flow</code></td>
+<td>function</td>
+<td><code>(rna_pca, atac_lsi, labels, config: &amp;#x27;SxSNFConfig&amp;#x27;, atac_adata=None, atac_label_key: &amp;#x27;str&amp;#x27; = &amp;#x27;cell_type&amp;#x27;, save_results: &amp;#x27;bool&amp;#x27; = True) -&amp;gt; &amp;#x27;Dict[str, Dict[str, float]]&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>save_metrics</code></td>
+<td>function</td>
+<td><code>(metrics: &amp;#x27;Dict[str, Dict[str, float]]&amp;#x27;, outdir: &amp;#x27;str&amp;#x27;) -&amp;gt; &amp;#x27;None&amp;#x27;</code></td>
+</tr>
+</tbody>
+</table>
+<h2><code>sxsnf.training</code></h2>
+<p>Self-supervised masked-edge training for sxSNF graph encoders.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.training.html"><code>pydoc/sxsnf.training.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>negative_sampling_undirected</code></td>
+<td>function</td>
+<td><code>(n_nodes: &amp;#x27;int&amp;#x27;, num_samples: &amp;#x27;int&amp;#x27;, existing_undirected_set, device, seed: &amp;#x27;int&amp;#x27; = 42)</code></td>
+</tr>
+<tr>
+<td><code>sample_masked_edges_from_sparse_undirected</code></td>
+<td>function</td>
+<td><code>(adj_sparse, mask_ratio: &amp;#x27;float&amp;#x27; = 0.1, seed: &amp;#x27;int&amp;#x27; = 42)</code></td>
+</tr>
+<tr>
+<td><code>train_masked_edge_ssl</code></td>
+<td>function</td>
+<td><code>(features, adj_fused_sparse, hidden_dim: &amp;#x27;int&amp;#x27; = 128, emb_dim: &amp;#x27;int&amp;#x27; = 64, dropout: &amp;#x27;float&amp;#x27; = 0.5, lr: &amp;#x27;float&amp;#x27; = 0.001, weight_decay: &amp;#x27;float&amp;#x27; = 0.0005, epochs: &amp;#x27;int&amp;#x27; = 200, mask_ratio: &amp;#x27;float&amp;#x27; = 0.1, neg_ratio: &amp;#x27;float&amp;#x27; = 1.0, seed: &amp;#x27;int&amp;#x27; = 42, outdir: &amp;#x27;str&amp;#x27; = &amp;#x27;training_process&amp;#x27;, gnn_layers: &amp;#x27;int&amp;#x27; = 6, gcn2_alpha: &amp;#x27;float&amp;#x27; = 0.1, gcn2_beta: &amp;#x27;float&amp;#x27; = 0.5, use_norm: &amp;#x27;bool&amp;#x27; = True, log_every: &amp;#x27;int&amp;#x27; = 10)</code></td>
+</tr>
+<tr>
+<td><code>undirected_edge_set_from_sparse</code></td>
+<td>function</td>
+<td><code>(adj_sparse, drop_self_loops: &amp;#x27;bool&amp;#x27; = True) -&amp;gt; &amp;#x27;Set[Tuple[int, int]]&amp;#x27;</code></td>
+</tr>
+</tbody>
+</table>
+<h2><code>sxsnf.utils</code></h2>
+<p>General utility functions shared across sxSNF modules.</p>
+<ul>
+<li><strong>HTML:</strong> <a href="pydoc/sxsnf.utils.html"><code>pydoc/sxsnf.utils.html</code></a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ensure_dir</code></td>
+<td>function</td>
+<td><code>(path: &amp;#x27;Union[str, Path]&amp;#x27;) -&amp;gt; &amp;#x27;Path&amp;#x27;</code></td>
+</tr>
+<tr>
+<td><code>l2norm_rows</code></td>
+<td>function</td>
+<td><code>(X, eps: &amp;#x27;float&amp;#x27; = 1e-12)</code></td>
+</tr>
+<tr>
+<td><code>set_seed</code></td>
+<td>function</td>
+<td><code>(seed: &amp;#x27;int&amp;#x27; = 42) -&amp;gt; &amp;#x27;None&amp;#x27;</code></td>
+</tr>
+</tbody>
+</table>
+  </article>
+</body>
+</html>

@@ -1,29 +1,25 @@
 
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
-<tr bgcolor="#7799ee">
-<td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="sxsnf.html"><font color="#ffffff">sxsnf</font></a>.utils</strong></big></big></font></td
-><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/mnt/d/work/labxscut/sxSNF/sxsnf/utils.py">/mnt/d/work/labxscut/sxSNF/sxsnf/utils.py</a></font></td></tr></table>
-    <p><tt>General&nbsp;utility&nbsp;functions&nbsp;shared&nbsp;across&nbsp;sxSNF&nbsp;modules.</tt></p>
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.utils</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/sxSNF/sxSNF/sxsnf/utils.py">/home/runner/work/sxSNF/sxSNF/sxsnf/utils.py</a></td></tr></table>
+    <p><span class="code">General&nbsp;utility&nbsp;functions&nbsp;shared&nbsp;across&nbsp;sxSNF&nbsp;modules.</span></p>
 <p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#aa55cc">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
     
-<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
-</td><td width="25%" valign=top><a href="os.html">os</a><br>
-</td><td width="25%" valign=top><a href="random.html">random</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#eeaa77">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="random.html">random</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
-<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-ensure_dir"><strong>ensure_dir</strong></a>(path: 'Union[str, Path]') -&gt; 'Path'</dt><dd><tt>Create&nbsp;an&nbsp;output&nbsp;directory&nbsp;if&nbsp;it&nbsp;does&nbsp;not&nbsp;exist.<br>
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-ensure_dir"><strong>ensure_dir</strong></a>(path: 'Union[str, Path]') -&gt; 'Path'</dt><dd><span class="code">Create&nbsp;an&nbsp;output&nbsp;directory&nbsp;if&nbsp;it&nbsp;does&nbsp;not&nbsp;exist.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -33,8 +29,8 @@ path&nbsp;:&nbsp;str&nbsp;or&nbsp;pathlib.Path<br>
 Returns<br>
 -------<br>
 pathlib.Path<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Normalized&nbsp;path&nbsp;object.</tt></dd></dl>
- <dl><dt><a name="-l2norm_rows"><strong>l2norm_rows</strong></a>(X, eps: 'float' = 1e-12)</dt><dd><tt>L2-normalize&nbsp;a&nbsp;matrix&nbsp;row&nbsp;by&nbsp;row.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Normalized&nbsp;path&nbsp;object.</span></dd></dl>
+ <dl><dt><a name="-l2norm_rows"><strong>l2norm_rows</strong></a>(X, eps: 'float' = 1e-12)</dt><dd><span class="code">L2-normalize&nbsp;a&nbsp;matrix&nbsp;row&nbsp;by&nbsp;row.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -46,19 +42,17 @@ eps&nbsp;:&nbsp;float,&nbsp;default=1e-12<br>
 Returns<br>
 -------<br>
 np.ndarray<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Row-normalized&nbsp;feature&nbsp;matrix&nbsp;with&nbsp;dtype&nbsp;float32.</tt></dd></dl>
- <dl><dt><a name="-set_seed"><strong>set_seed</strong></a>(seed: 'int' = 42) -&gt; 'None'</dt><dd><tt>Set&nbsp;Python,&nbsp;NumPy&nbsp;and&nbsp;PyTorch&nbsp;random&nbsp;seeds.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Row-normalized&nbsp;feature&nbsp;matrix&nbsp;with&nbsp;dtype&nbsp;float32.</span></dd></dl>
+ <dl><dt><a name="-set_seed"><strong>set_seed</strong></a>(seed: 'int' = 42) -&gt; 'None'</dt><dd><span class="code">Set&nbsp;Python,&nbsp;NumPy&nbsp;and&nbsp;PyTorch&nbsp;random&nbsp;seeds.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
 seed&nbsp;:&nbsp;int,&nbsp;default=42<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Random&nbsp;seed&nbsp;for&nbsp;reproducible&nbsp;experiments.</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;Random&nbsp;seed&nbsp;for&nbsp;reproducible&nbsp;experiments.</span></dd></dl>
 </td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#55aa55">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
     
-<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Union</strong> = typing.Union<br>
-<strong>annotations</strong> = _Feature((3, 7, 0, 'beta', 1), (3, 11, 0, 'alpha', 0), 16777216)</td></tr></table>
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Union</strong> = typing.Union</td></tr></table>
