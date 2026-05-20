@@ -16,29 +16,25 @@
 
 <main class="pydoc-page">
 
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
-<tr bgcolor="#7799ee">
-<td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="sxsnf.html"><font color="#ffffff">sxsnf</font></a>.data</strong></big></big></font></td
-><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/mnt/d/work/labxscut/sxSNF/sxsnf/data.py">/mnt/d/work/labxscut/sxSNF/sxsnf/data.py</a></font></td></tr></table>
-    <p><tt>Data&nbsp;loading&nbsp;and&nbsp;preprocessing&nbsp;utilities&nbsp;for&nbsp;the&nbsp;Chen-2019&nbsp;RNA/ATAC&nbsp;workflow.</tt></p>
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="sxsnf.html" class="white">sxsnf</a>.data</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/sxSNF/sxSNF/sxsnf/data.py">/home/runner/work/sxSNF/sxSNF/sxsnf/data.py</a></td></tr></table>
+    <p><span class="code">Data&nbsp;loading&nbsp;and&nbsp;preprocessing&nbsp;utilities&nbsp;for&nbsp;the&nbsp;Chen-2019&nbsp;RNA/ATAC&nbsp;workflow.</span></p>
 <p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#aa55cc">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
     
-<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#eeaa77">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
-<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-check_cell_alignment"><strong>check_cell_alignment</strong></a>(rna, atac) -&gt; 'bool'</dt><dd><tt>Check&nbsp;that&nbsp;RNA&nbsp;and&nbsp;ATAC&nbsp;objects&nbsp;are&nbsp;in&nbsp;the&nbsp;same&nbsp;cell&nbsp;order.<br>
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-check_cell_alignment"><strong>check_cell_alignment</strong></a>(rna, atac) -&gt; 'bool'</dt><dd><span class="code">Check&nbsp;that&nbsp;RNA&nbsp;and&nbsp;ATAC&nbsp;objects&nbsp;are&nbsp;in&nbsp;the&nbsp;same&nbsp;cell&nbsp;order.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -50,8 +46,8 @@ atac&nbsp;:&nbsp;anndata.AnnData<br>
 Returns<br>
 -------<br>
 bool<br>
-&nbsp;&nbsp;&nbsp;&nbsp;``True``&nbsp;if&nbsp;``obs_names``&nbsp;are&nbsp;aligned.</tt></dd></dl>
- <dl><dt><a name="-load_h5ad"><strong>load_h5ad</strong></a>(path: 'str')</dt><dd><tt>Load&nbsp;an&nbsp;AnnData&nbsp;object&nbsp;from&nbsp;an&nbsp;``.h5ad``&nbsp;file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``True``&nbsp;if&nbsp;``obs_names``&nbsp;are&nbsp;aligned.</span></dd></dl>
+ <dl><dt><a name="-load_h5ad"><strong>load_h5ad</strong></a>(path: 'str')</dt><dd><span class="code">Load&nbsp;an&nbsp;AnnData&nbsp;object&nbsp;from&nbsp;an&nbsp;``.h5ad``&nbsp;file.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -61,8 +57,8 @@ path&nbsp;:&nbsp;str<br>
 Returns<br>
 -------<br>
 anndata.AnnData<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Loaded&nbsp;AnnData&nbsp;object.</tt></dd></dl>
- <dl><dt><a name="-make_chen2019_representations"><strong>make_chen2019_representations</strong></a>(rna, atac, label_key: 'str' = 'cell_type') -&gt; 'Tuple[np.ndarray, np.ndarray, np.ndarray]'</dt><dd><tt>Extract&nbsp;RNA&nbsp;PCA,&nbsp;ATAC&nbsp;LSI&nbsp;and&nbsp;integer&nbsp;labels&nbsp;from&nbsp;processed&nbsp;AnnData&nbsp;objects.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Loaded&nbsp;AnnData&nbsp;object.</span></dd></dl>
+ <dl><dt><a name="-make_chen2019_representations"><strong>make_chen2019_representations</strong></a>(rna, atac, label_key: 'str' = 'cell_type') -&gt; 'Tuple[np.ndarray, np.ndarray, np.ndarray]'</dt><dd><span class="code">Extract&nbsp;RNA&nbsp;PCA,&nbsp;ATAC&nbsp;LSI&nbsp;and&nbsp;integer&nbsp;labels&nbsp;from&nbsp;processed&nbsp;AnnData&nbsp;objects.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -76,8 +72,8 @@ label_key&nbsp;:&nbsp;str,&nbsp;default="cell_type"<br>
 Returns<br>
 -------<br>
 tuple&nbsp;of&nbsp;np.ndarray<br>
-&nbsp;&nbsp;&nbsp;&nbsp;``(rna_pca,&nbsp;atac_lsi,&nbsp;labels)``.</tt></dd></dl>
- <dl><dt><a name="-preprocess_atac"><strong>preprocess_atac</strong></a>(atac, n_components: 'int' = 100, n_iter: 'int' = 15)</dt><dd><tt>Preprocess&nbsp;ATAC&nbsp;AnnData&nbsp;using&nbsp;scGLUE&nbsp;LSI&nbsp;and&nbsp;Scanpy&nbsp;neighbors.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``(rna_pca,&nbsp;atac_lsi,&nbsp;labels)``.</span></dd></dl>
+ <dl><dt><a name="-preprocess_atac"><strong>preprocess_atac</strong></a>(atac, n_components: 'int' = 100, n_iter: 'int' = 15)</dt><dd><span class="code">Preprocess&nbsp;ATAC&nbsp;AnnData&nbsp;using&nbsp;scGLUE&nbsp;LSI&nbsp;and&nbsp;Scanpy&nbsp;neighbors.<br>
 &nbsp;<br>
 Parameters<br>
 ----------<br>
@@ -91,8 +87,8 @@ n_iter&nbsp;:&nbsp;int,&nbsp;default=15<br>
 Returns<br>
 -------<br>
 anndata.AnnData<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;ATAC&nbsp;AnnData&nbsp;object&nbsp;containing&nbsp;``obsm["X_lsi"]``.</tt></dd></dl>
- <dl><dt><a name="-preprocess_rna"><strong>preprocess_rna</strong></a>(rna, n_top_genes: 'int' = 2000, n_pcs: 'int' = 100, cell_type_key: 'str' = 'cell_type')</dt><dd><tt>Preprocess&nbsp;RNA&nbsp;AnnData&nbsp;using&nbsp;the&nbsp;notebook&nbsp;workflow.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;ATAC&nbsp;AnnData&nbsp;object&nbsp;containing&nbsp;``obsm["X_lsi"]``.</span></dd></dl>
+ <dl><dt><a name="-preprocess_rna"><strong>preprocess_rna</strong></a>(rna, n_top_genes: 'int' = 2000, n_pcs: 'int' = 100, cell_type_key: 'str' = 'cell_type')</dt><dd><span class="code">Preprocess&nbsp;RNA&nbsp;AnnData&nbsp;using&nbsp;the&nbsp;notebook&nbsp;workflow.<br>
 &nbsp;<br>
 Steps&nbsp;include&nbsp;count-layer&nbsp;preservation,&nbsp;highly&nbsp;variable&nbsp;gene&nbsp;selection,<br>
 library-size&nbsp;normalization,&nbsp;log&nbsp;transformation,&nbsp;scaling,&nbsp;PCA,&nbsp;neighbors<br>
@@ -112,16 +108,14 @@ cell_type_key&nbsp;:&nbsp;str,&nbsp;default="cell_type"<br>
 Returns<br>
 -------<br>
 anndata.AnnData<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;RNA&nbsp;AnnData&nbsp;object.</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;Processed&nbsp;RNA&nbsp;AnnData&nbsp;object.</span></dd></dl>
 </td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#55aa55">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
     
-<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Tuple</strong> = typing.Tuple<br>
-<strong>annotations</strong> = _Feature((3, 7, 0, 'beta', 1), (3, 11, 0, 'alpha', 0), 16777216)</td></tr></table>
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>Tuple</strong> = typing.Tuple</td></tr></table>
 </main>
 </body>
 </html>
