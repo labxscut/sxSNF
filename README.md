@@ -4,6 +4,10 @@
 
 This repository version reorganizes the original Chen-2019 notebook into a standard GitHub/Python package layout.
 
+**API documentation (GitHub Pages):** [https://labxscut.github.io/sxSNF/](https://labxscut.github.io/sxSNF/)
+
+The site is built from the `docs/` folder on every push to `main` by [`.github/workflows/pages.yml`](.github/workflows/pages.yml). If the URL does not load yet, open **Settings → Pages** in this repository and set **Build and deployment** source to **GitHub Actions**. You can also run that workflow manually from the **Actions** tab (**Run workflow**).
+
 ## Repository structure
 
 ```text
@@ -117,6 +121,8 @@ explorer.exe docs/index.html   # WSL on Windows
 # or
 xdg-open docs/index.html       # Linux
 ```
+
+The same content is published at [https://labxscut.github.io/sxSNF/](https://labxscut.github.io/sxSNF/) after each successful deploy.
 
 ## GitHub update workflow
 

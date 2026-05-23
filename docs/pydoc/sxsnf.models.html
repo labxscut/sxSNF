@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sxSNF — sxsnf.models</title>
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <nav class="doc-nav">
+    <a href="../index.html"><strong>sxSNF docs</strong></a>
+    <a href="../API_REFERENCE.html">API reference</a>
+    <a href="../WORKFLOW.html">Workflow</a>
+    <a href="https://github.com/labxscut/sxSNF">Repository</a>
+  </nav>
+
+<main class="pydoc-page">
 
 <table class="heading">
 <tr class="heading-text decor">
@@ -247,7 +264,7 @@ strings&nbsp;are&nbsp;acceptable.</span></dd></dl>
 Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="torch.nn.modules.module.html#Module">Module</a>:&nbsp;self</span></dd></dl>
 
-<dl><dt><a name="DeepGCNIIEncoder-get_buffer"><strong>get_buffer</strong></a>(self, target: str) -&gt; 'Tensor'</dt><dd><span class="code">Return&nbsp;the&nbsp;buffer&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
+<dl><dt><a name="DeepGCNIIEncoder-get_buffer"><strong>get_buffer</strong></a>(self, target: str) -&gt; torch.Tensor</dt><dd><span class="code">Return&nbsp;the&nbsp;buffer&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
 &nbsp;<br>
 See&nbsp;the&nbsp;docstring&nbsp;for&nbsp;``get_submodule``&nbsp;for&nbsp;a&nbsp;more&nbsp;detailed<br>
 explanation&nbsp;of&nbsp;this&nbsp;method's&nbsp;functionality&nbsp;as&nbsp;well&nbsp;as&nbsp;how&nbsp;to<br>
@@ -280,7 +297,7 @@ their&nbsp;serialized&nbsp;pickled&nbsp;form&nbsp;changes.<br>
 Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;object:&nbsp;Any&nbsp;extra&nbsp;state&nbsp;to&nbsp;store&nbsp;in&nbsp;the&nbsp;module's&nbsp;state_dict</span></dd></dl>
 
-<dl><dt><a name="DeepGCNIIEncoder-get_parameter"><strong>get_parameter</strong></a>(self, target: str) -&gt; 'Parameter'</dt><dd><span class="code">Return&nbsp;the&nbsp;parameter&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
+<dl><dt><a name="DeepGCNIIEncoder-get_parameter"><strong>get_parameter</strong></a>(self, target: str) -&gt; torch.nn.parameter.Parameter</dt><dd><span class="code">Return&nbsp;the&nbsp;parameter&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
 &nbsp;<br>
 See&nbsp;the&nbsp;docstring&nbsp;for&nbsp;``get_submodule``&nbsp;for&nbsp;a&nbsp;more&nbsp;detailed<br>
 explanation&nbsp;of&nbsp;this&nbsp;method's&nbsp;functionality&nbsp;as&nbsp;well&nbsp;as&nbsp;how&nbsp;to<br>
@@ -544,7 +561,7 @@ Example::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;class&nbsp;'torch.Tensor'&gt;&nbsp;(20L,)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;class&nbsp;'torch.Tensor'&gt;&nbsp;(20L,&nbsp;1L,&nbsp;5L,&nbsp;5L)</span></dd></dl>
 
-<dl><dt><a name="DeepGCNIIEncoder-register_backward_hook"><strong>register_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor], typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]]) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="DeepGCNIIEncoder-register_backward_hook"><strong>register_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor, tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None]) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 This&nbsp;function&nbsp;is&nbsp;deprecated&nbsp;in&nbsp;favor&nbsp;of&nbsp;:meth:`~torch.nn.<a href="torch.nn.modules.module.html#Module">Module</a>.register_full_backward_hook`&nbsp;and<br>
 the&nbsp;behavior&nbsp;of&nbsp;this&nbsp;function&nbsp;will&nbsp;change&nbsp;in&nbsp;future&nbsp;versions.<br>
@@ -665,7 +682,7 @@ Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;handle&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;the&nbsp;added&nbsp;hook&nbsp;by&nbsp;calling<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``handle.remove()``</span></dd></dl>
 
-<dl><dt><a name="DeepGCNIIEncoder-register_full_backward_hook"><strong>register_full_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor], typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="DeepGCNIIEncoder-register_full_backward_hook"><strong>register_full_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor, tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 The&nbsp;hook&nbsp;will&nbsp;be&nbsp;called&nbsp;every&nbsp;time&nbsp;the&nbsp;gradients&nbsp;with&nbsp;respect&nbsp;to&nbsp;a&nbsp;module&nbsp;are&nbsp;computed,&nbsp;and&nbsp;its&nbsp;firing&nbsp;rules&nbsp;are&nbsp;as&nbsp;follows:<br>
 &nbsp;<br>
@@ -711,7 +728,7 @@ Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;handle&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;the&nbsp;added&nbsp;hook&nbsp;by&nbsp;calling<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``handle.remove()``</span></dd></dl>
 
-<dl><dt><a name="DeepGCNIIEncoder-register_full_backward_pre_hook"><strong>register_full_backward_pre_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;pre-hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="DeepGCNIIEncoder-register_full_backward_pre_hook"><strong>register_full_backward_pre_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;pre-hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 The&nbsp;hook&nbsp;will&nbsp;be&nbsp;called&nbsp;every&nbsp;time&nbsp;the&nbsp;gradients&nbsp;for&nbsp;the&nbsp;module&nbsp;are&nbsp;computed.<br>
 The&nbsp;hook&nbsp;should&nbsp;have&nbsp;the&nbsp;following&nbsp;signature::<br>
@@ -1019,7 +1036,7 @@ Examples::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0.6122+0.j,&nbsp;0.1150+0.j],<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0.6122+0.j,&nbsp;0.1150+0.j]],&nbsp;dtype=torch.complex128)</span></dd></dl>
 
-<dl><dt><a name="DeepGCNIIEncoder-to_empty"><strong>to_empty</strong></a>(self, *, device: Union[str, torch.device, int, NoneType], recurse: bool = True) -&gt; Self</dt><dd><span class="code">Move&nbsp;the&nbsp;parameters&nbsp;and&nbsp;buffers&nbsp;to&nbsp;the&nbsp;specified&nbsp;device&nbsp;without&nbsp;copying&nbsp;storage.<br>
+<dl><dt><a name="DeepGCNIIEncoder-to_empty"><strong>to_empty</strong></a>(self, *, device: str | torch.device | int | None, recurse: bool = True) -&gt; Self</dt><dd><span class="code">Move&nbsp;the&nbsp;parameters&nbsp;and&nbsp;buffers&nbsp;to&nbsp;the&nbsp;specified&nbsp;device&nbsp;without&nbsp;copying&nbsp;storage.<br>
 &nbsp;<br>
 Args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;device&nbsp;(:class:`torch.device`):&nbsp;The&nbsp;desired&nbsp;device&nbsp;of&nbsp;the&nbsp;parameters<br>
@@ -1313,7 +1330,7 @@ strings&nbsp;are&nbsp;acceptable.</span></dd></dl>
 Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="torch.nn.modules.module.html#Module">Module</a>:&nbsp;self</span></dd></dl>
 
-<dl><dt><a name="GCNIIBlock-get_buffer"><strong>get_buffer</strong></a>(self, target: str) -&gt; 'Tensor'</dt><dd><span class="code">Return&nbsp;the&nbsp;buffer&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
+<dl><dt><a name="GCNIIBlock-get_buffer"><strong>get_buffer</strong></a>(self, target: str) -&gt; torch.Tensor</dt><dd><span class="code">Return&nbsp;the&nbsp;buffer&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
 &nbsp;<br>
 See&nbsp;the&nbsp;docstring&nbsp;for&nbsp;``get_submodule``&nbsp;for&nbsp;a&nbsp;more&nbsp;detailed<br>
 explanation&nbsp;of&nbsp;this&nbsp;method's&nbsp;functionality&nbsp;as&nbsp;well&nbsp;as&nbsp;how&nbsp;to<br>
@@ -1346,7 +1363,7 @@ their&nbsp;serialized&nbsp;pickled&nbsp;form&nbsp;changes.<br>
 Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;object:&nbsp;Any&nbsp;extra&nbsp;state&nbsp;to&nbsp;store&nbsp;in&nbsp;the&nbsp;module's&nbsp;state_dict</span></dd></dl>
 
-<dl><dt><a name="GCNIIBlock-get_parameter"><strong>get_parameter</strong></a>(self, target: str) -&gt; 'Parameter'</dt><dd><span class="code">Return&nbsp;the&nbsp;parameter&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
+<dl><dt><a name="GCNIIBlock-get_parameter"><strong>get_parameter</strong></a>(self, target: str) -&gt; torch.nn.parameter.Parameter</dt><dd><span class="code">Return&nbsp;the&nbsp;parameter&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
 &nbsp;<br>
 See&nbsp;the&nbsp;docstring&nbsp;for&nbsp;``get_submodule``&nbsp;for&nbsp;a&nbsp;more&nbsp;detailed<br>
 explanation&nbsp;of&nbsp;this&nbsp;method's&nbsp;functionality&nbsp;as&nbsp;well&nbsp;as&nbsp;how&nbsp;to<br>
@@ -1610,7 +1627,7 @@ Example::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;class&nbsp;'torch.Tensor'&gt;&nbsp;(20L,)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;class&nbsp;'torch.Tensor'&gt;&nbsp;(20L,&nbsp;1L,&nbsp;5L,&nbsp;5L)</span></dd></dl>
 
-<dl><dt><a name="GCNIIBlock-register_backward_hook"><strong>register_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor], typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]]) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="GCNIIBlock-register_backward_hook"><strong>register_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor, tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None]) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 This&nbsp;function&nbsp;is&nbsp;deprecated&nbsp;in&nbsp;favor&nbsp;of&nbsp;:meth:`~torch.nn.<a href="torch.nn.modules.module.html#Module">Module</a>.register_full_backward_hook`&nbsp;and<br>
 the&nbsp;behavior&nbsp;of&nbsp;this&nbsp;function&nbsp;will&nbsp;change&nbsp;in&nbsp;future&nbsp;versions.<br>
@@ -1731,7 +1748,7 @@ Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;handle&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;the&nbsp;added&nbsp;hook&nbsp;by&nbsp;calling<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``handle.remove()``</span></dd></dl>
 
-<dl><dt><a name="GCNIIBlock-register_full_backward_hook"><strong>register_full_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor], typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="GCNIIBlock-register_full_backward_hook"><strong>register_full_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor, tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 The&nbsp;hook&nbsp;will&nbsp;be&nbsp;called&nbsp;every&nbsp;time&nbsp;the&nbsp;gradients&nbsp;with&nbsp;respect&nbsp;to&nbsp;a&nbsp;module&nbsp;are&nbsp;computed,&nbsp;and&nbsp;its&nbsp;firing&nbsp;rules&nbsp;are&nbsp;as&nbsp;follows:<br>
 &nbsp;<br>
@@ -1777,7 +1794,7 @@ Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;handle&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;the&nbsp;added&nbsp;hook&nbsp;by&nbsp;calling<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``handle.remove()``</span></dd></dl>
 
-<dl><dt><a name="GCNIIBlock-register_full_backward_pre_hook"><strong>register_full_backward_pre_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;pre-hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="GCNIIBlock-register_full_backward_pre_hook"><strong>register_full_backward_pre_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;pre-hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 The&nbsp;hook&nbsp;will&nbsp;be&nbsp;called&nbsp;every&nbsp;time&nbsp;the&nbsp;gradients&nbsp;for&nbsp;the&nbsp;module&nbsp;are&nbsp;computed.<br>
 The&nbsp;hook&nbsp;should&nbsp;have&nbsp;the&nbsp;following&nbsp;signature::<br>
@@ -2085,7 +2102,7 @@ Examples::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0.6122+0.j,&nbsp;0.1150+0.j],<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0.6122+0.j,&nbsp;0.1150+0.j]],&nbsp;dtype=torch.complex128)</span></dd></dl>
 
-<dl><dt><a name="GCNIIBlock-to_empty"><strong>to_empty</strong></a>(self, *, device: Union[str, torch.device, int, NoneType], recurse: bool = True) -&gt; Self</dt><dd><span class="code">Move&nbsp;the&nbsp;parameters&nbsp;and&nbsp;buffers&nbsp;to&nbsp;the&nbsp;specified&nbsp;device&nbsp;without&nbsp;copying&nbsp;storage.<br>
+<dl><dt><a name="GCNIIBlock-to_empty"><strong>to_empty</strong></a>(self, *, device: str | torch.device | int | None, recurse: bool = True) -&gt; Self</dt><dd><span class="code">Move&nbsp;the&nbsp;parameters&nbsp;and&nbsp;buffers&nbsp;to&nbsp;the&nbsp;specified&nbsp;device&nbsp;without&nbsp;copying&nbsp;storage.<br>
 &nbsp;<br>
 Args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;device&nbsp;(:class:`torch.device`):&nbsp;The&nbsp;desired&nbsp;device&nbsp;of&nbsp;the&nbsp;parameters<br>
@@ -2369,7 +2386,7 @@ strings&nbsp;are&nbsp;acceptable.</span></dd></dl>
 Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="torch.nn.modules.module.html#Module">Module</a>:&nbsp;self</span></dd></dl>
 
-<dl><dt><a name="MLP-get_buffer"><strong>get_buffer</strong></a>(self, target: str) -&gt; 'Tensor'</dt><dd><span class="code">Return&nbsp;the&nbsp;buffer&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
+<dl><dt><a name="MLP-get_buffer"><strong>get_buffer</strong></a>(self, target: str) -&gt; torch.Tensor</dt><dd><span class="code">Return&nbsp;the&nbsp;buffer&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
 &nbsp;<br>
 See&nbsp;the&nbsp;docstring&nbsp;for&nbsp;``get_submodule``&nbsp;for&nbsp;a&nbsp;more&nbsp;detailed<br>
 explanation&nbsp;of&nbsp;this&nbsp;method's&nbsp;functionality&nbsp;as&nbsp;well&nbsp;as&nbsp;how&nbsp;to<br>
@@ -2402,7 +2419,7 @@ their&nbsp;serialized&nbsp;pickled&nbsp;form&nbsp;changes.<br>
 Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;object:&nbsp;Any&nbsp;extra&nbsp;state&nbsp;to&nbsp;store&nbsp;in&nbsp;the&nbsp;module's&nbsp;state_dict</span></dd></dl>
 
-<dl><dt><a name="MLP-get_parameter"><strong>get_parameter</strong></a>(self, target: str) -&gt; 'Parameter'</dt><dd><span class="code">Return&nbsp;the&nbsp;parameter&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
+<dl><dt><a name="MLP-get_parameter"><strong>get_parameter</strong></a>(self, target: str) -&gt; torch.nn.parameter.Parameter</dt><dd><span class="code">Return&nbsp;the&nbsp;parameter&nbsp;given&nbsp;by&nbsp;``target``&nbsp;if&nbsp;it&nbsp;exists,&nbsp;otherwise&nbsp;throw&nbsp;an&nbsp;error.<br>
 &nbsp;<br>
 See&nbsp;the&nbsp;docstring&nbsp;for&nbsp;``get_submodule``&nbsp;for&nbsp;a&nbsp;more&nbsp;detailed<br>
 explanation&nbsp;of&nbsp;this&nbsp;method's&nbsp;functionality&nbsp;as&nbsp;well&nbsp;as&nbsp;how&nbsp;to<br>
@@ -2666,7 +2683,7 @@ Example::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;class&nbsp;'torch.Tensor'&gt;&nbsp;(20L,)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;class&nbsp;'torch.Tensor'&gt;&nbsp;(20L,&nbsp;1L,&nbsp;5L,&nbsp;5L)</span></dd></dl>
 
-<dl><dt><a name="MLP-register_backward_hook"><strong>register_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor], typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]]) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="MLP-register_backward_hook"><strong>register_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor, tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None]) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 This&nbsp;function&nbsp;is&nbsp;deprecated&nbsp;in&nbsp;favor&nbsp;of&nbsp;:meth:`~torch.nn.<a href="torch.nn.modules.module.html#Module">Module</a>.register_full_backward_hook`&nbsp;and<br>
 the&nbsp;behavior&nbsp;of&nbsp;this&nbsp;function&nbsp;will&nbsp;change&nbsp;in&nbsp;future&nbsp;versions.<br>
@@ -2787,7 +2804,7 @@ Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;handle&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;the&nbsp;added&nbsp;hook&nbsp;by&nbsp;calling<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``handle.remove()``</span></dd></dl>
 
-<dl><dt><a name="MLP-register_full_backward_hook"><strong>register_full_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor], typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="MLP-register_full_backward_hook"><strong>register_full_backward_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor, tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 The&nbsp;hook&nbsp;will&nbsp;be&nbsp;called&nbsp;every&nbsp;time&nbsp;the&nbsp;gradients&nbsp;with&nbsp;respect&nbsp;to&nbsp;a&nbsp;module&nbsp;are&nbsp;computed,&nbsp;and&nbsp;its&nbsp;firing&nbsp;rules&nbsp;are&nbsp;as&nbsp;follows:<br>
 &nbsp;<br>
@@ -2833,7 +2850,7 @@ Returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;handle&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;the&nbsp;added&nbsp;hook&nbsp;by&nbsp;calling<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``handle.remove()``</span></dd></dl>
 
-<dl><dt><a name="MLP-register_full_backward_pre_hook"><strong>register_full_backward_pre_hook</strong></a>(self, hook: collections.abc.Callable[['Module', typing.Union[tuple[torch.Tensor, ...], torch.Tensor]], typing.Union[tuple[torch.Tensor, ...], torch.Tensor, NoneType]], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;pre-hook&nbsp;on&nbsp;the&nbsp;module.<br>
+<dl><dt><a name="MLP-register_full_backward_pre_hook"><strong>register_full_backward_pre_hook</strong></a>(self, hook: collections.abc.Callable[['Module', tuple[torch.Tensor, ...] | torch.Tensor], tuple[torch.Tensor, ...] | torch.Tensor | None], prepend: bool = False) -&gt; torch.utils.hooks.RemovableHandle</dt><dd><span class="code">Register&nbsp;a&nbsp;backward&nbsp;pre-hook&nbsp;on&nbsp;the&nbsp;module.<br>
 &nbsp;<br>
 The&nbsp;hook&nbsp;will&nbsp;be&nbsp;called&nbsp;every&nbsp;time&nbsp;the&nbsp;gradients&nbsp;for&nbsp;the&nbsp;module&nbsp;are&nbsp;computed.<br>
 The&nbsp;hook&nbsp;should&nbsp;have&nbsp;the&nbsp;following&nbsp;signature::<br>
@@ -3141,7 +3158,7 @@ Examples::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0.6122+0.j,&nbsp;0.1150+0.j],<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0.6122+0.j,&nbsp;0.1150+0.j]],&nbsp;dtype=torch.complex128)</span></dd></dl>
 
-<dl><dt><a name="MLP-to_empty"><strong>to_empty</strong></a>(self, *, device: Union[str, torch.device, int, NoneType], recurse: bool = True) -&gt; Self</dt><dd><span class="code">Move&nbsp;the&nbsp;parameters&nbsp;and&nbsp;buffers&nbsp;to&nbsp;the&nbsp;specified&nbsp;device&nbsp;without&nbsp;copying&nbsp;storage.<br>
+<dl><dt><a name="MLP-to_empty"><strong>to_empty</strong></a>(self, *, device: str | torch.device | int | None, recurse: bool = True) -&gt; Self</dt><dd><span class="code">Move&nbsp;the&nbsp;parameters&nbsp;and&nbsp;buffers&nbsp;to&nbsp;the&nbsp;specified&nbsp;device&nbsp;without&nbsp;copying&nbsp;storage.<br>
 &nbsp;<br>
 Args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;device&nbsp;(:class:`torch.device`):&nbsp;The&nbsp;desired&nbsp;device&nbsp;of&nbsp;the&nbsp;parameters<br>
@@ -3237,3 +3254,6 @@ Returns<br>
 torch.Tensor<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Edge&nbsp;logits.</span></dd></dl>
 </td></tr></table>
+</main>
+</body>
+</html>

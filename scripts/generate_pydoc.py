@@ -8,8 +8,10 @@ from __future__ import annotations
 import html as html_lib
 import importlib
 import inspect
+import os
 import pkgutil
 import pydoc
+import re
 import sys
 from pathlib import Path
 
@@ -53,6 +55,173 @@ def _grouped_modules(modules: list[str]) -> list[tuple[str, list[str]]]:
     if leftover:
         sections.append(("Other", leftover))
     return sections
+
+
+def _css_href_for(html_path: Path) -> str:
+    """Relative URL from an HTML file's directory to ``docs/assets/docs.css``."""
+    return Path(
+        os.path.relpath(DOCS_DIR / "assets" / "docs.css", html_path.parent)
+    ).as_posix()
+
+
+def _nav_html_fragment(html_path: Path) -> str:
+    """Shared top nav; links are correct from ``html_path`` (any depth under ``docs/``)."""
+    here = html_path.parent
+    root = DOCS_DIR
+
+    def href(target: Path) -> str:
+        return html_lib.escape(Path(os.path.relpath(target, here)).as_posix())
+
+    return (
+        "  <nav class=\"doc-nav\">\n"
+        f"    <a href=\"{href(root / 'index.html')}\"><strong>sxSNF docs</strong></a>\n"
+        f"    <a href=\"{href(root / 'API_REFERENCE.html')}\">API reference</a>\n"
+        f"    <a href=\"{href(root / 'WORKFLOW.html')}\">Workflow</a>\n"
+        "    <a href=\"https://github.com/labxscut/sxSNF\">Repository</a>\n"
+        "  </nav>"
+    )
+
+
+def _write_full_doc_page(html_path: Path, title: str, body_below_nav: str) -> None:
+    """Write a complete HTML page with shared CSS and nav."""
+    html_path.parent.mkdir(parents=True, exist_ok=True)
+    css = html_lib.escape(_css_href_for(html_path))
+    nav = _nav_html_fragment(html_path)
+    esc_title = html_lib.escape(title)
+    html_path.write_text(
+        f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc_title}</title>
+  <link rel="stylesheet" href="{css}">
+</head>
+<body>
+{nav}
+
+{body_below_nav}
+</body>
+</html>
+""",
+        encoding="utf-8",
+    )
+
+
+def _is_html_document_fragment(raw: str) -> bool:
+    """True if content is not a full HTML document (e.g. raw ``pydoc`` output)."""
+    head = raw.lstrip()[:900].lower()
+    return not (head.startswith("<!doctype") or head.startswith("<html"))
+
+
+def _wrap_html_fragment(html_path: Path, fragment: str) -> str:
+    """Wrap legacy body-only HTML in a shell with ``docs.css`` and nav."""
+    css = html_lib.escape(_css_href_for(html_path))
+    nav = _nav_html_fragment(html_path)
+    title = html_lib.escape(f"sxSNF — {html_path.stem}")
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <link rel="stylesheet" href="{css}">
+</head>
+<body>
+{nav}
+
+<main class="pydoc-page">
+{fragment}
+</main>
+</body>
+</html>
+"""
+
+
+def _patch_full_html_document(html_path: Path, text: str) -> str:
+    """Normalize stylesheet href and nav for any depth under ``docs/``."""
+    css = html_lib.escape(_css_href_for(html_path))
+    nav = _nav_html_fragment(html_path)
+    s = text
+    if re.search(r'href=["\'][^"\']*docs\.css["\']', s, re.I):
+        s = re.sub(
+            r'<link\s+rel=["\']stylesheet["\']\s+href=["\'][^"\']*docs\.css["\']\s*/?>',
+            f'<link rel="stylesheet" href="{css}">',
+            s,
+            count=1,
+            flags=re.IGNORECASE,
+        )
+    else:
+        m = re.search(r"<head[^>]*>", s, flags=re.IGNORECASE)
+        if m:
+            ins = m.end()
+            s = s[:ins] + f"\n  <link rel=\"stylesheet\" href=\"{css}\">\n" + s[ins:]
+
+    if re.search(r"<body[^>]*>\s*<nav\s+class=['\"]doc-nav['\"]", s, re.I):
+        s = re.sub(
+            r"<body([^>]*)>\s*<nav\s+class=['\"]doc-nav['\"][^>]*>.*?</nav>",
+            r"<body\1>\n" + nav,
+            s,
+            count=1,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+    elif re.search(r"<body[^>]*>\s*<div\s+class=['\"]doc-nav['\"]", s, re.I):
+        s = re.sub(
+            r"<body([^>]*)>\s*<div\s+class=['\"]doc-nav['\"][^>]*>.*?</div>",
+            r"<body\1>\n" + nav,
+            s,
+            count=1,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+    elif re.search(r'<nav\s+class=["\']doc-nav["\']', s, re.I):
+        s = re.sub(
+            r"\n[ \t]*<nav\s+class=['\"]doc-nav['\"][^>]*>.*?</nav>",
+            "\n" + nav,
+            s,
+            count=1,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+    elif re.search(r"<body[^>]*>", s, re.I):
+
+        def _inject_nav(m: re.Match[str]) -> str:
+            return m.group(0) + "\n" + nav + "\n"
+
+        s = re.sub(r"<body[^>]*>", _inject_nav, s, count=1, flags=re.IGNORECASE)
+
+    return s
+
+
+def apply_docs_shell_recursively() -> None:
+    """
+    Ensure every ``docs/**/*.html`` uses ``assets/docs.css`` and the shared nav.
+
+    - Full documents: patch ``docs.css`` link and shared top nav (including legacy
+      ``<div class="doc-nav">`` shells).
+    - Fragments (typical ``pydoc`` output): wrap in a minimal HTML shell.
+    """
+    css_file = DOCS_DIR / "assets" / "docs.css"
+    if not css_file.is_file():
+        print("[warn] docs/assets/docs.css missing; skip docs shell pass")
+        return
+
+    for path in sorted(DOCS_DIR.rglob("*.html")):
+        if not path.is_file():
+            continue
+        try:
+            path.relative_to(DOCS_DIR)
+        except ValueError:
+            continue
+        raw = path.read_text(encoding="utf-8")
+        if _is_html_document_fragment(raw):
+            wrapped = _wrap_html_fragment(path, raw)
+            if wrapped != raw:
+                path.write_text(wrapped, encoding="utf-8")
+                print(f"[skin] wrapped {path.relative_to(PROJECT_ROOT)}")
+            continue
+        patched = _patch_full_html_document(path, raw)
+        if patched != raw:
+            path.write_text(patched, encoding="utf-8")
+            print(f"[skin] patched {path.relative_to(PROJECT_ROOT)}")
 
 
 def generate_html(modules):
@@ -173,36 +342,11 @@ def _markdown_to_html_pages():
         body = md.convert(src.read_text(encoding="utf-8"))
         md.reset()
         out = DOCS_DIR / f"{stem}.html"
-        out.write_text(
-            _wrap_doc_page(f"sxSNF — {page_title}", body),
-            encoding="utf-8",
-        )
+        inner = f"""  <article class="md-body">
+{body}
+  </article>"""
+        _write_full_doc_page(out, f"sxSNF — {page_title}", inner)
         print(f"[html] {out.relative_to(PROJECT_ROOT)}")
-
-
-def _wrap_doc_page(title: str, inner_html: str) -> str:
-    esc = html_lib.escape(title)
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{esc}</title>
-  <link rel="stylesheet" href="assets/docs.css">
-</head>
-<body>
-  <nav class="doc-nav">
-    <a href="index.html">Home</a>
-    <a href="API_REFERENCE.html">API reference</a>
-    <a href="WORKFLOW.html">Workflow</a>
-    <a href="https://github.com/labxscut/sxSNF">Repository</a>
-  </nav>
-  <article class="md-body">
-{inner_html}
-  </article>
-</body>
-</html>
-"""
 
 
 def generate_index(modules):
@@ -218,23 +362,7 @@ def generate_index(modules):
         )
 
     blocks = "\n".join(sections_html)
-    index = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>sxSNF API Documentation</title>
-  <link rel="stylesheet" href="assets/docs.css">
-</head>
-<body>
-  <nav class="doc-nav">
-    <a href="index.html"><strong>sxSNF docs</strong></a>
-    <a href="API_REFERENCE.html">API reference</a>
-    <a href="WORKFLOW.html">Workflow</a>
-    <a href="https://github.com/labxscut/sxSNF">Repository</a>
-  </nav>
-
-  <h1>sxSNF API documentation</h1>
+    body = f"""  <h1>sxSNF API documentation</h1>
   <p class="muted">Generated with Python <code>pydoc</code> for the <code>sxsnf</code> package.</p>
 
   <div class="doc-card">
@@ -245,11 +373,8 @@ def generate_index(modules):
     </ul>
   </div>
 
-{blocks}
-</body>
-</html>
-"""
-    (DOCS_DIR / "index.html").write_text(index, encoding="utf-8")
+{blocks}"""
+    _write_full_doc_page(DOCS_DIR / "index.html", "sxSNF API Documentation", body)
 
 
 def main():
@@ -262,6 +387,7 @@ def main():
     generate_workflow()
     _markdown_to_html_pages()
     generate_index(modules)
+    apply_docs_shell_recursively()
     print(f"[done] Documentation generated under {DOCS_DIR}")
 
 

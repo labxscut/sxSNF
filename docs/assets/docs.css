@@ -120,3 +120,17 @@ img {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.9em;
 }
+
+/* PyDoc-generated module pages (wrapped under .pydoc-page) */
+.pydoc-page {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.pydoc-page table {
+    font-size: 0.95rem;
+}
+
+.pydoc-page a {
+    word-break: break-word;
+}
