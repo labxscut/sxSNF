@@ -543,6 +543,10 @@ Example::<br>
 
 <dl><dt><a name="DeepGCNIIEncoder-parameters"><strong>parameters</strong></a>(self, recurse: bool = True) -&gt; collections.abc.Iterator[torch.nn.parameter.Parameter]</dt><dd><span class="code">Return&nbsp;an&nbsp;iterator&nbsp;over&nbsp;module&nbsp;parameters.<br>
 &nbsp;<br>
+The&nbsp;exact&nbsp;order&nbsp;of&nbsp;the&nbsp;returned&nbsp;parameters&nbsp;is&nbsp;unspecified,&nbsp;but&nbsp;repeated<br>
+calls&nbsp;to&nbsp;the&nbsp;``<a href="#DeepGCNIIEncoder-parameters">parameters</a>()``&nbsp;method&nbsp;of&nbsp;an&nbsp;unchanged&nbsp;module&nbsp;return&nbsp;the<br>
+parameters&nbsp;in&nbsp;the&nbsp;same&nbsp;order.<br>
+&nbsp;<br>
 This&nbsp;is&nbsp;typically&nbsp;passed&nbsp;to&nbsp;an&nbsp;optimizer.<br>
 &nbsp;<br>
 Args:<br>
@@ -1609,6 +1613,10 @@ Example::<br>
 
 <dl><dt><a name="GCNIIBlock-parameters"><strong>parameters</strong></a>(self, recurse: bool = True) -&gt; collections.abc.Iterator[torch.nn.parameter.Parameter]</dt><dd><span class="code">Return&nbsp;an&nbsp;iterator&nbsp;over&nbsp;module&nbsp;parameters.<br>
 &nbsp;<br>
+The&nbsp;exact&nbsp;order&nbsp;of&nbsp;the&nbsp;returned&nbsp;parameters&nbsp;is&nbsp;unspecified,&nbsp;but&nbsp;repeated<br>
+calls&nbsp;to&nbsp;the&nbsp;``<a href="#GCNIIBlock-parameters">parameters</a>()``&nbsp;method&nbsp;of&nbsp;an&nbsp;unchanged&nbsp;module&nbsp;return&nbsp;the<br>
+parameters&nbsp;in&nbsp;the&nbsp;same&nbsp;order.<br>
+&nbsp;<br>
 This&nbsp;is&nbsp;typically&nbsp;passed&nbsp;to&nbsp;an&nbsp;optimizer.<br>
 &nbsp;<br>
 Args:<br>
@@ -2664,6 +2672,10 @@ Example::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(param.size())</span></dd></dl>
 
 <dl><dt><a name="MLP-parameters"><strong>parameters</strong></a>(self, recurse: bool = True) -&gt; collections.abc.Iterator[torch.nn.parameter.Parameter]</dt><dd><span class="code">Return&nbsp;an&nbsp;iterator&nbsp;over&nbsp;module&nbsp;parameters.<br>
+&nbsp;<br>
+The&nbsp;exact&nbsp;order&nbsp;of&nbsp;the&nbsp;returned&nbsp;parameters&nbsp;is&nbsp;unspecified,&nbsp;but&nbsp;repeated<br>
+calls&nbsp;to&nbsp;the&nbsp;``<a href="#MLP-parameters">parameters</a>()``&nbsp;method&nbsp;of&nbsp;an&nbsp;unchanged&nbsp;module&nbsp;return&nbsp;the<br>
+parameters&nbsp;in&nbsp;the&nbsp;same&nbsp;order.<br>
 &nbsp;<br>
 This&nbsp;is&nbsp;typically&nbsp;passed&nbsp;to&nbsp;an&nbsp;optimizer.<br>
 &nbsp;<br>
