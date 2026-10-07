@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1020" viewBox="0 0 1300 1020" role="img" aria-labelledby="title desc">
+  <title id="title">sxSNF workflow</title>
+  <desc id="desc">High-level sxSNF pipeline from data loading to outputs.</desc>
+  <defs>
+    <style>
+      .box { fill: #ffffff; stroke: #2563eb; stroke-width: 2; rx: 10; ry: 10; }
+      .decision { fill: #f8fbff; stroke: #2563eb; stroke-width: 2; }
+      .txt { font-family: Arial, sans-serif; font-size: 14px; fill: #1f2937; text-anchor: middle; dominant-baseline: middle; }
+      .arrow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #334155; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569" />
+    </marker>
+  </defs>
+
+  <rect x="520" y="20" width="260" height="44" class="box" />
+  <text x="650" y="42" class="txt">Start</text>
+
+  <rect x="520" y="88" width="260" height="44" class="box" />
+  <text x="650" y="110" class="txt">ParseCLIArgs</text>
+
+  <polygon points="650,156 760,206 650,256 540,206" class="decision" />
+  <text x="650" y="206" class="txt">DataSource?</text>
+
+  <rect x="180" y="286" width="300" height="44" class="box" />
+  <text x="330" y="308" class="txt">GenerateSimulatedData</text>
+
+  <rect x="820" y="286" width="300" height="44" class="box" />
+  <text x="970" y="308" class="txt">LoadRealMultiOmicsData</text>
+
+  <rect x="520" y="362" width="260" height="44" class="box" />
+  <text x="650" y="384" class="txt">NormalizeEachModality</text>
+
+  <rect x="520" y="430" width="260" height="44" class="box" />
+  <text x="650" y="452" class="txt">BuildSimilarityGraphs</text>
+
+  <rect x="520" y="498" width="260" height="44" class="box" />
+  <text x="650" y="520" class="txt">RunSNFFusion</text>
+
+  <rect x="520" y="566" width="260" height="44" class="box" />
+  <text x="650" y="588" class="txt">FusedSimilarityNetwork</text>
+
+  <rect x="520" y="634" width="260" height="44" class="box" />
+  <text x="650" y="656" class="txt">InitializeGNNModel</text>
+
+  <rect x="520" y="702" width="260" height="44" class="box" />
+  <text x="650" y="724" class="txt">TrainGNNEncoder</text>
+
+  <rect x="520" y="770" width="260" height="44" class="box" />
+  <text x="650" y="792" class="txt">GetCellEmbeddings</text>
+
+  <rect x="210" y="850" width="260" height="44" class="box" />
+  <text x="340" y="872" class="txt">RunKMeansClustering</text>
+
+  <rect x="520" y="850" width="260" height="44" class="box" />
+  <text x="650" y="872" class="txt">VisualizeEmbeddings</text>
+
+  <rect x="830" y="850" width="260" height="44" class="box" />
+  <text x="960" y="872" class="txt">VisualizeClusterResults</text>
+
+  <rect x="210" y="930" width="260" height="44" class="box" />
+  <text x="340" y="952" class="txt">ComputeNMIandARI</text>
+
+  <rect x="520" y="930" width="260" height="44" class="box" />
+  <text x="650" y="952" class="txt">SaveEmbeddingsLabelsMetrics</text>
+
+  <rect x="830" y="930" width="260" height="44" class="box" />
+  <text x="960" y="952" class="txt">End</text>
+
+  <path d="M650 64 L650 88" class="arrow" />
+  <path d="M650 132 L650 156" class="arrow" />
+  <path d="M580 232 L330 286" class="arrow" />
+  <path d="M720 232 L970 286" class="arrow" />
+  <text x="470" y="250" class="label">Simulated</text>
+  <text x="830" y="250" class="label">Real</text>
+  <path d="M330 330 L330 384 L520 384" class="arrow" />
+  <path d="M970 330 L970 384 L780 384" class="arrow" />
+  <path d="M650 406 L650 430" class="arrow" />
+  <path d="M650 474 L650 498" class="arrow" />
+  <path d="M650 542 L650 566" class="arrow" />
+  <path d="M650 610 L650 634" class="arrow" />
+  <path d="M650 678 L650 702" class="arrow" />
+  <path d="M650 746 L650 770" class="arrow" />
+  <path d="M650 814 L340 850" class="arrow" />
+  <path d="M650 814 L650 850" class="arrow" />
+  <path d="M650 814 L960 850" class="arrow" />
+  <path d="M340 894 L340 930" class="arrow" />
+  <path d="M340 952 L520 952" class="arrow" />
+  <path d="M650 952 L830 952" class="arrow" />
+</svg>
